@@ -21,19 +21,11 @@ def main():
     
     # Calculate stats
     confirmed_players = set()
-    pending_players = set()
-    by_year = {}
-    by_level = {}
-    
     for r in records:
         name = r["player_name"]
-        by = r["birth_year"]
         status = "confirmed" if "验证状态: confirmed" in r["notes"] else ("partially_confirmed" if "验证状态: partially_confirmed" in r["notes"] else "pending")
-        
         if status in ["confirmed", "partially_confirmed"]:
             confirmed_players.add(name)
-        else:
-            pending_players.add(name)
 
     # Serialize data for embedding in HTML
     json_data = json.dumps(selections, ensure_ascii=False, indent=2)
@@ -46,20 +38,38 @@ def main():
     <title>中国足球小将国字号入选统计与可视化</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&family=Noto+Sans+SC:wght@300;400;700;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=Noto+Sans+SC:wght@300;400;500;700;900&display=swap" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <style>
         :root {{
-            --bg-color: #0d1117;
-            --card-bg: rgba(22, 27, 34, 0.8);
-            --border-color: rgba(48, 54, 61, 0.6);
-            --primary: #58a6ff;
-            --primary-hover: #1f6feb;
-            --text-color: #c9d1d9;
-            --text-heading: #f0f6fc;
-            --accent: #ff7b72;
+            --bg-dark: #060913;
+            --card-bg: rgba(14, 20, 36, 0.7);
+            --border-glow: rgba(56, 139, 253, 0.15);
+            --border-hover: rgba(56, 139, 253, 0.45);
+            
+            --primary: #388bfd;
+            --primary-light: #58a6ff;
+            --primary-glow: rgba(56, 139, 253, 0.25);
+            --primary-gradient: linear-gradient(135deg, #1f6feb 0%, #58a6ff 100%);
+            
+            --accent-gold: #f2c94c;
+            --accent-gold-gradient: linear-gradient(135deg, #f2c94c 0%, #f2994a 100%);
+            
+            --accent-rose: #eb5757;
+            --accent-rose-gradient: linear-gradient(135deg, #eb5757 0%, #f2994a 100%);
+            
+            --accent-cyan: #56ccf2;
+            --accent-cyan-gradient: linear-gradient(135deg, #2d9cdb 0%, #56ccf2 100%);
+
             --accent-green: #3fb950;
+            --accent-green-gradient: linear-gradient(135deg, #27ae60 0%, #2ecc71 100%);
+            
+            --text-primary: #f0f6fc;
+            --text-secondary: #8b949e;
+            --text-muted: #57606a;
+            
             --font-family: 'Outfit', 'Noto Sans SC', -apple-system, BlinkMacSystemFont, sans-serif;
+            --transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
         }}
 
         * {{
@@ -69,97 +79,182 @@ def main():
         }}
 
         body {{
-            background-color: var(--bg-color);
-            color: var(--text-color);
+            background-color: var(--bg-dark);
+            color: var(--text-primary);
             font-family: var(--font-family);
             line-height: 1.6;
-            padding-bottom: 60px;
-            background-image: radial-gradient(circle at 10% 20%, rgba(31, 111, 235, 0.08) 0%, transparent 40%),
-                              radial-gradient(circle at 90% 80%, rgba(255, 123, 114, 0.05) 0%, transparent 40%);
-            background-attachment: fixed;
+            padding-bottom: 80px;
+            overflow-x: hidden;
+        }}
+
+        /* Floating background glow bubbles */
+        .bg-glow {{
+            position: fixed;
+            width: 700px;
+            height: 700px;
+            border-radius: 50%;
+            filter: blur(140px);
+            z-index: -1;
+            opacity: 0.12;
+            pointer-events: none;
+            animation: float 25s infinite alternate ease-in-out;
+        }}
+
+        .bg-glow-1 {{
+            top: -150px;
+            left: -150px;
+            background: radial-gradient(circle, var(--primary), transparent 70%);
+        }}
+
+        .bg-glow-2 {{
+            bottom: -200px;
+            right: -150px;
+            background: radial-gradient(circle, var(--accent-cyan), transparent 70%);
+            animation-delay: -7s;
+        }}
+
+        .bg-glow-3 {{
+            top: 40%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, var(--accent-gold), transparent 70%);
+            opacity: 0.04;
+            animation-duration: 35s;
+        }}
+
+        @keyframes float {{
+            0% {{ transform: translate(0, 0) scale(1) rotate(0deg); }}
+            50% {{ transform: translate(80px, 60px) scale(1.15) rotate(90deg); }}
+            100% {{ transform: translate(-50px, 120px) scale(0.9) rotate(180deg); }}
         }}
 
         .container {{
             max-width: 1200px;
             margin: 0 auto;
-            padding: 20px;
+            padding: 24px;
         }}
 
         header {{
             text-align: center;
-            padding: 40px 0 20px 0;
-            border-bottom: 1px solid var(--border-color);
-            margin-bottom: 40px;
+            padding: 60px 0 40px 0;
+            position: relative;
+        }}
+
+        header::after {{
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 3px;
+            background: var(--primary-gradient);
+            border-radius: 2px;
         }}
 
         header h1 {{
-            color: var(--text-heading);
-            font-size: 2.5rem;
-            font-weight: 800;
-            letter-spacing: -0.5px;
-            margin-bottom: 10px;
-            background: linear-gradient(135deg, #f0f6fc, #58a6ff);
+            font-size: 2.8rem;
+            font-weight: 900;
+            letter-spacing: -1px;
+            margin-bottom: 12px;
+            background: linear-gradient(135deg, #ffffff 30%, #58a6ff 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
+            text-shadow: 0 4px 20px rgba(56, 139, 253, 0.15);
         }}
 
         header p {{
-            font-size: 1.1rem;
-            color: #8b949e;
+            font-size: 1.15rem;
+            color: var(--text-secondary);
+            font-weight: 300;
+            letter-spacing: 0.5px;
         }}
 
         .stats-grid {{
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-            gap: 20px;
-            margin-bottom: 40px;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 24px;
+            margin-top: 40px;
+            margin-bottom: 48px;
         }}
 
         .stat-card {{
             background: var(--card-bg);
-            border: 1px solid var(--border-color);
-            border-radius: 12px;
-            padding: 24px;
+            border: 1px solid var(--border-glow);
+            border-radius: 20px;
+            padding: 32px 24px;
             text-align: center;
-            backdrop-filter: blur(10px);
-            transition: transform 0.2s, border-color 0.2s;
+            backdrop-filter: blur(20px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.05);
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+        }}
+
+        .stat-card::before {{
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at 50% 0%, var(--primary-glow), transparent 70%);
+            opacity: 0;
+            transition: var(--transition);
         }}
 
         .stat-card:hover {{
-            transform: translateY(-5px);
-            border-color: var(--primary);
+            transform: translateY(-8px) scale(1.02);
+            border-color: var(--border-hover);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5), 0 0 20px var(--primary-glow);
+        }}
+
+        .stat-card:hover::before {{
+            opacity: 1;
         }}
 
         .stat-card h3 {{
-            font-size: 0.9rem;
+            font-size: 0.85rem;
+            font-weight: 600;
             text-transform: uppercase;
-            letter-spacing: 1px;
-            color: #8b949e;
-            margin-bottom: 10px;
+            letter-spacing: 1.5px;
+            color: var(--text-secondary);
+            margin-bottom: 12px;
+            position: relative;
+            z-index: 1;
         }}
 
         .stat-card .value {{
-            font-size: 2.5rem;
-            font-weight: 800;
-            color: var(--text-heading);
+            font-size: 3rem;
+            font-weight: 900;
+            color: var(--text-primary);
+            position: relative;
+            z-index: 1;
+            text-shadow: 0 0 10px rgba(255,255,255,0.1);
         }}
 
-        .stat-card .value.primary {{
-            color: var(--primary);
+        .stat-card .value.gradient-primary {{
+            background: var(--primary-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
         }}
 
-        .stat-card .value.green {{
-            color: var(--accent-green);
+        .stat-card .value.gradient-green {{
+            background: var(--accent-green-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
         }}
 
         .chart-grid {{
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 20px;
-            margin-bottom: 40px;
+            gap: 24px;
+            margin-bottom: 48px;
         }}
 
-        @media (max-width: 768px) {{
+        @media (max-width: 820px) {{
             .chart-grid {{
                 grid-template-columns: 1fr;
             }}
@@ -167,173 +262,80 @@ def main():
 
         .chart-card {{
             background: var(--card-bg);
-            border: 1px solid var(--border-color);
-            border-radius: 12px;
-            padding: 20px;
-            backdrop-filter: blur(10px);
+            border: 1px solid var(--border-glow);
+            border-radius: 20px;
+            padding: 28px;
+            backdrop-filter: blur(20px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            transition: var(--transition);
+        }}
+
+        .chart-card:hover {{
+            border-color: var(--border-hover);
         }}
 
         .chart-card h2 {{
-            color: var(--text-heading);
-            font-size: 1.25rem;
-            margin-bottom: 20px;
-            font-weight: 600;
-            border-left: 4px solid var(--primary);
-            padding-left: 10px;
-        }}
-
-        .interactive-section {{
-            background: var(--card-bg);
-            border: 1px solid var(--border-color);
-            border-radius: 12px;
-            padding: 24px;
-            backdrop-filter: blur(10px);
-            margin-bottom: 40px;
-        }}
-
-        .interactive-section h2 {{
-            color: var(--text-heading);
-            font-size: 1.5rem;
-            margin-bottom: 20px;
-            font-weight: 600;
-            border-left: 4px solid var(--primary);
-            padding-left: 10px;
-        }}
-
-        .filters {{
+            color: var(--text-primary);
+            font-size: 1.35rem;
+            margin-bottom: 24px;
+            font-weight: 700;
             display: flex;
-            flex-wrap: wrap;
-            gap: 15px;
-            margin-bottom: 20px;
+            align-items: center;
+            gap: 10px;
         }}
 
-        .search-box {{
-            flex: 1;
-            min-width: 250px;
-        }}
-
-        .search-box input {{
-            width: 100%;
-            background: #0d1117;
-            border: 1px solid var(--border-color);
-            color: var(--text-color);
-            padding: 10px 16px;
-            border-radius: 8px;
-            font-size: 0.95rem;
-            transition: border-color 0.2s;
-        }}
-
-        .search-box input:focus {{
-            outline: none;
-            border-color: var(--primary);
-        }}
-
-        .filter-select {{
-            background: #0d1117;
-            border: 1px solid var(--border-color);
-            color: var(--text-color);
-            padding: 10px 16px;
-            border-radius: 8px;
-            font-size: 0.95rem;
-            cursor: pointer;
-            outline: none;
-        }}
-
-        .filter-select:focus {{
-            border-color: var(--primary);
-        }}
-
-        .table-container {{
-            width: 100%;
-            overflow-x: auto;
-            border-radius: 8px;
-            border: 1px solid var(--border-color);
-        }}
-
-        table {{
-            width: 100%;
-            border-collapse: collapse;
-            text-align: left;
-            font-size: 0.9rem;
-        }}
-
-        th {{
-            background-color: #161b22;
-            color: var(--text-heading);
-            padding: 14px 16px;
-            font-weight: 600;
-            border-bottom: 1px solid var(--border-color);
-        }}
-
-        td {{
-            padding: 14px 16px;
-            border-bottom: 1px solid var(--border-color);
-            color: #8b949e;
-        }}
-
-        tr:hover td {{
-            background-color: rgba(88, 166, 255, 0.03);
-            color: var(--text-heading);
-        }}
-
-        .badge {{
+        .chart-card h2::before {{
+            content: '';
             display: inline-block;
-            padding: 3px 8px;
-            border-radius: 12px;
-            font-size: 0.75rem;
-            font-weight: 600;
-            text-transform: uppercase;
-        }}
-
-        .badge.u17 {{ background-color: rgba(255, 123, 114, 0.15); color: #ff7b72; border: 1px solid rgba(255, 123, 114, 0.3); }}
-        .badge.u15 {{ background-color: rgba(88, 166, 255, 0.15); color: #58a6ff; border: 1px solid rgba(88, 166, 255, 0.3); }}
-        .badge.u14 {{ background-color: rgba(56, 139, 253, 0.15); color: #388bfd; border: 1px solid rgba(56, 139, 253, 0.3); }}
-        .badge.u16 {{ background-color: rgba(219, 109, 40, 0.15); color: #db6d28; border: 1px solid rgba(219, 109, 40, 0.3); }}
-
-        .badge-conf {{
-            background-color: rgba(63, 185, 80, 0.15);
-            color: #3fb950;
-            border: 1px solid rgba(63, 185, 80, 0.3);
-        }}
-
-        a {{
-            color: var(--primary);
-            text-decoration: none;
-        }}
-
-        a:hover {{
-            text-decoration: underline;
+            width: 5px;
+            height: 18px;
+            background: var(--primary-gradient);
+            border-radius: 3px;
         }}
 
         .cases-section {{
-            margin-bottom: 40px;
+            margin-bottom: 48px;
         }}
 
         .cases-section h2 {{
-            color: var(--text-heading);
-            font-size: 1.5rem;
-            margin-bottom: 20px;
-            font-weight: 600;
-            border-left: 4px solid var(--primary);
-            padding-left: 10px;
+            color: var(--text-primary);
+            font-size: 1.6rem;
+            margin-bottom: 24px;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }}
+
+        .cases-section h2::before {{
+            content: '';
+            display: inline-block;
+            width: 5px;
+            height: 18px;
+            background: var(--accent-gold-gradient);
+            border-radius: 3px;
         }}
 
         .cases-grid {{
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
-            gap: 20px;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 24px;
         }}
 
+        /* Soccer-style player profile card */
         .case-card {{
             background: var(--card-bg);
-            border: 1px solid var(--border-color);
-            border-radius: 12px;
-            padding: 24px;
+            border: 1px solid var(--border-glow);
+            border-radius: 20px;
+            padding: 28px;
             position: relative;
-            overflow: hidden;
+            backdrop-filter: blur(20px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            transition: var(--transition);
             display: flex;
             flex-direction: column;
             justify-content: space-between;
+            overflow: hidden;
         }}
 
         .case-card::before {{
@@ -341,57 +343,322 @@ def main():
             position: absolute;
             top: 0;
             left: 0;
-            width: 4px;
-            height: 100%;
-            background: var(--primary);
+            width: 100%;
+            height: 4px;
+            background: var(--primary-gradient);
         }}
 
-        .case-card.accent-red::before {{
-            background: var(--accent);
+        .case-card.accent-gold::before {{
+            background: var(--accent-gold-gradient);
         }}
 
-        .case-card.accent-green::before {{
-            background: var(--accent-green);
+        .case-card.accent-rose::before {{
+            background: var(--accent-rose-gradient);
         }}
 
-        .case-card h3 {{
-            color: var(--text-heading);
-            font-size: 1.3rem;
-            margin-bottom: 8px;
-            font-weight: 600;
+        .case-card:hover {{
+            transform: translateY(-8px);
+            border-color: var(--border-hover);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+        }}
+
+        .player-header {{
             display: flex;
             align-items: center;
-            justify-content: space-between;
+            gap: 16px;
+            margin-bottom: 20px;
         }}
 
-        .case-card h3 span.role {{
+        /* Premium Badge/Silhouette avatar */
+        .player-avatar {{
+            width: 54px;
+            height: 54px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, rgba(255,255,255,0.05) 0%, rgba(255,255,255,0.15) 100%);
+            border: 1px solid rgba(255,255,255,0.2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.4rem;
+            font-weight: 800;
+            color: var(--text-primary);
+            text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+        }}
+
+        .case-card.accent-gold .player-avatar {{
+            background: linear-gradient(135deg, rgba(242, 201, 76, 0.1) 0%, rgba(242, 201, 76, 0.3) 100%);
+            border-color: rgba(242, 201, 76, 0.4);
+            color: var(--accent-gold);
+        }}
+
+        .case-card.accent-rose .player-avatar {{
+            background: linear-gradient(135deg, rgba(235, 87, 87, 0.1) 0%, rgba(235, 87, 87, 0.3) 100%);
+            border-color: rgba(235, 87, 87, 0.4);
+            color: var(--accent-rose);
+        }}
+
+        .player-info h3 {{
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            line-height: 1.2;
+        }}
+
+        .player-info h3 span.role {{
             font-size: 0.8rem;
-            font-weight: 400;
-            color: #8b949e;
+            font-weight: 500;
+            color: var(--text-secondary);
+            background: rgba(255,255,255,0.05);
+            padding: 3px 8px;
+            border-radius: 6px;
+            margin-left: 8px;
+            border: 1px solid rgba(255,255,255,0.08);
         }}
 
         .case-card p.meta {{
             font-size: 0.85rem;
-            color: #8b949e;
-            margin-bottom: 15px;
+            color: var(--text-secondary);
+            margin-top: 4px;
+        }}
+
+        /* Soccer Attributes grid */
+        .player-stats-grid {{
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 10px;
+            margin: 18px 0;
+            background: rgba(0,0,0,0.2);
+            padding: 12px;
+            border-radius: 12px;
+            border: 1px solid rgba(255,255,255,0.03);
+        }}
+
+        .stat-item {{
+            text-align: center;
+        }}
+
+        .stat-item .label {{
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            color: var(--text-secondary);
+            letter-spacing: 0.5px;
+        }}
+
+        .stat-item .value-mini {{
+            font-size: 0.95rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-top: 2px;
         }}
 
         .case-card p.description {{
             font-size: 0.95rem;
-            color: var(--text-color);
-            margin-bottom: 20px;
+            color: var(--text-secondary);
+            margin-bottom: 24px;
+            line-height: 1.5;
+        }}
+
+        .btn-link {{
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            color: var(--primary-light);
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 600;
+            padding: 8px 0;
+            transition: var(--transition);
+        }}
+
+        .btn-link:hover {{
+            color: #ffffff;
+            transform: translateX(4px);
+        }}
+
+        .interactive-section {{
+            background: var(--card-bg);
+            border: 1px solid var(--border-glow);
+            border-radius: 20px;
+            padding: 32px;
+            backdrop-filter: blur(20px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            margin-bottom: 48px;
+            transition: var(--transition);
+        }}
+
+        .interactive-section:hover {{
+            border-color: var(--border-hover);
+        }}
+
+        .interactive-section h2 {{
+            color: var(--text-primary);
+            font-size: 1.6rem;
+            margin-bottom: 24px;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }}
+
+        .interactive-section h2::before {{
+            content: '';
+            display: inline-block;
+            width: 5px;
+            height: 18px;
+            background: var(--accent-cyan-gradient);
+            border-radius: 3px;
+        }}
+
+        /* Premium Application Bar Styling */
+        .filters {{
+            display: flex;
+            flex-wrap: wrap;
+            gap: 16px;
+            margin-bottom: 24px;
+        }}
+
+        .search-box {{
+            flex: 1;
+            min-width: 280px;
+            position: relative;
+        }}
+
+        .search-box input {{
+            width: 100%;
+            background: rgba(0, 0, 0, 0.3);
+            border: 1px solid var(--border-glow);
+            color: var(--text-primary);
+            padding: 12px 20px;
+            border-radius: 12px;
+            font-size: 0.95rem;
+            transition: var(--transition);
+            box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.2);
+        }}
+
+        .search-box input:focus {{
+            outline: none;
+            border-color: var(--primary-light);
+            box-shadow: 0 0 10px var(--primary-glow), inset 0 2px 4px rgba(0, 0, 0, 0.2);
+            background: rgba(0, 0, 0, 0.5);
+        }}
+
+        .filter-select {{
+            background: rgba(0, 0, 0, 0.3);
+            border: 1px solid var(--border-glow);
+            color: var(--text-primary);
+            padding: 12px 20px;
+            border-radius: 12px;
+            font-size: 0.95rem;
+            cursor: pointer;
+            outline: none;
+            transition: var(--transition);
+        }}
+
+        .filter-select:focus, .filter-select:hover {{
+            border-color: var(--primary-light);
+            background: rgba(0, 0, 0, 0.5);
+        }}
+
+        /* Table Aesthetics */
+        .table-container {{
+            width: 100%;
+            overflow-x: auto;
+            border-radius: 16px;
+            border: 1px solid var(--border-glow);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+        }}
+
+        table {{
+            width: 100%;
+            border-collapse: collapse;
+            text-align: left;
+            font-size: 0.95rem;
+        }}
+
+        th {{
+            background-color: rgba(22, 27, 34, 0.9);
+            color: var(--text-primary);
+            padding: 18px 20px;
+            font-weight: 700;
+            border-bottom: 1px solid var(--border-glow);
+            letter-spacing: 0.5px;
+        }}
+
+        td {{
+            padding: 16px 20px;
+            border-bottom: 1px solid var(--border-glow);
+            color: var(--text-secondary);
+            transition: var(--transition);
+        }}
+
+        tr {{
+            background-color: transparent;
+            transition: var(--transition);
+        }}
+
+        tr:last-child td {{
+            border-bottom: none;
+        }}
+
+        tr:hover td {{
+            background-color: rgba(56, 139, 253, 0.05);
+            color: var(--text-primary);
+        }}
+
+        /* Badge styles */
+        .badge {{
+            display: inline-flex;
+            align-items: center;
+            padding: 4px 10px;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+            border: 1px solid transparent;
+        }}
+
+        .badge.u17 {{ background: rgba(235, 87, 87, 0.15); color: #ff8c8c; border-color: rgba(235, 87, 87, 0.25); }}
+        .badge.u15 {{ background: rgba(56, 139, 253, 0.15); color: #79c0ff; border-color: rgba(56, 139, 253, 0.25); }}
+        .badge.u14 {{ background: rgba(86, 204, 242, 0.15); color: #8cdffc; border-color: rgba(86, 204, 242, 0.25); }}
+        .badge.u16 {{ background: rgba(242, 153, 74, 0.15); color: #ffb87a; border-color: rgba(242, 153, 74, 0.25); }}
+
+        .badge-conf {{
+            background: rgba(63, 185, 80, 0.15);
+            color: #56d364;
+            border: 1px solid rgba(63, 185, 80, 0.25);
+        }}
+
+        a.table-link {{
+            color: var(--primary-light);
+            text-decoration: none;
+            font-weight: 500;
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+            transition: var(--transition);
+        }}
+
+        a.table-link:hover {{
+            color: #ffffff;
+            text-decoration: underline;
         }}
 
         footer {{
             text-align: center;
-            color: #8b949e;
-            padding-top: 40px;
-            border-top: 1px solid var(--border-color);
-            font-size: 0.85rem;
+            color: var(--text-muted);
+            padding: 48px 0 20px 0;
+            border-top: 1px solid var(--border-glow);
+            font-size: 0.9rem;
+            font-weight: 300;
         }}
     </style>
 </head>
 <body>
+
+<!-- Mesh Glow Background Elements -->
+<div class="bg-glow bg-glow-1"></div>
+<div class="bg-glow bg-glow-2"></div>
+<div class="bg-glow bg-glow-3"></div>
 
 <div class="container">
     <header>
@@ -403,7 +670,7 @@ def main():
     <div class="stats-grid">
         <div class="stat-card">
             <h3>已确认国字号球员</h3>
-            <div class="value primary">{len(confirmed_players)}</div>
+            <div class="value gradient-primary">{len(confirmed_players)}</div>
         </div>
         <div class="stat-card">
             <h3>2009年龄段入选</h3>
@@ -415,7 +682,7 @@ def main():
         </div>
         <div class="stat-card">
             <h3>U17国足亚洲杯主力</h3>
-            <div class="value green">9</div>
+            <div class="value gradient-green">9</div>
         </div>
     </div>
 
@@ -423,11 +690,15 @@ def main():
     <div class="chart-grid">
         <div class="chart-card">
             <h2>按出生年份入选分布</h2>
-            <canvas id="birthYearChart" height="200"></canvas>
+            <div style="position: relative; height: 260px;">
+                <canvas id="birthYearChart"></canvas>
+            </div>
         </div>
         <div class="chart-card">
             <h2>按国字号级别入选分布</h2>
-            <canvas id="teamLevelChart" height="200"></canvas>
+            <div style="position: relative; height: 260px;">
+                <canvas id="teamLevelChart"></canvas>
+            </div>
         </div>
     </div>
 
@@ -435,31 +706,103 @@ def main():
     <div class="cases-section">
         <h2>重要球员案例</h2>
         <div class="cases-grid">
-            <div class="case-card accent-green">
+            <div class="case-card accent-rose">
                 <div>
-                    <h3>万项 <span class="role">中场大脑</span></h3>
-                    <p class="meta">出生年份: 2009 | 现属俱乐部: 贝尔格莱德红星 (塞尔维亚)</p>
-                    <p class="description">中国足球小将的核心组织核心，2026年正式留洋塞尔维亚红星俱乐部。在2026年U17亚洲杯正赛中打入5球，帮助中国U17时隔21年闯入世少赛。</p>
+                    <div class="player-header">
+                        <div class="player-avatar">WX</div>
+                        <div class="player-info">
+                            <h3>万项 <span class="role">中场大脑</span></h3>
+                            <p class="meta">红星贝尔格莱德梯队 / 09国少核心</p>
+                        </div>
+                    </div>
+                    
+                    <div class="player-stats-grid">
+                        <div class="stat-item">
+                            <div class="label">位置</div>
+                            <div class="value-mini">中场</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="label">年份</div>
+                            <div class="value-mini">2009</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="label">国字号</div>
+                            <div class="value-mini">U17主力</div>
+                        </div>
+                    </div>
+                    
+                    <p class="description">中国足球小将的组织核心，2026年正式留洋塞尔维亚红星。在2026年U17亚洲杯正赛中担任核心大脑打入关键进球，是国少重返世少赛的关键支柱。</p>
                 </div>
-                <a href="https://sports.sina.com.cn/china/2026-02-18/doc-ihyfjwiy0098342.shtml" target="_blank">查看相关报道 &rarr;</a>
+                <a href="https://sports.sina.com.cn/china/2026-02-18/doc-ihyfjwiy0098342.shtml" class="btn-link" target="_blank">
+                    <span>阅读新浪体育详细报道</span>
+                    <span>&rarr;</span>
+                </a>
             </div>
             
             <div class="case-card">
                 <div>
-                    <h3>邝兆镭 <span class="role">进攻尖刀</span></h3>
-                    <p class="meta">出生年份: 2009 | 现属俱乐部: 青岛海牛 (中超)</p>
-                    <p class="description">首批足球小将的招牌球员，拥有西班牙留洋经历（达姆/奥斯皮塔莱特/莱里达竞技）。于2026年2月回国转会中超青岛海牛，并已完成中超联赛首秀。</p>
+                    <div class="player-header">
+                        <div class="player-avatar">KL</div>
+                        <div class="player-info">
+                            <h3>邝兆镭 <span class="role">进攻尖刀</span></h3>
+                            <p class="meta">青岛海牛首发 / 09年龄段明星</p>
+                        </div>
+                    </div>
+                    
+                    <div class="player-stats-grid">
+                        <div class="stat-item">
+                            <div class="label">位置</div>
+                            <div class="value-mini">前锋</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="label">年份</div>
+                            <div class="value-mini">2009</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="label">国字号</div>
+                            <div class="value-mini">U17主力</div>
+                        </div>
+                    </div>
+                    
+                    <p class="description">首批足球小将的代表人物，曾试训巴萨拉玛西亚，并在奥斯皮塔莱特和莱里达竞技深造。于2026年2月正式回国加入中超青岛海牛完成联赛首秀。</p>
                 </div>
-                <a href="https://www.thepaper.cn/newsDetail_forward_22453678" target="_blank">查看相关报道 &rarr;</a>
+                <a href="https://www.thepaper.cn/newsDetail_forward_22453678" class="btn-link" target="_blank">
+                    <span>阅读澎湃新闻详细报道</span>
+                    <span>&rarr;</span>
+                </a>
             </div>
 
-            <div class="case-card accent-red">
+            <div class="case-card accent-gold">
                 <div>
-                    <h3>帅惟浩 <span class="role">金童奖得主</span></h3>
-                    <p class="meta">出生年份: 2009 | 现属俱乐部: 成都蓉城 (中超)</p>
-                    <p class="description">带有足球小将深度背景的锋线射手，中乙联赛最年轻“09后”出场及进球纪录保持者，荣获2025年中国U17金童奖。在U17亚洲杯生死战中打入首球战胜澳大利亚。</p>
+                    <div class="player-header">
+                        <div class="player-avatar">SH</div>
+                        <div class="player-info">
+                            <h3>帅惟浩 <span class="role">金童奖得主</span></h3>
+                            <p class="meta">成都蓉城 / 中国U17金童奖</p>
+                        </div>
+                    </div>
+                    
+                    <div class="player-stats-grid">
+                        <div class="stat-item">
+                            <div class="label">位置</div>
+                            <div class="value-mini">前锋</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="label">年份</div>
+                            <div class="value-mini">2009</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="label">国字号</div>
+                            <div class="value-mini">U17射手</div>
+                        </div>
+                    </div>
+                    
+                    <p class="description">带有足球小将深度培训背景，创造了中乙联赛最年轻“09后”出场与进球纪录，荣膺2025年中国金童奖（U17）。在U17亚洲杯击败澳大利亚的战役中打入首球。</p>
                 </div>
-                <a href="https://sports.ifeng.com/c/8e3a298a00213" target="_blank">查看相关报道 &rarr;</a>
+                <a href="https://sports.ifeng.com/c/8e3a298a00213" class="btn-link" target="_blank">
+                    <span>阅读凤凰体育报道</span>
+                    <span>&rarr;</span>
+                </a>
             </div>
         </div>
     </div>
@@ -532,14 +875,14 @@ def main():
             const badgeClass = `badge ${{lvl.toLowerCase()}}`;
             
             tr.innerHTML = `
-                <td style="font-weight: 600; color: var(--text-heading);">${{item.player_name}}</td>
+                <td style="font-weight: 700; color: var(--text-primary);">${{item.player_name}}</td>
                 <td>${{item.birth_year || '未知'}}</td>
-                <td>${{item.position}}</td>
+                <td style="color: var(--text-primary); font-weight: 500;">${{item.position}}</td>
                 <td>${{item.current_or_listed_club}}</td>
                 <td><span class="${{badgeClass}}">${{item.national_team_level}}</span></td>
                 <td>${{item.selection_date}}</td>
                 <td style="max-width: 250px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;" title="${{item.event_or_context}}">${{item.event_or_context}}</td>
-                <td><a href="${{item.national_team_source_url}}" target="_blank" title="${{item.source_title}}">官方公告链接</a></td>
+                <td><a href="${{item.national_team_source_url}}" class="table-link" target="_blank" title="${{item.source_title}}">官方公告 &nearr;</a></td>
                 <td><span class="badge badge-conf">已确认</span></td>
             `;
             tbody.appendChild(tr);
@@ -570,8 +913,14 @@ def main():
     // Initial render
     renderTable(rawData);
 
-    // Initialize Chart.js Charts
+    // Initialize Chart.js Charts with gradients
     const ctxBy = document.getElementById('birthYearChart').getContext('2d');
+    
+    // Create gradient
+    const fillGradient = ctxBy.createLinearGradient(0, 0, 0, 240);
+    fillGradient.addColorStop(0, 'rgba(56, 139, 253, 0.85)');
+    fillGradient.addColorStop(1, 'rgba(56, 139, 253, 0.05)');
+
     new Chart(ctxBy, {{
         type: 'bar',
         data: {{
@@ -579,20 +928,11 @@ def main():
             datasets: [{{
                 label: '已入选国字号人数',
                 data: [1, 18, 8, 3],
-                backgroundColor: [
-                    'rgba(219, 109, 40, 0.4)',
-                    'rgba(88, 166, 255, 0.4)',
-                    'rgba(56, 139, 253, 0.4)',
-                    'rgba(63, 185, 80, 0.4)'
-                ],
-                borderColor: [
-                    '#db6d28',
-                    '#58a6ff',
-                    '#388bfd',
-                    '#3fb950'
-                ],
-                borderWidth: 1.5,
-                borderRadius: 4
+                backgroundColor: fillGradient,
+                borderColor: '#58a6ff',
+                borderWidth: 2,
+                borderRadius: 8,
+                barThickness: 32
             }}]
         }},
         options: {{
@@ -603,12 +943,12 @@ def main():
             }},
             scales: {{
                 y: {{
-                    grid: {{ color: 'rgba(48, 54, 61, 0.3)' }},
-                    ticks: {{ color: '#8b949e', stepSize: 2 }}
+                    grid: {{ color: 'rgba(255, 255, 255, 0.04)' }},
+                    ticks: {{ color: '#8b949e', stepSize: 2, font: {{ family: 'Outfit' }} }}
                 }},
                 x: {{
                     grid: {{ display: false }},
-                    ticks: {{ color: '#8b949e' }}
+                    ticks: {{ color: '#8b949e', font: {{ family: 'Outfit' }} }}
                 }}
             }}
         }}
@@ -622,13 +962,13 @@ def main():
             datasets: [{{
                 data: [7, 18, 1, 9],
                 backgroundColor: [
-                    'rgba(56, 139, 253, 0.6)',
-                    'rgba(88, 166, 255, 0.6)',
-                    'rgba(219, 109, 40, 0.6)',
-                    'rgba(255, 123, 114, 0.6)'
+                    'rgba(86, 204, 242, 0.75)',
+                    'rgba(56, 139, 253, 0.75)',
+                    'rgba(242, 153, 74, 0.75)',
+                    'rgba(235, 87, 87, 0.75)'
                 ],
-                borderColor: '#0d1117',
-                borderWidth: 2
+                borderColor: '#060913',
+                borderWidth: 3
             }}]
         }},
         options: {{
@@ -637,9 +977,14 @@ def main():
             plugins: {{
                 legend: {{
                     position: 'right',
-                    labels: {{ color: '#8b949e', font: {{ family: 'Outfit' }} }}
+                    labels: {{ 
+                        color: '#c9d1d9', 
+                        font: {{ family: 'Outfit', size: 12 }},
+                        padding: 16
+                    }}
                 }}
-            }}
+            }},
+            cutout: '65%'
         }}
     }});
 </script>
@@ -649,7 +994,7 @@ def main():
 
     with open(INDEX_HTML_FILE, 'w', encoding='utf-8') as f:
         f.write(html_content)
-    print(f"Generated index.html dashboard in {INDEX_HTML_FILE}")
+    print(f"Generated premium index.html dashboard in {INDEX_HTML_FILE}")
 
 if __name__ == "__main__":
     main()
