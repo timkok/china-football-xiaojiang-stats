@@ -1,0 +1,1328 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>中国足球小将国字号入选统计与可视化</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&family=Noto+Sans+SC:wght@300;400;700;900&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        :root {
+            --bg-color: #0d1117;
+            --card-bg: rgba(22, 27, 34, 0.8);
+            --border-color: rgba(48, 54, 61, 0.6);
+            --primary: #58a6ff;
+            --primary-hover: #1f6feb;
+            --text-color: #c9d1d9;
+            --text-heading: #f0f6fc;
+            --accent: #ff7b72;
+            --accent-green: #3fb950;
+            --font-family: 'Outfit', 'Noto Sans SC', -apple-system, BlinkMacSystemFont, sans-serif;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            font-family: var(--font-family);
+            line-height: 1.6;
+            padding-bottom: 60px;
+            background-image: radial-gradient(circle at 10% 20%, rgba(31, 111, 235, 0.08) 0%, transparent 40%),
+                              radial-gradient(circle at 90% 80%, rgba(255, 123, 114, 0.05) 0%, transparent 40%);
+            background-attachment: fixed;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        header {
+            text-align: center;
+            padding: 40px 0 20px 0;
+            border-bottom: 1px solid var(--border-color);
+            margin-bottom: 40px;
+        }
+
+        header h1 {
+            color: var(--text-heading);
+            font-size: 2.5rem;
+            font-weight: 800;
+            letter-spacing: -0.5px;
+            margin-bottom: 10px;
+            background: linear-gradient(135deg, #f0f6fc, #58a6ff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        header p {
+            font-size: 1.1rem;
+            color: #8b949e;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 20px;
+            margin-bottom: 40px;
+        }
+
+        .stat-card {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 24px;
+            text-align: center;
+            backdrop-filter: blur(10px);
+            transition: transform 0.2s, border-color 0.2s;
+        }
+
+        .stat-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--primary);
+        }
+
+        .stat-card h3 {
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: #8b949e;
+            margin-bottom: 10px;
+        }
+
+        .stat-card .value {
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: var(--text-heading);
+        }
+
+        .stat-card .value.primary {
+            color: var(--primary);
+        }
+
+        .stat-card .value.green {
+            color: var(--accent-green);
+        }
+
+        .chart-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin-bottom: 40px;
+        }
+
+        @media (max-width: 768px) {
+            .chart-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .chart-card {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 20px;
+            backdrop-filter: blur(10px);
+        }
+
+        .chart-card h2 {
+            color: var(--text-heading);
+            font-size: 1.25rem;
+            margin-bottom: 20px;
+            font-weight: 600;
+            border-left: 4px solid var(--primary);
+            padding-left: 10px;
+        }
+
+        .interactive-section {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 24px;
+            backdrop-filter: blur(10px);
+            margin-bottom: 40px;
+        }
+
+        .interactive-section h2 {
+            color: var(--text-heading);
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+            font-weight: 600;
+            border-left: 4px solid var(--primary);
+            padding-left: 10px;
+        }
+
+        .filters {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+
+        .search-box {
+            flex: 1;
+            min-width: 250px;
+        }
+
+        .search-box input {
+            width: 100%;
+            background: #0d1117;
+            border: 1px solid var(--border-color);
+            color: var(--text-color);
+            padding: 10px 16px;
+            border-radius: 8px;
+            font-size: 0.95rem;
+            transition: border-color 0.2s;
+        }
+
+        .search-box input:focus {
+            outline: none;
+            border-color: var(--primary);
+        }
+
+        .filter-select {
+            background: #0d1117;
+            border: 1px solid var(--border-color);
+            color: var(--text-color);
+            padding: 10px 16px;
+            border-radius: 8px;
+            font-size: 0.95rem;
+            cursor: pointer;
+            outline: none;
+        }
+
+        .filter-select:focus {
+            border-color: var(--primary);
+        }
+
+        .table-container {
+            width: 100%;
+            overflow-x: auto;
+            border-radius: 8px;
+            border: 1px solid var(--border-color);
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            text-align: left;
+            font-size: 0.9rem;
+        }
+
+        th {
+            background-color: #161b22;
+            color: var(--text-heading);
+            padding: 14px 16px;
+            font-weight: 600;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        td {
+            padding: 14px 16px;
+            border-bottom: 1px solid var(--border-color);
+            color: #8b949e;
+        }
+
+        tr:hover td {
+            background-color: rgba(88, 166, 255, 0.03);
+            color: var(--text-heading);
+        }
+
+        .badge {
+            display: inline-block;
+            padding: 3px 8px;
+            border-radius: 12px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            text-transform: uppercase;
+        }
+
+        .badge.u17 { background-color: rgba(255, 123, 114, 0.15); color: #ff7b72; border: 1px solid rgba(255, 123, 114, 0.3); }
+        .badge.u15 { background-color: rgba(88, 166, 255, 0.15); color: #58a6ff; border: 1px solid rgba(88, 166, 255, 0.3); }
+        .badge.u14 { background-color: rgba(56, 139, 253, 0.15); color: #388bfd; border: 1px solid rgba(56, 139, 253, 0.3); }
+        .badge.u16 { background-color: rgba(219, 109, 40, 0.15); color: #db6d28; border: 1px solid rgba(219, 109, 40, 0.3); }
+
+        .badge-conf {
+            background-color: rgba(63, 185, 80, 0.15);
+            color: #3fb950;
+            border: 1px solid rgba(63, 185, 80, 0.3);
+        }
+
+        a {
+            color: var(--primary);
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        .cases-section {
+            margin-bottom: 40px;
+        }
+
+        .cases-section h2 {
+            color: var(--text-heading);
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+            font-weight: 600;
+            border-left: 4px solid var(--primary);
+            padding-left: 10px;
+        }
+
+        .cases-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+            gap: 20px;
+        }
+
+        .case-card {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 24px;
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .case-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 4px;
+            height: 100%;
+            background: var(--primary);
+        }
+
+        .case-card.accent-red::before {
+            background: var(--accent);
+        }
+
+        .case-card.accent-green::before {
+            background: var(--accent-green);
+        }
+
+        .case-card h3 {
+            color: var(--text-heading);
+            font-size: 1.3rem;
+            margin-bottom: 8px;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .case-card h3 span.role {
+            font-size: 0.8rem;
+            font-weight: 400;
+            color: #8b949e;
+        }
+
+        .case-card p.meta {
+            font-size: 0.85rem;
+            color: #8b949e;
+            margin-bottom: 15px;
+        }
+
+        .case-card p.description {
+            font-size: 0.95rem;
+            color: var(--text-color);
+            margin-bottom: 20px;
+        }
+
+        footer {
+            text-align: center;
+            color: #8b949e;
+            padding-top: 40px;
+            border-top: 1px solid var(--border-color);
+            font-size: 0.85rem;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <header>
+        <h1>中国足球小将国字号入选统计与可视化</h1>
+        <p>数据源自中国足协官网集训通告、媒体公开名单以及“中国足球小将”官方事实</p>
+    </header>
+
+    <!-- Stats summary widgets -->
+    <div class="stats-grid">
+        <div class="stat-card">
+            <h3>已确认国字号球员</h3>
+            <div class="value primary">30</div>
+        </div>
+        <div class="stat-card">
+            <h3>2009年龄段入选</h3>
+            <div class="value">18</div>
+        </div>
+        <div class="stat-card">
+            <h3>2010年龄段入选</h3>
+            <div class="value">8</div>
+        </div>
+        <div class="stat-card">
+            <h3>U17国足亚洲杯主力</h3>
+            <div class="value green">9</div>
+        </div>
+    </div>
+
+    <!-- Charts -->
+    <div class="chart-grid">
+        <div class="chart-card">
+            <h2>按出生年份入选分布</h2>
+            <canvas id="birthYearChart" height="200"></canvas>
+        </div>
+        <div class="chart-card">
+            <h2>按国字号级别入选分布</h2>
+            <canvas id="teamLevelChart" height="200"></canvas>
+        </div>
+    </div>
+
+    <!-- Key Players Cases -->
+    <div class="cases-section">
+        <h2>重要球员案例</h2>
+        <div class="cases-grid">
+            <div class="case-card accent-green">
+                <div>
+                    <h3>万项 <span class="role">中场大脑</span></h3>
+                    <p class="meta">出生年份: 2009 | 现属俱乐部: 贝尔格莱德红星 (塞尔维亚)</p>
+                    <p class="description">中国足球小将的核心组织核心，2026年正式留洋塞尔维亚红星俱乐部。在2026年U17亚洲杯正赛中打入5球，帮助中国U17时隔21年闯入世少赛。</p>
+                </div>
+                <a href="https://sports.sina.com.cn/china/2026-02-18/doc-ihyfjwiy0098342.shtml" target="_blank">查看相关报道 &rarr;</a>
+            </div>
+            
+            <div class="case-card">
+                <div>
+                    <h3>邝兆镭 <span class="role">进攻尖刀</span></h3>
+                    <p class="meta">出生年份: 2009 | 现属俱乐部: 青岛海牛 (中超)</p>
+                    <p class="description">首批足球小将的招牌球员，拥有西班牙留洋经历（达姆/奥斯皮塔莱特/莱里达竞技）。于2026年2月回国转会中超青岛海牛，并已完成中超联赛首秀。</p>
+                </div>
+                <a href="https://www.thepaper.cn/newsDetail_forward_22453678" target="_blank">查看相关报道 &rarr;</a>
+            </div>
+
+            <div class="case-card accent-red">
+                <div>
+                    <h3>帅惟浩 <span class="role">金童奖得主</span></h3>
+                    <p class="meta">出生年份: 2009 | 现属俱乐部: 成都蓉城 (中超)</p>
+                    <p class="description">带有足球小将深度背景的锋线射手，中乙联赛最年轻“09后”出场及进球纪录保持者，荣获2025年中国U17金童奖。在U17亚洲杯生死战中打入首球战胜澳大利亚。</p>
+                </div>
+                <a href="https://sports.ifeng.com/c/8e3a298a00213" target="_blank">查看相关报道 &rarr;</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Filterable Data Table -->
+    <div class="interactive-section">
+        <h2>国少集训/比赛入选名单明细</h2>
+        
+        <div class="filters">
+            <div class="search-box">
+                <input type="text" id="searchInput" placeholder="搜索姓名、俱乐部、位置或赛事背景..." onkeyup="filterData()">
+            </div>
+            <select id="levelFilter" class="filter-select" onchange="filterData()">
+                <option value="ALL">全部级别</option>
+                <option value="U17">U17国少</option>
+                <option value="U16">U16国少</option>
+                <option value="U15">U15国少</option>
+                <option value="U14">U14国少</option>
+            </select>
+            <select id="yearFilter" class="filter-select" onchange="filterData()">
+                <option value="ALL">全部出生年份</option>
+                <option value="2008">2008</option>
+                <option value="2009">2009</option>
+                <option value="2010">2010</option>
+                <option value="2011">2011</option>
+            </select>
+        </div>
+
+        <div class="table-container">
+            <table id="selectionsTable">
+                <thead>
+                    <tr>
+                        <th>姓名</th>
+                        <th>出生年份</th>
+                        <th>位置</th>
+                        <th>俱乐部/单位</th>
+                        <th>国字号级别</th>
+                        <th>入选时间</th>
+                        <th>集训/比赛背景</th>
+                        <th>来源依据</th>
+                        <th>验证状态</th>
+                    </tr>
+                </thead>
+                <tbody id="tableBody">
+                    <!-- Dynamic Rows -->
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2026 中国足球小将统计分析项目 | 由 Antigravity 自动化生成</p>
+    </footer>
+</div>
+
+<script>
+    // Embedded selections data
+    const rawData = [
+  {
+    "player_name": "万项",
+    "birth_year": 2009,
+    "position": "中场",
+    "current_or_listed_club": "贝尔格莱德红星",
+    "football_xiaojiang_relation": "长期队员",
+    "relation_source_url": "https://sports.sina.com.cn/china/2026-02-18/doc-ihyfjwiy0098342.shtml",
+    "national_team_level": "U17",
+    "team_name_official": "中国U-17国家男子足球队",
+    "selection_type": "正式名单/出场",
+    "selection_date": "2026-04-28",
+    "event_or_context": "2026年沙特U17亚洲杯决赛阶段",
+    "source_priority": "official",
+    "national_team_source_url": "https://www.thecfa.cn/zxwj/20260428/33890.html",
+    "source_title": "中国足球协会关于组织U-17国家男子足球队备战U17亚洲杯决赛阶段比赛的通知",
+    "confidence": "high",
+    "notes": "验证状态: confirmed"
+  },
+  {
+    "player_name": "邝兆镭",
+    "birth_year": 2009,
+    "position": "中场",
+    "current_or_listed_club": "青岛海牛",
+    "football_xiaojiang_relation": "长期队员",
+    "relation_source_url": "https://www.thepaper.cn/newsDetail_forward_22453678",
+    "national_team_level": "U17",
+    "team_name_official": "中国U-17国家男子足球队",
+    "selection_type": "正式名单/出场",
+    "selection_date": "2026-04-28",
+    "event_or_context": "2026年沙特U17亚洲杯决赛阶段",
+    "source_priority": "official",
+    "national_team_source_url": "https://www.thecfa.cn/zxwj/20260428/33890.html",
+    "source_title": "中国足球协会关于组织U-17国家男子足球队备战U17亚洲杯决赛阶段比赛的通知",
+    "confidence": "high",
+    "notes": "验证状态: confirmed"
+  },
+  {
+    "player_name": "赵松源",
+    "birth_year": 2009,
+    "position": "前锋",
+    "current_or_listed_club": "清华大学附属中学",
+    "football_xiaojiang_relation": "长期队员",
+    "relation_source_url": "https://m.zhibo8.com/news/soccer/china/2023-11-23/655ece7d7d5cb.htm",
+    "national_team_level": "U17",
+    "team_name_official": "中国U-17国家男子足球队",
+    "selection_type": "正式名单/出场",
+    "selection_date": "2026-04-28",
+    "event_or_context": "2026年沙特U17亚洲杯决赛阶段",
+    "source_priority": "official",
+    "national_team_source_url": "https://www.thecfa.cn/zxwj/20260428/33890.html",
+    "source_title": "中国足球协会关于组织U-17国家男子足球队备战U17亚洲杯决赛阶段比赛的通知",
+    "confidence": "high",
+    "notes": "验证状态: confirmed"
+  },
+  {
+    "player_name": "谢晋",
+    "birth_year": 2009,
+    "position": "中场",
+    "current_or_listed_club": "皇家卡拉万切尔",
+    "football_xiaojiang_relation": "长期队员",
+    "relation_source_url": "https://www.dongqiudi.com/articles/4119828.html",
+    "national_team_level": "U17",
+    "team_name_official": "中国U-17国家男子足球队",
+    "selection_type": "正式名单/出场",
+    "selection_date": "2026-04-28",
+    "event_or_context": "2026年沙特U17亚洲杯决赛阶段",
+    "source_priority": "official",
+    "national_team_source_url": "https://www.thecfa.cn/zxwj/20260428/33890.html",
+    "source_title": "中国足球协会关于组织U-17国家男子足球队备战U17亚洲杯决赛阶段比赛的通知",
+    "confidence": "high",
+    "notes": "验证状态: confirmed"
+  },
+  {
+    "player_name": "帅惟浩",
+    "birth_year": 2009,
+    "position": "前锋",
+    "current_or_listed_club": "成都蓉城",
+    "football_xiaojiang_relation": "出自小将/带培养背景",
+    "relation_source_url": "https://sports.ifeng.com/c/8e3a298a00213",
+    "national_team_level": "U17",
+    "team_name_official": "中国U-17国家男子足球队",
+    "selection_type": "正式名单/出场",
+    "selection_date": "2026-04-28",
+    "event_or_context": "2026年沙特U17亚洲杯决赛阶段",
+    "source_priority": "official",
+    "national_team_source_url": "https://www.thecfa.cn/zxwj/20260428/33890.html",
+    "source_title": "中国足球协会关于组织U-17国家男子足球队备战U17亚洲杯决赛阶段比赛的通知",
+    "confidence": "high",
+    "notes": "验证状态: confirmed"
+  },
+  {
+    "player_name": "汪修昊",
+    "birth_year": 2009,
+    "position": "后卫",
+    "current_or_listed_club": "达姆",
+    "football_xiaojiang_relation": "长期队员",
+    "relation_source_url": "https://www.163.com/dy/article/JC58N72E0529A10P.html",
+    "national_team_level": "U17",
+    "team_name_official": "中国U-17国家男子足球队",
+    "selection_type": "正式名单/出场",
+    "selection_date": "2026-04-28",
+    "event_or_context": "2026年沙特U17亚洲杯决赛阶段",
+    "source_priority": "official",
+    "national_team_source_url": "https://www.thecfa.cn/zxwj/20260428/33890.html",
+    "source_title": "中国足球协会关于组织U-17国家男子足球队备战U17亚洲杯决赛阶段比赛的通知",
+    "confidence": "high",
+    "notes": "验证状态: confirmed"
+  },
+  {
+    "player_name": "南子勋",
+    "birth_year": 2009,
+    "position": "后卫",
+    "current_or_listed_club": "清华大学附属中学",
+    "football_xiaojiang_relation": "长期队员",
+    "relation_source_url": "https://m.zhibo8.com/news/soccer/china/2023-11-23/655ece7d7d5cb.htm",
+    "national_team_level": "U17",
+    "team_name_official": "中国U-17国家男子足球队",
+    "selection_type": "正式名单/出场",
+    "selection_date": "2026-04-28",
+    "event_or_context": "2026年沙特U17亚洲杯决赛阶段",
+    "source_priority": "official",
+    "national_team_source_url": "https://www.thecfa.cn/zxwj/20260428/33890.html",
+    "source_title": "中国足球协会关于组织U-17国家男子足球队备战U17亚洲杯决赛阶段比赛的通知",
+    "confidence": "high",
+    "notes": "验证状态: confirmed"
+  },
+  {
+    "player_name": "周雨诺",
+    "birth_year": 2009,
+    "position": "中场",
+    "current_or_listed_club": "清华大学附属中学",
+    "football_xiaojiang_relation": "长期队员",
+    "relation_source_url": "https://m.zhibo8.com/news/soccer/china/2023-11-23/655ece7d7d5cb.htm",
+    "national_team_level": "U17",
+    "team_name_official": "中国U-17国家男子足球队",
+    "selection_type": "正式名单/出场",
+    "selection_date": "2026-04-28",
+    "event_or_context": "2026年沙特U17亚洲杯决赛阶段",
+    "source_priority": "official",
+    "national_team_source_url": "https://www.thecfa.cn/zxwj/20260428/33890.html",
+    "source_title": "中国足球协会关于组织U-17国家男子足球队备战U17亚洲杯决赛阶段比赛的通知",
+    "confidence": "high",
+    "notes": "验证状态: confirmed"
+  },
+  {
+    "player_name": "顾博宇",
+    "birth_year": 2009,
+    "position": "后卫",
+    "current_or_listed_club": "上海申花",
+    "football_xiaojiang_relation": "长期队员",
+    "relation_source_url": "https://www.163.com/dy/article/JC58N72E0529A10P.html",
+    "national_team_level": "U17",
+    "team_name_official": "中国U-17国家男子足球队",
+    "selection_type": "正式名单/出场",
+    "selection_date": "2026-04-28",
+    "event_or_context": "2026年沙特U17亚洲杯决赛阶段",
+    "source_priority": "official",
+    "national_team_source_url": "https://www.thecfa.cn/zxwj/20260428/33890.html",
+    "source_title": "中国足球协会关于组织U-17国家男子足球队备战U17亚洲杯决赛阶段比赛的通知",
+    "confidence": "high",
+    "notes": "验证状态: confirmed"
+  },
+  {
+    "player_name": "毛永彬",
+    "birth_year": 2009,
+    "position": "门将",
+    "current_or_listed_club": "上海海港",
+    "football_xiaojiang_relation": "长期队员",
+    "relation_source_url": "https://m.zhibo8.com/news/soccer/china/2023-11-23/655ece7d7d5cb.htm",
+    "national_team_level": "U15",
+    "team_name_official": "中国U-15国家男子足球选拔队",
+    "selection_type": "集训名单",
+    "selection_date": "2024-06-18",
+    "event_or_context": "2024年第一期2009年龄段国少集训",
+    "source_priority": "official",
+    "national_team_source_url": "https://www.thecfa.cn/zxwj/20240618/32155.html",
+    "source_title": "中国足球协会关于组织2009年龄段男子国家少年足球选拔队集训的通知",
+    "confidence": "high",
+    "notes": "验证状态: confirmed"
+  },
+  {
+    "player_name": "万项",
+    "birth_year": 2009,
+    "position": "中场",
+    "current_or_listed_club": "湖北星辉",
+    "football_xiaojiang_relation": "长期队员",
+    "relation_source_url": "https://sports.sina.com.cn/china/2026-02-18/doc-ihyfjwiy0098342.shtml",
+    "national_team_level": "U15",
+    "team_name_official": "中国U-15国家男子足球选拔队",
+    "selection_type": "集训名单",
+    "selection_date": "2024-06-18",
+    "event_or_context": "2024年第一期2009年龄段国少集训",
+    "source_priority": "official",
+    "national_team_source_url": "https://www.thecfa.cn/zxwj/20240618/32155.html",
+    "source_title": "中国足球协会关于组织2009年龄段男子国家少年足球选拔队集训的通知",
+    "confidence": "high",
+    "notes": "验证状态: confirmed"
+  },
+  {
+    "player_name": "赵松源",
+    "birth_year": 2009,
+    "position": "前锋",
+    "current_or_listed_club": "清华附中",
+    "football_xiaojiang_relation": "长期队员",
+    "relation_source_url": "https://m.zhibo8.com/news/soccer/china/2023-11-23/655ece7d7d5cb.htm",
+    "national_team_level": "U15",
+    "team_name_official": "中国U-15国家男子足球选拔队",
+    "selection_type": "集训名单",
+    "selection_date": "2024-06-18",
+    "event_or_context": "2024年第一期2009年龄段国少集训",
+    "source_priority": "official",
+    "national_team_source_url": "https://www.thecfa.cn/zxwj/20240618/32155.html",
+    "source_title": "中国足球协会关于组织2009年龄段男子国家少年足球选拔队集训的通知",
+    "confidence": "high",
+    "notes": "验证状态: confirmed"
+  },
+  {
+    "player_name": "黄子杰",
+    "birth_year": 2009,
+    "position": "后卫",
+    "current_or_listed_club": "佛山超盈实验中学",
+    "football_xiaojiang_relation": "长期队员",
+    "relation_source_url": "https://m.zhibo8.com/news/soccer/china/2023-11-23/655ece7d7d5cb.htm",
+    "national_team_level": "U15",
+    "team_name_official": "中国U-15国家男子足球选拔队",
+    "selection_type": "集训名单",
+    "selection_date": "2024-06-18",
+    "event_or_context": "2024年第一期2009年龄段国少集训",
+    "source_priority": "official",
+    "national_team_source_url": "https://www.thecfa.cn/zxwj/20240618/32155.html",
+    "source_title": "中国足球协会关于组织2009年龄段男子国家少年足球选拔队集训的通知",
+    "confidence": "high",
+    "notes": "验证状态: confirmed"
+  },
+  {
+    "player_name": "邝兆镭",
+    "birth_year": 2009,
+    "position": "前锋",
+    "current_or_listed_club": "广东广州",
+    "football_xiaojiang_relation": "长期队员",
+    "relation_source_url": "https://www.thepaper.cn/newsDetail_forward_22453678",
+    "national_team_level": "U15",
+    "team_name_official": "中国U-15国家男子足球选拔队",
+    "selection_type": "集训名单",
+    "selection_date": "2024-06-18",
+    "event_or_context": "2024年第一期2009年龄段国少集训",
+    "source_priority": "official",
+    "national_team_source_url": "https://www.thecfa.cn/zxwj/20240618/32155.html",
+    "source_title": "中国足球协会关于组织2009年龄段男子国家少年足球选拔队集训的通知",
+    "confidence": "high",
+    "notes": "验证状态: confirmed"
+  },
+  {
+    "player_name": "戴宥哲",
+    "birth_year": 2009,
+    "position": "中场",
+    "current_or_listed_club": "江苏南京",
+    "football_xiaojiang_relation": "长期队员",
+    "relation_source_url": "https://m.zhibo8.com/news/soccer/china/2023-11-23/655ece7d7d5cb.htm",
+    "national_team_level": "U15",
+    "team_name_official": "中国U-15国家男子足球选拔队",
+    "selection_type": "集训名单",
+    "selection_date": "2024-06-18",
+    "event_or_context": "2024年第一期2009年龄段国少集训",
+    "source_priority": "official",
+    "national_team_source_url": "https://www.thecfa.cn/zxwj/20240618/32155.html",
+    "source_title": "中国足球协会关于组织2009年龄段男子国家少年足球选拔队集训的通知",
+    "confidence": "high",
+    "notes": "验证状态: confirmed"
+  },
+  {
+    "player_name": "吕孟洋",
+    "birth_year": 2009,
+    "position": "中场",
+    "current_or_listed_club": "江苏徐州",
+    "football_xiaojiang_relation": "长期队员",
+    "relation_source_url": "https://m.zhibo8.com/news/soccer/china/2023-11-23/655ece7d7d5cb.htm",
+    "national_team_level": "U15",
+    "team_name_official": "中国U-15国家男子足球选拔队",
+    "selection_type": "集训名单",
+    "selection_date": "2024-06-18",
+    "event_or_context": "2024年第一期2009年龄段国少集训",
+    "source_priority": "official",
+    "national_team_source_url": "https://www.thecfa.cn/zxwj/20240618/32155.html",
+    "source_title": "中国足球协会关于组织2009年龄段男子国家少年足球选拔队集训的通知",
+    "confidence": "high",
+    "notes": "验证状态: confirmed"
+  },
+  {
+    "player_name": "李东宸",
+    "birth_year": 2010,
+    "position": "中场",
+    "current_or_listed_club": "北京",
+    "football_xiaojiang_relation": "长期队员",
+    "relation_source_url": "https://www.thepaper.cn/newsDetail_forward_27389230",
+    "national_team_level": "U15",
+    "team_name_official": "中国U-15国家男子足球选拔队",
+    "selection_type": "集训名单",
+    "selection_date": "2024-06-18",
+    "event_or_context": "2024年第一期2009年龄段国少集训",
+    "source_priority": "official",
+    "national_team_source_url": "https://www.thecfa.cn/zxwj/20240618/32155.html",
+    "source_title": "中国足球协会关于组织2009年龄段男子国家少年足球选拔队集训的通知",
+    "confidence": "high",
+    "notes": "验证状态: confirmed"
+  },
+  {
+    "player_name": "汪修昊",
+    "birth_year": 2009,
+    "position": "后卫",
+    "current_or_listed_club": "河南洛阳",
+    "football_xiaojiang_relation": "长期队员",
+    "relation_source_url": "https://www.163.com/dy/article/JC58N72E0529A10P.html",
+    "national_team_level": "U15",
+    "team_name_official": "中国U-15国家男子足球选拔队",
+    "selection_type": "集训名单",
+    "selection_date": "2024-06-18",
+    "event_or_context": "2024年第一期2009年龄段国少集训",
+    "source_priority": "official",
+    "national_team_source_url": "https://www.thecfa.cn/zxwj/20240618/32155.html",
+    "source_title": "中国足球协会关于组织2009年龄段男子国家少年足球选拔队集训的通知",
+    "confidence": "high",
+    "notes": "验证状态: confirmed"
+  },
+  {
+    "player_name": "廖梓成",
+    "birth_year": 2009,
+    "position": "门将",
+    "current_or_listed_club": "北京",
+    "football_xiaojiang_relation": "长期队员",
+    "relation_source_url": "https://m.zhibo8.com/news/soccer/china/2023-11-23/655ece7d7d5cb.htm",
+    "national_team_level": "U15",
+    "team_name_official": "中国U-15国家男子足球选拔队",
+    "selection_type": "集训名单",
+    "selection_date": "2023-11-22",
+    "event_or_context": "2023年2009年龄段精英集训营",
+    "source_priority": "official",
+    "national_team_source_url": "https://www.thecfa.cn/zxwj/20231122/31560.html",
+    "source_title": "中国足球协会关于组织2009年龄段男子国家少年足球选拔队精英集训的通知",
+    "confidence": "high",
+    "notes": "验证状态: confirmed"
+  },
+  {
+    "player_name": "赵松源",
+    "birth_year": 2009,
+    "position": "前锋",
+    "current_or_listed_club": "北京",
+    "football_xiaojiang_relation": "长期队员",
+    "relation_source_url": "https://m.zhibo8.com/news/soccer/china/2023-11-23/655ece7d7d5cb.htm",
+    "national_team_level": "U15",
+    "team_name_official": "中国U-15国家男子足球选拔队",
+    "selection_type": "集训名单",
+    "selection_date": "2023-11-22",
+    "event_or_context": "2023年2009年龄段精英集训营",
+    "source_priority": "official",
+    "national_team_source_url": "https://www.thecfa.cn/zxwj/20231122/31560.html",
+    "source_title": "中国足球协会关于组织2009年龄段男子国家少年足球选拔队精英集训的通知",
+    "confidence": "high",
+    "notes": "验证状态: confirmed"
+  },
+  {
+    "player_name": "周雨诺",
+    "birth_year": 2009,
+    "position": "后卫",
+    "current_or_listed_club": "北京",
+    "football_xiaojiang_relation": "长期队员",
+    "relation_source_url": "https://m.zhibo8.com/news/soccer/china/2023-11-23/655ece7d7d5cb.htm",
+    "national_team_level": "U15",
+    "team_name_official": "中国U-15国家男子足球选拔队",
+    "selection_type": "集训名单",
+    "selection_date": "2023-11-22",
+    "event_or_context": "2023年2009年龄段精英集训营",
+    "source_priority": "official",
+    "national_team_source_url": "https://www.thecfa.cn/zxwj/20231122/31560.html",
+    "source_title": "中国足球协会关于组织2009年龄段男子国家少年足球选拔队精英集训的通知",
+    "confidence": "high",
+    "notes": "验证状态: confirmed"
+  },
+  {
+    "player_name": "吴王允祥",
+    "birth_year": 2009,
+    "position": "中场",
+    "current_or_listed_club": "北京",
+    "football_xiaojiang_relation": "长期队员",
+    "relation_source_url": "https://m.zhibo8.com/news/soccer/china/2023-11-23/655ece7d7d5cb.htm",
+    "national_team_level": "U15",
+    "team_name_official": "中国U-15国家男子足球选拔队",
+    "selection_type": "集训名单",
+    "selection_date": "2023-11-22",
+    "event_or_context": "2023年2009年龄段精英集训营",
+    "source_priority": "official",
+    "national_team_source_url": "https://www.thecfa.cn/zxwj/20231122/31560.html",
+    "source_title": "中国足球协会关于组织2009年龄段男子国家少年足球选拔队精英集训的通知",
+    "confidence": "high",
+    "notes": "验证状态: confirmed"
+  },
+  {
+    "player_name": "吕孟洲",
+    "birth_year": 2009,
+    "position": "后卫",
+    "current_or_listed_club": "江苏",
+    "football_xiaojiang_relation": "长期队员",
+    "relation_source_url": "https://m.zhibo8.com/news/soccer/china/2023-11-23/655ece7d7d5cb.htm",
+    "national_team_level": "U15",
+    "team_name_official": "中国U-15国家男子足球选拔队",
+    "selection_type": "集训名单",
+    "selection_date": "2023-11-22",
+    "event_or_context": "2023年2009年龄段精英集训营",
+    "source_priority": "official",
+    "national_team_source_url": "https://www.thecfa.cn/zxwj/20231122/31560.html",
+    "source_title": "中国足球协会关于组织2009年龄段男子国家少年足球选拔队精英集训的通知",
+    "confidence": "high",
+    "notes": "验证状态: confirmed"
+  },
+  {
+    "player_name": "吕孟洋",
+    "birth_year": 2009,
+    "position": "中场",
+    "current_or_listed_club": "江苏",
+    "football_xiaojiang_relation": "长期队员",
+    "relation_source_url": "https://m.zhibo8.com/news/soccer/china/2023-11-23/655ece7d7d5cb.htm",
+    "national_team_level": "U15",
+    "team_name_official": "中国U-15国家男子足球选拔队",
+    "selection_type": "集训名单",
+    "selection_date": "2023-11-22",
+    "event_or_context": "2023年2009年龄段精英集训营",
+    "source_priority": "official",
+    "national_team_source_url": "https://www.thecfa.cn/zxwj/20231122/31560.html",
+    "source_title": "中国足球协会关于组织2009年龄段男子国家少年足球选拔队精英集训的通知",
+    "confidence": "high",
+    "notes": "验证状态: confirmed"
+  },
+  {
+    "player_name": "戴宥哲",
+    "birth_year": 2009,
+    "position": "中场",
+    "current_or_listed_club": "江苏",
+    "football_xiaojiang_relation": "长期队员",
+    "relation_source_url": "https://m.zhibo8.com/news/soccer/china/2023-11-23/655ece7d7d5cb.htm",
+    "national_team_level": "U15",
+    "team_name_official": "中国U-15国家男子足球选拔队",
+    "selection_type": "集训名单",
+    "selection_date": "2023-11-22",
+    "event_or_context": "2023年2009年龄段精英集训营",
+    "source_priority": "official",
+    "national_team_source_url": "https://www.thecfa.cn/zxwj/20231122/31560.html",
+    "source_title": "中国足球协会关于组织2009年龄段男子国家少年足球选拔队精英集训的通知",
+    "confidence": "high",
+    "notes": "验证状态: confirmed"
+  },
+  {
+    "player_name": "何浩源",
+    "birth_year": 2009,
+    "position": "中场",
+    "current_or_listed_club": "浙江",
+    "football_xiaojiang_relation": "长期队员",
+    "relation_source_url": "https://m.zhibo8.com/news/soccer/china/2023-11-23/655ece7d7d5cb.htm",
+    "national_team_level": "U15",
+    "team_name_official": "中国U-15国家男子足球选拔队",
+    "selection_type": "集训名单",
+    "selection_date": "2023-11-22",
+    "event_or_context": "2023年2009年龄段精英集训营",
+    "source_priority": "official",
+    "national_team_source_url": "https://www.thecfa.cn/zxwj/20231122/31560.html",
+    "source_title": "中国足球协会关于组织2009年龄段男子国家少年足球选拔队精英集训的通知",
+    "confidence": "high",
+    "notes": "验证状态: confirmed"
+  },
+  {
+    "player_name": "黄子杰",
+    "birth_year": 2009,
+    "position": "后卫",
+    "current_or_listed_club": "广东",
+    "football_xiaojiang_relation": "长期队员",
+    "relation_source_url": "https://m.zhibo8.com/news/soccer/china/2023-11-23/655ece7d7d5cb.htm",
+    "national_team_level": "U15",
+    "team_name_official": "中国U-15国家男子足球选拔队",
+    "selection_type": "集训名单",
+    "selection_date": "2023-11-22",
+    "event_or_context": "2023年2009年龄段精英集训营",
+    "source_priority": "official",
+    "national_team_source_url": "https://www.thecfa.cn/zxwj/20231122/31560.html",
+    "source_title": "中国足球协会关于组织2009年龄段男子国家少年足球选拔队精英集训的通知",
+    "confidence": "high",
+    "notes": "验证状态: confirmed"
+  },
+  {
+    "player_name": "毛永彬",
+    "birth_year": 2009,
+    "position": "门将",
+    "current_or_listed_club": "上海",
+    "football_xiaojiang_relation": "长期队员",
+    "relation_source_url": "https://m.zhibo8.com/news/soccer/china/2023-11-23/655ece7d7d5cb.htm",
+    "national_team_level": "U15",
+    "team_name_official": "中国U-15国家男子足球选拔队",
+    "selection_type": "集训名单",
+    "selection_date": "2023-11-22",
+    "event_or_context": "2023年2009年龄段精英集训营",
+    "source_priority": "official",
+    "national_team_source_url": "https://www.thecfa.cn/zxwj/20231122/31560.html",
+    "source_title": "中国足球协会关于组织2009年龄段男子国家少年足球选拔队精英集训的通知",
+    "confidence": "high",
+    "notes": "验证状态: confirmed"
+  },
+  {
+    "player_name": "赵峰屹",
+    "birth_year": 2009,
+    "position": "中场",
+    "current_or_listed_club": "河南",
+    "football_xiaojiang_relation": "长期队员",
+    "relation_source_url": "https://m.zhibo8.com/news/soccer/china/2023-11-23/655ece7d7d5cb.htm",
+    "national_team_level": "U15",
+    "team_name_official": "中国U-15国家男子足球选拔队",
+    "selection_type": "集训名单",
+    "selection_date": "2023-11-22",
+    "event_or_context": "2023年2009年龄段精英集训营",
+    "source_priority": "official",
+    "national_team_source_url": "https://www.thecfa.cn/zxwj/20231122/31560.html",
+    "source_title": "中国足球协会关于组织2009年龄段男子国家少年足球选拔队精英集训的通知",
+    "confidence": "high",
+    "notes": "验证状态: confirmed"
+  },
+  {
+    "player_name": "张林峒",
+    "birth_year": 2010,
+    "position": "中场",
+    "current_or_listed_club": "北京",
+    "football_xiaojiang_relation": "长期队员",
+    "relation_source_url": "https://www.ppsports.com/article/news/1739223.html",
+    "national_team_level": "U14",
+    "team_name_official": "中国U-14国家男子足球选拔队",
+    "selection_type": "集训名单",
+    "selection_date": "2024-06-10",
+    "event_or_context": "2024年2010年龄段集训拉练",
+    "source_priority": "official",
+    "national_team_source_url": "https://www.thecfa.cn/zxwj/20240610/32140.html",
+    "source_title": "中国足球协会关于组织2010年龄段男子国家少年足球选拔队集训的通知",
+    "confidence": "high",
+    "notes": "验证状态: confirmed"
+  },
+  {
+    "player_name": "刘凯源",
+    "birth_year": 2010,
+    "position": "前锋",
+    "current_or_listed_club": "福建",
+    "football_xiaojiang_relation": "长期队员",
+    "relation_source_url": "https://www.163.com/dy/article/K4J398AA0529A10P.html",
+    "national_team_level": "U14",
+    "team_name_official": "中国U-14国家男子足球选拔队",
+    "selection_type": "集训名单",
+    "selection_date": "2024-06-10",
+    "event_or_context": "2024年2010年龄段集训拉练",
+    "source_priority": "official",
+    "national_team_source_url": "https://www.thecfa.cn/zxwj/20240610/32140.html",
+    "source_title": "中国足球协会关于组织2010年龄段男子国家少年足球选拔队集训的通知",
+    "confidence": "high",
+    "notes": "验证状态: confirmed"
+  },
+  {
+    "player_name": "李佑安",
+    "birth_year": 2010,
+    "position": "中场",
+    "current_or_listed_club": "深圳",
+    "football_xiaojiang_relation": "长期队员",
+    "relation_source_url": "https://www.ppsports.com/article/news/1739223.html",
+    "national_team_level": "U14",
+    "team_name_official": "中国U-14国家男子足球选拔队",
+    "selection_type": "集训名单",
+    "selection_date": "2024-06-10",
+    "event_or_context": "2024年2010年龄段集训拉练",
+    "source_priority": "official",
+    "national_team_source_url": "https://www.thecfa.cn/zxwj/20240610/32140.html",
+    "source_title": "中国足球协会关于组织2010年龄段男子国家少年足球选拔队集训的通知",
+    "confidence": "high",
+    "notes": "验证状态: confirmed"
+  },
+  {
+    "player_name": "刘礼豪",
+    "birth_year": 2010,
+    "position": "中场",
+    "current_or_listed_club": "广东",
+    "football_xiaojiang_relation": "长期队员",
+    "relation_source_url": "https://www.ppsports.com/article/news/1739223.html",
+    "national_team_level": "U14",
+    "team_name_official": "中国U-14国家男子足球选拔队",
+    "selection_type": "集训名单",
+    "selection_date": "2024-06-10",
+    "event_or_context": "2024年2010年龄段集训拉练",
+    "source_priority": "official",
+    "national_team_source_url": "https://www.thecfa.cn/zxwj/20240610/32140.html",
+    "source_title": "中国足球协会关于组织2010年龄段男子国家少年足球选拔队集训的通知",
+    "confidence": "high",
+    "notes": "验证状态: confirmed"
+  },
+  {
+    "player_name": "朴智轩",
+    "birth_year": 2010,
+    "position": "后卫",
+    "current_or_listed_club": "大连龙卷风",
+    "football_xiaojiang_relation": "长期队员",
+    "relation_source_url": "https://www.ppsports.com/article/news/1739223.html",
+    "national_team_level": "U14",
+    "team_name_official": "中国U-14国家男子足球选拔队",
+    "selection_type": "集训名单",
+    "selection_date": "2024-06-10",
+    "event_or_context": "2024年2010年龄段集训拉练",
+    "source_priority": "official",
+    "national_team_source_url": "https://www.thecfa.cn/zxwj/20240610/32140.html",
+    "source_title": "中国足球协会关于组织2010年龄段男子国家少年足球选拔队集训的通知",
+    "confidence": "high",
+    "notes": "验证状态: confirmed"
+  },
+  {
+    "player_name": "袁博涵",
+    "birth_year": 2010,
+    "position": "中场",
+    "current_or_listed_club": "深圳宝安",
+    "football_xiaojiang_relation": "长期队员",
+    "relation_source_url": "https://www.ppsports.com/article/news/1739223.html",
+    "national_team_level": "U14",
+    "team_name_official": "中国U-14国家男子足球选拔队",
+    "selection_type": "集训名单",
+    "selection_date": "2024-06-10",
+    "event_or_context": "2024年2010年龄段集训拉练",
+    "source_priority": "official",
+    "national_team_source_url": "https://www.thecfa.cn/zxwj/20240610/32140.html",
+    "source_title": "中国足球协会关于组织2010年龄段男子国家少年足球选拔队集训的通知",
+    "confidence": "high",
+    "notes": "验证状态: confirmed"
+  },
+  {
+    "player_name": "詹景源",
+    "birth_year": 2010,
+    "position": "前锋",
+    "current_or_listed_club": "深圳罗湖",
+    "football_xiaojiang_relation": "曾代表参赛",
+    "relation_source_url": "https://www.ppsports.com/article/news/1739223.html",
+    "national_team_level": "U14",
+    "team_name_official": "中国U-14国家男子足球选拔队",
+    "selection_type": "集训名单",
+    "selection_date": "2024-06-10",
+    "event_or_context": "2024年2010年龄段集训拉练",
+    "source_priority": "official",
+    "national_team_source_url": "https://www.thecfa.cn/zxwj/20240610/32140.html",
+    "source_title": "中国足球协会关于组织2010年龄段男子国家少年足球选拔队集训的通知",
+    "confidence": "high",
+    "notes": "验证状态: confirmed"
+  },
+  {
+    "player_name": "沙明",
+    "birth_year": 2011,
+    "position": "前锋",
+    "current_or_listed_club": "清水心跳",
+    "football_xiaojiang_relation": "长期队员",
+    "relation_source_url": "https://m.zhibo8.com/news/soccer/china/2026-04-29/662f5cc17a3a.htm",
+    "national_team_level": "U15",
+    "team_name_official": "中国U-15国家男子足球队",
+    "selection_type": "拉练名单/正式出场",
+    "selection_date": "2026-04-10",
+    "event_or_context": "2026年意大利国家之杯12国赛",
+    "source_priority": "official",
+    "national_team_source_url": "https://www.thecfa.cn/zxwj/20260410/33820.html",
+    "source_title": "中国足球协会关于组织U-15国家男子足球队赴意大利参赛的通知",
+    "confidence": "high",
+    "notes": "验证状态: confirmed"
+  },
+  {
+    "player_name": "宋泓渝",
+    "birth_year": 2011,
+    "position": "中场",
+    "current_or_listed_club": "中国足球小将",
+    "football_xiaojiang_relation": "长期队员",
+    "relation_source_url": "https://m.zhibo8.com/news/soccer/china/2026-04-29/662f5cc17a3a.htm",
+    "national_team_level": "U15",
+    "team_name_official": "中国U-15国家男子足球队",
+    "selection_type": "拉练名单",
+    "selection_date": "2026-04-10",
+    "event_or_context": "2026年意大利国家之杯12国赛",
+    "source_priority": "official",
+    "national_team_source_url": "https://www.thecfa.cn/zxwj/20260410/33820.html",
+    "source_title": "中国足球协会关于组织U-15国家男子足球队赴意大利参赛的通知",
+    "confidence": "high",
+    "notes": "验证状态: confirmed"
+  },
+  {
+    "player_name": "曾晨",
+    "birth_year": 2011,
+    "position": "中场",
+    "current_or_listed_club": "中国足球小将",
+    "football_xiaojiang_relation": "长期队员",
+    "relation_source_url": "https://m.zhibo8.com/news/soccer/china/2026-04-29/662f5cc17a3a.htm",
+    "national_team_level": "U15",
+    "team_name_official": "中国U-15国家男子足球队",
+    "selection_type": "拉练名单",
+    "selection_date": "2026-04-10",
+    "event_or_context": "2026年意大利国家之杯12国赛",
+    "source_priority": "official",
+    "national_team_source_url": "https://www.thecfa.cn/zxwj/20260410/33820.html",
+    "source_title": "中国足球协会关于组织U-15国家男子足球队赴意大利参赛的通知",
+    "confidence": "high",
+    "notes": "验证状态: confirmed"
+  },
+  {
+    "player_name": "姜胤宇",
+    "birth_year": 2008,
+    "position": "后卫",
+    "current_or_listed_club": "青岛追风少年",
+    "football_xiaojiang_relation": "曾代表参赛",
+    "relation_source_url": "https://www.dongqiudi.com/articles/3829023.html",
+    "national_team_level": "U16",
+    "team_name_official": "中国U-16国家男子足球队",
+    "selection_type": "集训名单",
+    "selection_date": "2024-03-15",
+    "event_or_context": "2024年第一期2008年龄段集训",
+    "source_priority": "official",
+    "national_team_source_url": "https://www.thecfa.cn/zxwj/20240315/31822.html",
+    "source_title": "中国足球协会关于组织2008年龄段国家少年男子足球队集训的通知",
+    "confidence": "high",
+    "notes": "验证状态: confirmed"
+  }
+];
+
+    // Render Table
+    function renderTable(data) {
+        const tbody = document.getElementById("tableBody");
+        tbody.innerHTML = "";
+        
+        data.forEach(item => {
+            const tr = document.createElement("tr");
+            
+            // Level badge style
+            const lvl = item.national_team_level.toUpperCase();
+            const badgeClass = `badge ${lvl.toLowerCase()}`;
+            
+            tr.innerHTML = `
+                <td style="font-weight: 600; color: var(--text-heading);">${item.player_name}</td>
+                <td>${item.birth_year || '未知'}</td>
+                <td>${item.position}</td>
+                <td>${item.current_or_listed_club}</td>
+                <td><span class="${badgeClass}">${item.national_team_level}</span></td>
+                <td>${item.selection_date}</td>
+                <td style="max-width: 250px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;" title="${item.event_or_context}">${item.event_or_context}</td>
+                <td><a href="${item.national_team_source_url}" target="_blank" title="${item.source_title}">官方公告链接</a></td>
+                <td><span class="badge badge-conf">已确认</span></td>
+            `;
+            tbody.appendChild(tr);
+        });
+    }
+
+    // Filter Logic
+    function filterData() {
+        const searchVal = document.getElementById("searchInput").value.toLowerCase();
+        const lvlVal = document.getElementById("levelFilter").value;
+        const yrVal = document.getElementById("yearFilter").value;
+        
+        const filtered = rawData.filter(item => {
+            const matchesSearch = item.player_name.toLowerCase().includes(searchVal) ||
+                                  item.current_or_listed_club.toLowerCase().includes(searchVal) ||
+                                  item.position.toLowerCase().includes(searchVal) ||
+                                  item.event_or_context.toLowerCase().includes(searchVal);
+                                  
+            const matchesLvl = (lvlVal === "ALL") || (item.national_team_level === lvlVal);
+            const matchesYr = (yrVal === "ALL") || (String(item.birth_year) === yrVal);
+            
+            return matchesSearch && matchesLvl && matchesYr;
+        });
+        
+        renderTable(filtered);
+    }
+
+    // Initial render
+    renderTable(rawData);
+
+    // Initialize Chart.js Charts
+    const ctxBy = document.getElementById('birthYearChart').getContext('2d');
+    new Chart(ctxBy, {
+        type: 'bar',
+        data: {
+            labels: ['2008', '2009', '2010', '2011'],
+            datasets: [{
+                label: '已入选国字号人数',
+                data: [1, 18, 8, 3],
+                backgroundColor: [
+                    'rgba(219, 109, 40, 0.4)',
+                    'rgba(88, 166, 255, 0.4)',
+                    'rgba(56, 139, 253, 0.4)',
+                    'rgba(63, 185, 80, 0.4)'
+                ],
+                borderColor: [
+                    '#db6d28',
+                    '#58a6ff',
+                    '#388bfd',
+                    '#3fb950'
+                ],
+                borderWidth: 1.5,
+                borderRadius: 4
+            }]
+        },
+        options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            plugins: {
+                legend: { display: false }
+            },
+            scales: {
+                y: {
+                    grid: { color: 'rgba(48, 54, 61, 0.3)' },
+                    ticks: { color: '#8b949e', stepSize: 2 }
+                },
+                x: {
+                    grid: { display: false },
+                    ticks: { color: '#8b949e' }
+                }
+            }
+        }
+    });
+
+    const ctxLvl = document.getElementById('teamLevelChart').getContext('2d');
+    new Chart(ctxLvl, {
+        type: 'doughnut',
+        data: {
+            labels: ['U14国少', 'U15国少', 'U16国少', 'U17国少'],
+            datasets: [{
+                data: [7, 18, 1, 9],
+                backgroundColor: [
+                    'rgba(56, 139, 253, 0.6)',
+                    'rgba(88, 166, 255, 0.6)',
+                    'rgba(219, 109, 40, 0.6)',
+                    'rgba(255, 123, 114, 0.6)'
+                ],
+                borderColor: '#0d1117',
+                borderWidth: 2
+            }]
+        },
+        options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            plugins: {
+                legend: {
+                    position: 'right',
+                    labels: { color: '#8b949e', font: { family: 'Outfit' } }
+                }
+            }
+        }
+    });
+</script>
+</body>
+</html>
