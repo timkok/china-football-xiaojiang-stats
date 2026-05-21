@@ -1,0 +1,442 @@
+[
+  {
+    "id": "rel-001",
+    "player_id": "player-001",
+    "relation_type": "长期队员",
+    "relation_status": "confirmed",
+    "source_id": "src-001",
+    "evidence_text": "来源记录该球员与中国足球小将项目、队伍、赛事或公开报道之间的关系。",
+    "confidence": "medium",
+    "notes": ""
+  },
+  {
+    "id": "rel-002",
+    "player_id": "player-002",
+    "relation_type": "长期队员",
+    "relation_status": "confirmed",
+    "source_id": "src-003",
+    "evidence_text": "来源记录该球员与中国足球小将项目、队伍、赛事或公开报道之间的关系。",
+    "confidence": "medium",
+    "notes": ""
+  },
+  {
+    "id": "rel-003",
+    "player_id": "player-003",
+    "relation_type": "长期队员",
+    "relation_status": "confirmed",
+    "source_id": "src-004",
+    "evidence_text": "来源记录该球员与中国足球小将项目、队伍、赛事或公开报道之间的关系。",
+    "confidence": "medium",
+    "notes": ""
+  },
+  {
+    "id": "rel-004",
+    "player_id": "player-004",
+    "relation_type": "长期队员",
+    "relation_status": "confirmed",
+    "source_id": "src-005",
+    "evidence_text": "来源记录该球员与中国足球小将项目、队伍、赛事或公开报道之间的关系。",
+    "confidence": "medium",
+    "notes": ""
+  },
+  {
+    "id": "rel-005",
+    "player_id": "player-005",
+    "relation_type": "出自小将/带培养背景",
+    "relation_status": "confirmed",
+    "source_id": "src-006",
+    "evidence_text": "来源记录该球员与中国足球小将项目、队伍、赛事或公开报道之间的关系。",
+    "confidence": "medium",
+    "notes": ""
+  },
+  {
+    "id": "rel-006",
+    "player_id": "player-006",
+    "relation_type": "长期队员",
+    "relation_status": "confirmed",
+    "source_id": "src-007",
+    "evidence_text": "来源记录该球员与中国足球小将项目、队伍、赛事或公开报道之间的关系。",
+    "confidence": "medium",
+    "notes": ""
+  },
+  {
+    "id": "rel-007",
+    "player_id": "player-007",
+    "relation_type": "长期队员",
+    "relation_status": "confirmed",
+    "source_id": "src-004",
+    "evidence_text": "来源记录该球员与中国足球小将项目、队伍、赛事或公开报道之间的关系。",
+    "confidence": "medium",
+    "notes": ""
+  },
+  {
+    "id": "rel-008",
+    "player_id": "player-008",
+    "relation_type": "长期队员",
+    "relation_status": "confirmed",
+    "source_id": "src-004",
+    "evidence_text": "来源记录该球员与中国足球小将项目、队伍、赛事或公开报道之间的关系。",
+    "confidence": "medium",
+    "notes": ""
+  },
+  {
+    "id": "rel-009",
+    "player_id": "player-009",
+    "relation_type": "长期队员",
+    "relation_status": "confirmed",
+    "source_id": "src-007",
+    "evidence_text": "来源记录该球员与中国足球小将项目、队伍、赛事或公开报道之间的关系。",
+    "confidence": "medium",
+    "notes": ""
+  },
+  {
+    "id": "rel-010",
+    "player_id": "player-010",
+    "relation_type": "长期队员",
+    "relation_status": "confirmed",
+    "source_id": "src-004",
+    "evidence_text": "来源记录该球员与中国足球小将项目、队伍、赛事或公开报道之间的关系。",
+    "confidence": "medium",
+    "notes": ""
+  },
+  {
+    "id": "rel-011",
+    "player_id": "player-001",
+    "relation_type": "长期队员",
+    "relation_status": "confirmed",
+    "source_id": "src-001",
+    "evidence_text": "来源记录该球员与中国足球小将项目、队伍、赛事或公开报道之间的关系。",
+    "confidence": "medium",
+    "notes": ""
+  },
+  {
+    "id": "rel-012",
+    "player_id": "player-003",
+    "relation_type": "长期队员",
+    "relation_status": "confirmed",
+    "source_id": "src-004",
+    "evidence_text": "来源记录该球员与中国足球小将项目、队伍、赛事或公开报道之间的关系。",
+    "confidence": "medium",
+    "notes": ""
+  },
+  {
+    "id": "rel-013",
+    "player_id": "player-011",
+    "relation_type": "长期队员",
+    "relation_status": "confirmed",
+    "source_id": "src-004",
+    "evidence_text": "来源记录该球员与中国足球小将项目、队伍、赛事或公开报道之间的关系。",
+    "confidence": "medium",
+    "notes": ""
+  },
+  {
+    "id": "rel-014",
+    "player_id": "player-002",
+    "relation_type": "长期队员",
+    "relation_status": "confirmed",
+    "source_id": "src-003",
+    "evidence_text": "来源记录该球员与中国足球小将项目、队伍、赛事或公开报道之间的关系。",
+    "confidence": "medium",
+    "notes": ""
+  },
+  {
+    "id": "rel-015",
+    "player_id": "player-012",
+    "relation_type": "长期队员",
+    "relation_status": "confirmed",
+    "source_id": "src-004",
+    "evidence_text": "来源记录该球员与中国足球小将项目、队伍、赛事或公开报道之间的关系。",
+    "confidence": "medium",
+    "notes": ""
+  },
+  {
+    "id": "rel-016",
+    "player_id": "player-013",
+    "relation_type": "长期队员",
+    "relation_status": "confirmed",
+    "source_id": "src-004",
+    "evidence_text": "来源记录该球员与中国足球小将项目、队伍、赛事或公开报道之间的关系。",
+    "confidence": "medium",
+    "notes": ""
+  },
+  {
+    "id": "rel-017",
+    "player_id": "player-014",
+    "relation_type": "长期队员",
+    "relation_status": "confirmed",
+    "source_id": "src-009",
+    "evidence_text": "来源记录该球员与中国足球小将项目、队伍、赛事或公开报道之间的关系。",
+    "confidence": "medium",
+    "notes": ""
+  },
+  {
+    "id": "rel-018",
+    "player_id": "player-006",
+    "relation_type": "长期队员",
+    "relation_status": "confirmed",
+    "source_id": "src-007",
+    "evidence_text": "来源记录该球员与中国足球小将项目、队伍、赛事或公开报道之间的关系。",
+    "confidence": "medium",
+    "notes": ""
+  },
+  {
+    "id": "rel-019",
+    "player_id": "player-015",
+    "relation_type": "长期队员",
+    "relation_status": "confirmed",
+    "source_id": "src-004",
+    "evidence_text": "来源记录该球员与中国足球小将项目、队伍、赛事或公开报道之间的关系。",
+    "confidence": "medium",
+    "notes": ""
+  },
+  {
+    "id": "rel-020",
+    "player_id": "player-003",
+    "relation_type": "长期队员",
+    "relation_status": "confirmed",
+    "source_id": "src-004",
+    "evidence_text": "来源记录该球员与中国足球小将项目、队伍、赛事或公开报道之间的关系。",
+    "confidence": "medium",
+    "notes": ""
+  },
+  {
+    "id": "rel-021",
+    "player_id": "player-008",
+    "relation_type": "长期队员",
+    "relation_status": "confirmed",
+    "source_id": "src-004",
+    "evidence_text": "来源记录该球员与中国足球小将项目、队伍、赛事或公开报道之间的关系。",
+    "confidence": "medium",
+    "notes": ""
+  },
+  {
+    "id": "rel-022",
+    "player_id": "player-016",
+    "relation_type": "长期队员",
+    "relation_status": "confirmed",
+    "source_id": "src-004",
+    "evidence_text": "来源记录该球员与中国足球小将项目、队伍、赛事或公开报道之间的关系。",
+    "confidence": "medium",
+    "notes": ""
+  },
+  {
+    "id": "rel-023",
+    "player_id": "player-017",
+    "relation_type": "长期队员",
+    "relation_status": "confirmed",
+    "source_id": "src-004",
+    "evidence_text": "来源记录该球员与中国足球小将项目、队伍、赛事或公开报道之间的关系。",
+    "confidence": "medium",
+    "notes": ""
+  },
+  {
+    "id": "rel-024",
+    "player_id": "player-013",
+    "relation_type": "长期队员",
+    "relation_status": "confirmed",
+    "source_id": "src-004",
+    "evidence_text": "来源记录该球员与中国足球小将项目、队伍、赛事或公开报道之间的关系。",
+    "confidence": "medium",
+    "notes": ""
+  },
+  {
+    "id": "rel-025",
+    "player_id": "player-012",
+    "relation_type": "长期队员",
+    "relation_status": "confirmed",
+    "source_id": "src-004",
+    "evidence_text": "来源记录该球员与中国足球小将项目、队伍、赛事或公开报道之间的关系。",
+    "confidence": "medium",
+    "notes": ""
+  },
+  {
+    "id": "rel-026",
+    "player_id": "player-018",
+    "relation_type": "长期队员",
+    "relation_status": "confirmed",
+    "source_id": "src-004",
+    "evidence_text": "来源记录该球员与中国足球小将项目、队伍、赛事或公开报道之间的关系。",
+    "confidence": "medium",
+    "notes": ""
+  },
+  {
+    "id": "rel-027",
+    "player_id": "player-011",
+    "relation_type": "长期队员",
+    "relation_status": "confirmed",
+    "source_id": "src-004",
+    "evidence_text": "来源记录该球员与中国足球小将项目、队伍、赛事或公开报道之间的关系。",
+    "confidence": "medium",
+    "notes": ""
+  },
+  {
+    "id": "rel-028",
+    "player_id": "player-010",
+    "relation_type": "长期队员",
+    "relation_status": "confirmed",
+    "source_id": "src-004",
+    "evidence_text": "来源记录该球员与中国足球小将项目、队伍、赛事或公开报道之间的关系。",
+    "confidence": "medium",
+    "notes": ""
+  },
+  {
+    "id": "rel-029",
+    "player_id": "player-019",
+    "relation_type": "长期队员",
+    "relation_status": "confirmed",
+    "source_id": "src-004",
+    "evidence_text": "来源记录该球员与中国足球小将项目、队伍、赛事或公开报道之间的关系。",
+    "confidence": "medium",
+    "notes": ""
+  },
+  {
+    "id": "rel-030",
+    "player_id": "player-020",
+    "relation_type": "长期队员",
+    "relation_status": "confirmed",
+    "source_id": "src-011",
+    "evidence_text": "来源记录该球员与中国足球小将项目、队伍、赛事或公开报道之间的关系。",
+    "confidence": "medium",
+    "notes": ""
+  },
+  {
+    "id": "rel-031",
+    "player_id": "player-021",
+    "relation_type": "长期队员",
+    "relation_status": "confirmed",
+    "source_id": "src-013",
+    "evidence_text": "来源记录该球员与中国足球小将项目、队伍、赛事或公开报道之间的关系。",
+    "confidence": "medium",
+    "notes": ""
+  },
+  {
+    "id": "rel-032",
+    "player_id": "player-022",
+    "relation_type": "长期队员",
+    "relation_status": "confirmed",
+    "source_id": "src-011",
+    "evidence_text": "来源记录该球员与中国足球小将项目、队伍、赛事或公开报道之间的关系。",
+    "confidence": "medium",
+    "notes": ""
+  },
+  {
+    "id": "rel-033",
+    "player_id": "player-023",
+    "relation_type": "长期队员",
+    "relation_status": "confirmed",
+    "source_id": "src-011",
+    "evidence_text": "来源记录该球员与中国足球小将项目、队伍、赛事或公开报道之间的关系。",
+    "confidence": "medium",
+    "notes": ""
+  },
+  {
+    "id": "rel-034",
+    "player_id": "player-024",
+    "relation_type": "长期队员",
+    "relation_status": "confirmed",
+    "source_id": "src-011",
+    "evidence_text": "来源记录该球员与中国足球小将项目、队伍、赛事或公开报道之间的关系。",
+    "confidence": "medium",
+    "notes": ""
+  },
+  {
+    "id": "rel-035",
+    "player_id": "player-025",
+    "relation_type": "长期队员",
+    "relation_status": "confirmed",
+    "source_id": "src-011",
+    "evidence_text": "来源记录该球员与中国足球小将项目、队伍、赛事或公开报道之间的关系。",
+    "confidence": "medium",
+    "notes": ""
+  },
+  {
+    "id": "rel-036",
+    "player_id": "player-026",
+    "relation_type": "曾代表参赛",
+    "relation_status": "confirmed",
+    "source_id": "src-011",
+    "evidence_text": "来源记录该球员与中国足球小将项目、队伍、赛事或公开报道之间的关系。",
+    "confidence": "medium",
+    "notes": ""
+  },
+  {
+    "id": "rel-037",
+    "player_id": "player-027",
+    "relation_type": "长期队员",
+    "relation_status": "confirmed",
+    "source_id": "src-014",
+    "evidence_text": "来源记录该球员与中国足球小将项目、队伍、赛事或公开报道之间的关系。",
+    "confidence": "medium",
+    "notes": ""
+  },
+  {
+    "id": "rel-038",
+    "player_id": "player-028",
+    "relation_type": "长期队员",
+    "relation_status": "confirmed",
+    "source_id": "src-014",
+    "evidence_text": "来源记录该球员与中国足球小将项目、队伍、赛事或公开报道之间的关系。",
+    "confidence": "medium",
+    "notes": ""
+  },
+  {
+    "id": "rel-039",
+    "player_id": "player-029",
+    "relation_type": "长期队员",
+    "relation_status": "confirmed",
+    "source_id": "src-014",
+    "evidence_text": "来源记录该球员与中国足球小将项目、队伍、赛事或公开报道之间的关系。",
+    "confidence": "medium",
+    "notes": ""
+  },
+  {
+    "id": "rel-040",
+    "player_id": "player-030",
+    "relation_type": "曾代表参赛",
+    "relation_status": "confirmed",
+    "source_id": "src-016",
+    "evidence_text": "来源记录该球员与中国足球小将项目、队伍、赛事或公开报道之间的关系。",
+    "confidence": "medium",
+    "notes": ""
+  },
+  {
+    "id": "rel-041",
+    "player_id": "player-031",
+    "relation_type": "长期队员",
+    "relation_status": "confirmed",
+    "source_id": "src-018",
+    "evidence_text": "来源记录该球员与中国足球小将项目、队伍、赛事或公开报道之间的关系。",
+    "confidence": "medium",
+    "notes": ""
+  },
+  {
+    "id": "rel-042",
+    "player_id": "player-032",
+    "relation_type": "长期队员",
+    "relation_status": "confirmed",
+    "source_id": "src-018",
+    "evidence_text": "来源记录该球员与中国足球小将项目、队伍、赛事或公开报道之间的关系。",
+    "confidence": "medium",
+    "notes": ""
+  },
+  {
+    "id": "rel-043",
+    "player_id": "player-033",
+    "relation_type": "长期队员",
+    "relation_status": "confirmed",
+    "source_id": "src-018",
+    "evidence_text": "来源记录该球员与中国足球小将项目、队伍、赛事或公开报道之间的关系。",
+    "confidence": "medium",
+    "notes": ""
+  },
+  {
+    "id": "rel-044",
+    "player_id": "player-034",
+    "relation_type": "长期队员",
+    "relation_status": "confirmed",
+    "source_id": "src-018",
+    "evidence_text": "来源记录该球员与中国足球小将项目、队伍、赛事或公开报道之间的关系。",
+    "confidence": "medium",
+    "notes": ""
+  }
+]

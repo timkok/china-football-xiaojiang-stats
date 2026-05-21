@@ -1,0 +1,830 @@
+[
+  {
+    "id": "player-030",
+    "name": "姜胤宇",
+    "slug": "jiang-yinyu",
+    "aliases": [],
+    "birth_year": 2008,
+    "age_group": "2008年龄段",
+    "position": "后卫",
+    "current_club": "青岛追风少年",
+    "listed_club": "青岛追风少年",
+    "nationality": "中国",
+    "is_overseas": false,
+    "has_appearance": false,
+    "verification_status": "confirmed",
+    "relation_ids": [
+      "rel-040"
+    ],
+    "selection_ids": [
+      "sel-040"
+    ],
+    "appearance_ids": [],
+    "identity_key": "姜胤宇|2008|后卫|青岛追风少年",
+    "notes": ""
+  },
+  {
+    "id": "player-001",
+    "name": "万项",
+    "slug": "wan-xiang",
+    "aliases": [],
+    "birth_year": 2009,
+    "age_group": "2009年龄段",
+    "position": "中场",
+    "current_club": "贝尔格莱德红星",
+    "listed_club": "贝尔格莱德红星",
+    "nationality": "中国",
+    "is_overseas": true,
+    "has_appearance": false,
+    "verification_status": "confirmed",
+    "relation_ids": [
+      "rel-001",
+      "rel-011"
+    ],
+    "selection_ids": [
+      "sel-001",
+      "sel-011"
+    ],
+    "appearance_ids": [],
+    "identity_key": "万项|2009|中场|贝尔格莱德红星",
+    "notes": ""
+  },
+  {
+    "id": "player-018",
+    "name": "何浩源",
+    "slug": "he-haoyuan",
+    "aliases": [],
+    "birth_year": 2009,
+    "age_group": "2009年龄段",
+    "position": "中场",
+    "current_club": "浙江",
+    "listed_club": "浙江",
+    "nationality": "中国",
+    "is_overseas": false,
+    "has_appearance": false,
+    "verification_status": "confirmed",
+    "relation_ids": [
+      "rel-026"
+    ],
+    "selection_ids": [
+      "sel-026"
+    ],
+    "appearance_ids": [],
+    "identity_key": "何浩源|2009|中场|浙江",
+    "notes": ""
+  },
+  {
+    "id": "player-007",
+    "name": "南子勋",
+    "slug": "nan-zixun",
+    "aliases": [],
+    "birth_year": 2009,
+    "age_group": "2009年龄段",
+    "position": "后卫",
+    "current_club": "清华大学附属中学",
+    "listed_club": "清华大学附属中学",
+    "nationality": "中国",
+    "is_overseas": false,
+    "has_appearance": false,
+    "verification_status": "confirmed",
+    "relation_ids": [
+      "rel-007"
+    ],
+    "selection_ids": [
+      "sel-007"
+    ],
+    "appearance_ids": [],
+    "identity_key": "南子勋|2009|后卫|清华大学附属中学",
+    "notes": ""
+  },
+  {
+    "id": "player-013",
+    "name": "吕孟洋",
+    "slug": "lv-mengyang",
+    "aliases": [],
+    "birth_year": 2009,
+    "age_group": "2009年龄段",
+    "position": "中场",
+    "current_club": "江苏徐州",
+    "listed_club": "江苏徐州",
+    "nationality": "中国",
+    "is_overseas": false,
+    "has_appearance": false,
+    "verification_status": "confirmed",
+    "relation_ids": [
+      "rel-016",
+      "rel-024"
+    ],
+    "selection_ids": [
+      "sel-016",
+      "sel-024"
+    ],
+    "appearance_ids": [],
+    "identity_key": "吕孟洋|2009|中场|江苏徐州",
+    "notes": ""
+  },
+  {
+    "id": "player-017",
+    "name": "吕孟洲",
+    "slug": "lv-mengzhou",
+    "aliases": [],
+    "birth_year": 2009,
+    "age_group": "2009年龄段",
+    "position": "后卫",
+    "current_club": "江苏",
+    "listed_club": "江苏",
+    "nationality": "中国",
+    "is_overseas": false,
+    "has_appearance": false,
+    "verification_status": "confirmed",
+    "relation_ids": [
+      "rel-023"
+    ],
+    "selection_ids": [
+      "sel-023"
+    ],
+    "appearance_ids": [],
+    "identity_key": "吕孟洲|2009|后卫|江苏",
+    "notes": ""
+  },
+  {
+    "id": "player-016",
+    "name": "吴王允祥",
+    "slug": "wuwang-yunxiang",
+    "aliases": [],
+    "birth_year": 2009,
+    "age_group": "2009年龄段",
+    "position": "中场",
+    "current_club": "北京",
+    "listed_club": "北京",
+    "nationality": "中国",
+    "is_overseas": false,
+    "has_appearance": false,
+    "verification_status": "confirmed",
+    "relation_ids": [
+      "rel-022"
+    ],
+    "selection_ids": [
+      "sel-022"
+    ],
+    "appearance_ids": [],
+    "identity_key": "吴王允祥|2009|中场|北京",
+    "notes": ""
+  },
+  {
+    "id": "player-008",
+    "name": "周雨诺",
+    "slug": "zhou-yunuo",
+    "aliases": [],
+    "birth_year": 2009,
+    "age_group": "2009年龄段",
+    "position": "中场",
+    "current_club": "清华大学附属中学",
+    "listed_club": "清华大学附属中学",
+    "nationality": "中国",
+    "is_overseas": false,
+    "has_appearance": false,
+    "verification_status": "confirmed",
+    "relation_ids": [
+      "rel-008",
+      "rel-021"
+    ],
+    "selection_ids": [
+      "sel-008",
+      "sel-021"
+    ],
+    "appearance_ids": [],
+    "identity_key": "周雨诺|2009|中场|清华大学附属中学",
+    "notes": ""
+  },
+  {
+    "id": "player-005",
+    "name": "帅惟浩",
+    "slug": "shuai-weihao",
+    "aliases": [],
+    "birth_year": 2009,
+    "age_group": "2009年龄段",
+    "position": "前锋",
+    "current_club": "成都蓉城",
+    "listed_club": "成都蓉城",
+    "nationality": "中国",
+    "is_overseas": false,
+    "has_appearance": false,
+    "verification_status": "confirmed",
+    "relation_ids": [
+      "rel-005"
+    ],
+    "selection_ids": [
+      "sel-005"
+    ],
+    "appearance_ids": [],
+    "identity_key": "帅惟浩|2009|前锋|成都蓉城",
+    "notes": ""
+  },
+  {
+    "id": "player-015",
+    "name": "廖梓成",
+    "slug": "liao-zicheng",
+    "aliases": [],
+    "birth_year": 2009,
+    "age_group": "2009年龄段",
+    "position": "门将",
+    "current_club": "北京",
+    "listed_club": "北京",
+    "nationality": "中国",
+    "is_overseas": false,
+    "has_appearance": false,
+    "verification_status": "confirmed",
+    "relation_ids": [
+      "rel-019"
+    ],
+    "selection_ids": [
+      "sel-019"
+    ],
+    "appearance_ids": [],
+    "identity_key": "廖梓成|2009|门将|北京",
+    "notes": ""
+  },
+  {
+    "id": "player-012",
+    "name": "戴宥哲",
+    "slug": "dai-youzhe",
+    "aliases": [],
+    "birth_year": 2009,
+    "age_group": "2009年龄段",
+    "position": "中场",
+    "current_club": "江苏南京",
+    "listed_club": "江苏南京",
+    "nationality": "中国",
+    "is_overseas": false,
+    "has_appearance": false,
+    "verification_status": "confirmed",
+    "relation_ids": [
+      "rel-015",
+      "rel-025"
+    ],
+    "selection_ids": [
+      "sel-015",
+      "sel-025"
+    ],
+    "appearance_ids": [],
+    "identity_key": "戴宥哲|2009|中场|江苏南京",
+    "notes": ""
+  },
+  {
+    "id": "player-010",
+    "name": "毛永彬",
+    "slug": "mao-yongbin",
+    "aliases": [],
+    "birth_year": 2009,
+    "age_group": "2009年龄段",
+    "position": "门将",
+    "current_club": "上海海港",
+    "listed_club": "上海海港",
+    "nationality": "中国",
+    "is_overseas": false,
+    "has_appearance": false,
+    "verification_status": "confirmed",
+    "relation_ids": [
+      "rel-010",
+      "rel-028"
+    ],
+    "selection_ids": [
+      "sel-010",
+      "sel-028"
+    ],
+    "appearance_ids": [],
+    "identity_key": "毛永彬|2009|门将|上海海港",
+    "notes": ""
+  },
+  {
+    "id": "player-006",
+    "name": "汪修昊",
+    "slug": "wang-xiuhao",
+    "aliases": [],
+    "birth_year": 2009,
+    "age_group": "2009年龄段",
+    "position": "后卫",
+    "current_club": "达姆",
+    "listed_club": "达姆",
+    "nationality": "中国",
+    "is_overseas": true,
+    "has_appearance": false,
+    "verification_status": "confirmed",
+    "relation_ids": [
+      "rel-006",
+      "rel-018"
+    ],
+    "selection_ids": [
+      "sel-006",
+      "sel-018"
+    ],
+    "appearance_ids": [],
+    "identity_key": "汪修昊|2009|后卫|达姆",
+    "notes": ""
+  },
+  {
+    "id": "player-004",
+    "name": "谢晋",
+    "slug": "xie-jin",
+    "aliases": [],
+    "birth_year": 2009,
+    "age_group": "2009年龄段",
+    "position": "中场",
+    "current_club": "皇家卡拉万切尔",
+    "listed_club": "皇家卡拉万切尔",
+    "nationality": "中国",
+    "is_overseas": true,
+    "has_appearance": false,
+    "verification_status": "confirmed",
+    "relation_ids": [
+      "rel-004"
+    ],
+    "selection_ids": [
+      "sel-004"
+    ],
+    "appearance_ids": [],
+    "identity_key": "谢晋|2009|中场|皇家卡拉万切尔",
+    "notes": ""
+  },
+  {
+    "id": "player-019",
+    "name": "赵峰屹",
+    "slug": "zhao-fengyi",
+    "aliases": [],
+    "birth_year": 2009,
+    "age_group": "2009年龄段",
+    "position": "中场",
+    "current_club": "河南",
+    "listed_club": "河南",
+    "nationality": "中国",
+    "is_overseas": false,
+    "has_appearance": false,
+    "verification_status": "confirmed",
+    "relation_ids": [
+      "rel-029"
+    ],
+    "selection_ids": [
+      "sel-029"
+    ],
+    "appearance_ids": [],
+    "identity_key": "赵峰屹|2009|中场|河南",
+    "notes": ""
+  },
+  {
+    "id": "player-003",
+    "name": "赵松源",
+    "slug": "zhao-songyuan",
+    "aliases": [],
+    "birth_year": 2009,
+    "age_group": "2009年龄段",
+    "position": "前锋",
+    "current_club": "清华大学附属中学",
+    "listed_club": "清华大学附属中学",
+    "nationality": "中国",
+    "is_overseas": false,
+    "has_appearance": false,
+    "verification_status": "confirmed",
+    "relation_ids": [
+      "rel-003",
+      "rel-012",
+      "rel-020"
+    ],
+    "selection_ids": [
+      "sel-003",
+      "sel-012",
+      "sel-020"
+    ],
+    "appearance_ids": [],
+    "identity_key": "赵松源|2009|前锋|清华大学附属中学",
+    "notes": ""
+  },
+  {
+    "id": "player-002",
+    "name": "邝兆镭",
+    "slug": "kuang-zhaolei",
+    "aliases": [],
+    "birth_year": 2009,
+    "age_group": "2009年龄段",
+    "position": "中场",
+    "current_club": "青岛海牛",
+    "listed_club": "青岛海牛",
+    "nationality": "中国",
+    "is_overseas": false,
+    "has_appearance": false,
+    "verification_status": "confirmed",
+    "relation_ids": [
+      "rel-002",
+      "rel-014"
+    ],
+    "selection_ids": [
+      "sel-002",
+      "sel-014"
+    ],
+    "appearance_ids": [],
+    "identity_key": "邝兆镭|2009|中场|青岛海牛",
+    "notes": ""
+  },
+  {
+    "id": "player-009",
+    "name": "顾博宇",
+    "slug": "gu-boyu",
+    "aliases": [],
+    "birth_year": 2009,
+    "age_group": "2009年龄段",
+    "position": "后卫",
+    "current_club": "上海申花",
+    "listed_club": "上海申花",
+    "nationality": "中国",
+    "is_overseas": false,
+    "has_appearance": false,
+    "verification_status": "confirmed",
+    "relation_ids": [
+      "rel-009"
+    ],
+    "selection_ids": [
+      "sel-009"
+    ],
+    "appearance_ids": [],
+    "identity_key": "顾博宇|2009|后卫|上海申花",
+    "notes": ""
+  },
+  {
+    "id": "player-011",
+    "name": "黄子杰",
+    "slug": "huang-zijie",
+    "aliases": [],
+    "birth_year": 2009,
+    "age_group": "2009年龄段",
+    "position": "后卫",
+    "current_club": "佛山超盈实验中学",
+    "listed_club": "佛山超盈实验中学",
+    "nationality": "中国",
+    "is_overseas": false,
+    "has_appearance": false,
+    "verification_status": "confirmed",
+    "relation_ids": [
+      "rel-013",
+      "rel-027"
+    ],
+    "selection_ids": [
+      "sel-013",
+      "sel-027"
+    ],
+    "appearance_ids": [],
+    "identity_key": "黄子杰|2009|后卫|佛山超盈实验中学",
+    "notes": ""
+  },
+  {
+    "id": "player-021",
+    "name": "刘凯源",
+    "slug": "liu-kaiyuan",
+    "aliases": [],
+    "birth_year": 2010,
+    "age_group": "2010年龄段",
+    "position": "前锋",
+    "current_club": "福建",
+    "listed_club": "福建",
+    "nationality": "中国",
+    "is_overseas": false,
+    "has_appearance": false,
+    "verification_status": "confirmed",
+    "relation_ids": [
+      "rel-031"
+    ],
+    "selection_ids": [
+      "sel-031"
+    ],
+    "appearance_ids": [],
+    "identity_key": "刘凯源|2010|前锋|福建",
+    "notes": ""
+  },
+  {
+    "id": "player-023",
+    "name": "刘礼豪",
+    "slug": "liu-lihao",
+    "aliases": [],
+    "birth_year": 2010,
+    "age_group": "2010年龄段",
+    "position": "中场",
+    "current_club": "广东",
+    "listed_club": "广东",
+    "nationality": "中国",
+    "is_overseas": false,
+    "has_appearance": false,
+    "verification_status": "confirmed",
+    "relation_ids": [
+      "rel-033"
+    ],
+    "selection_ids": [
+      "sel-033"
+    ],
+    "appearance_ids": [],
+    "identity_key": "刘礼豪|2010|中场|广东",
+    "notes": ""
+  },
+  {
+    "id": "player-020",
+    "name": "张林峒",
+    "slug": "zhang-lintong",
+    "aliases": [],
+    "birth_year": 2010,
+    "age_group": "2010年龄段",
+    "position": "中场",
+    "current_club": "北京",
+    "listed_club": "北京",
+    "nationality": "中国",
+    "is_overseas": false,
+    "has_appearance": false,
+    "verification_status": "confirmed",
+    "relation_ids": [
+      "rel-030"
+    ],
+    "selection_ids": [
+      "sel-030"
+    ],
+    "appearance_ids": [],
+    "identity_key": "张林峒|2010|中场|北京",
+    "notes": ""
+  },
+  {
+    "id": "player-024",
+    "name": "朴智轩",
+    "slug": "piao-zhixuan",
+    "aliases": [],
+    "birth_year": 2010,
+    "age_group": "2010年龄段",
+    "position": "后卫",
+    "current_club": "大连龙卷风",
+    "listed_club": "大连龙卷风",
+    "nationality": "中国",
+    "is_overseas": false,
+    "has_appearance": false,
+    "verification_status": "confirmed",
+    "relation_ids": [
+      "rel-034"
+    ],
+    "selection_ids": [
+      "sel-034"
+    ],
+    "appearance_ids": [],
+    "identity_key": "朴智轩|2010|后卫|大连龙卷风",
+    "notes": ""
+  },
+  {
+    "id": "player-014",
+    "name": "李东宸",
+    "slug": "li-dongchen",
+    "aliases": [],
+    "birth_year": 2010,
+    "age_group": "2010年龄段",
+    "position": "中场",
+    "current_club": "北京",
+    "listed_club": "北京",
+    "nationality": "中国",
+    "is_overseas": false,
+    "has_appearance": false,
+    "verification_status": "confirmed",
+    "relation_ids": [
+      "rel-017"
+    ],
+    "selection_ids": [
+      "sel-017"
+    ],
+    "appearance_ids": [],
+    "identity_key": "李东宸|2010|中场|北京",
+    "notes": ""
+  },
+  {
+    "id": "player-022",
+    "name": "李佑安",
+    "slug": "li-youan",
+    "aliases": [],
+    "birth_year": 2010,
+    "age_group": "2010年龄段",
+    "position": "中场",
+    "current_club": "深圳",
+    "listed_club": "深圳",
+    "nationality": "中国",
+    "is_overseas": false,
+    "has_appearance": false,
+    "verification_status": "confirmed",
+    "relation_ids": [
+      "rel-032"
+    ],
+    "selection_ids": [
+      "sel-032"
+    ],
+    "appearance_ids": [],
+    "identity_key": "李佑安|2010|中场|深圳",
+    "notes": ""
+  },
+  {
+    "id": "player-032",
+    "name": "李贺哲",
+    "slug": "li-hezhe",
+    "aliases": [],
+    "birth_year": 2010,
+    "age_group": "2010年龄段",
+    "position": "中场",
+    "current_club": "未知",
+    "listed_club": "未知",
+    "nationality": "中国",
+    "is_overseas": false,
+    "has_appearance": false,
+    "verification_status": "pending",
+    "relation_ids": [
+      "rel-042"
+    ],
+    "selection_ids": [],
+    "appearance_ids": [],
+    "identity_key": "李贺哲|2010|中场|未知",
+    "notes": ""
+  },
+  {
+    "id": "player-033",
+    "name": "杜双杰",
+    "slug": "du-shuangjie",
+    "aliases": [],
+    "birth_year": 2010,
+    "age_group": "2010年龄段",
+    "position": "前锋",
+    "current_club": "未知",
+    "listed_club": "未知",
+    "nationality": "中国",
+    "is_overseas": false,
+    "has_appearance": false,
+    "verification_status": "pending",
+    "relation_ids": [
+      "rel-043"
+    ],
+    "selection_ids": [],
+    "appearance_ids": [],
+    "identity_key": "杜双杰|2010|前锋|未知",
+    "notes": ""
+  },
+  {
+    "id": "player-031",
+    "name": "杨皓砼",
+    "slug": "yang-haotong",
+    "aliases": [],
+    "birth_year": 2010,
+    "age_group": "2010年龄段",
+    "position": "后卫",
+    "current_club": "未知",
+    "listed_club": "未知",
+    "nationality": "中国",
+    "is_overseas": false,
+    "has_appearance": false,
+    "verification_status": "pending",
+    "relation_ids": [
+      "rel-041"
+    ],
+    "selection_ids": [],
+    "appearance_ids": [],
+    "identity_key": "杨皓砼|2010|后卫|未知",
+    "notes": ""
+  },
+  {
+    "id": "player-025",
+    "name": "袁博涵",
+    "slug": "yuan-bohan",
+    "aliases": [],
+    "birth_year": 2010,
+    "age_group": "2010年龄段",
+    "position": "中场",
+    "current_club": "深圳宝安",
+    "listed_club": "深圳宝安",
+    "nationality": "中国",
+    "is_overseas": false,
+    "has_appearance": false,
+    "verification_status": "confirmed",
+    "relation_ids": [
+      "rel-035"
+    ],
+    "selection_ids": [
+      "sel-035"
+    ],
+    "appearance_ids": [],
+    "identity_key": "袁博涵|2010|中场|深圳宝安",
+    "notes": ""
+  },
+  {
+    "id": "player-026",
+    "name": "詹景源",
+    "slug": "zhan-jingyuan",
+    "aliases": [],
+    "birth_year": 2010,
+    "age_group": "2010年龄段",
+    "position": "前锋",
+    "current_club": "深圳罗湖",
+    "listed_club": "深圳罗湖",
+    "nationality": "中国",
+    "is_overseas": false,
+    "has_appearance": false,
+    "verification_status": "confirmed",
+    "relation_ids": [
+      "rel-036"
+    ],
+    "selection_ids": [
+      "sel-036"
+    ],
+    "appearance_ids": [],
+    "identity_key": "詹景源|2010|前锋|深圳罗湖",
+    "notes": ""
+  },
+  {
+    "id": "player-034",
+    "name": "魏子烜",
+    "slug": "wei-zixuan",
+    "aliases": [],
+    "birth_year": 2010,
+    "age_group": "2010年龄段",
+    "position": "中场",
+    "current_club": "未知",
+    "listed_club": "未知",
+    "nationality": "中国",
+    "is_overseas": false,
+    "has_appearance": false,
+    "verification_status": "pending",
+    "relation_ids": [
+      "rel-044"
+    ],
+    "selection_ids": [],
+    "appearance_ids": [],
+    "identity_key": "魏子烜|2010|中场|未知",
+    "notes": ""
+  },
+  {
+    "id": "player-028",
+    "name": "宋泓渝",
+    "slug": "song-hongyu",
+    "aliases": [],
+    "birth_year": 2011,
+    "age_group": "2011年龄段",
+    "position": "中场",
+    "current_club": "中国足球小将",
+    "listed_club": "中国足球小将",
+    "nationality": "中国",
+    "is_overseas": false,
+    "has_appearance": false,
+    "verification_status": "confirmed",
+    "relation_ids": [
+      "rel-038"
+    ],
+    "selection_ids": [
+      "sel-038"
+    ],
+    "appearance_ids": [],
+    "identity_key": "宋泓渝|2011|中场|中国足球小将",
+    "notes": ""
+  },
+  {
+    "id": "player-029",
+    "name": "曾晨",
+    "slug": "zeng-chen",
+    "aliases": [],
+    "birth_year": 2011,
+    "age_group": "2011年龄段",
+    "position": "中场",
+    "current_club": "中国足球小将",
+    "listed_club": "中国足球小将",
+    "nationality": "中国",
+    "is_overseas": false,
+    "has_appearance": false,
+    "verification_status": "confirmed",
+    "relation_ids": [
+      "rel-039"
+    ],
+    "selection_ids": [
+      "sel-039"
+    ],
+    "appearance_ids": [],
+    "identity_key": "曾晨|2011|中场|中国足球小将",
+    "notes": ""
+  },
+  {
+    "id": "player-027",
+    "name": "沙明",
+    "slug": "sha-ming",
+    "aliases": [],
+    "birth_year": 2011,
+    "age_group": "2011年龄段",
+    "position": "前锋",
+    "current_club": "清水心跳",
+    "listed_club": "清水心跳",
+    "nationality": "中国",
+    "is_overseas": false,
+    "has_appearance": false,
+    "verification_status": "confirmed",
+    "relation_ids": [
+      "rel-037"
+    ],
+    "selection_ids": [
+      "sel-037"
+    ],
+    "appearance_ids": [],
+    "identity_key": "沙明|2011|前锋|清水心跳",
+    "notes": ""
+  }
+]
