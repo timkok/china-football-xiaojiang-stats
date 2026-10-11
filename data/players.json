@@ -35,7 +35,7 @@
     "listed_club": "贝尔格拉德红星",
     "nationality": "中国",
     "is_overseas": null,
-    "has_appearance": false,
+    "has_appearance": true,
     "verification_status": "partially_confirmed",
     "relation_ids": [
       "rel-001",
@@ -46,9 +46,11 @@
       "sel-011",
       "sel-20260911-wan-xiang"
     ],
-    "appearance_ids": [],
+    "appearance_ids": [
+      "match-import-001"
+    ],
     "identity_key": "万项|2009|中场|贝尔格莱德红星",
-    "notes": "历史出生年份、位置及小将关系待复核；单位为名单所列单位，不代表当前注册状态。"
+    "notes": "历史出生年份、位置及小将关系待复核；单位为名单所列单位，不代表当前注册状态。 已有官方比赛出场证据；小将关系仍待复核。"
   },
   {
     "id": "player-018",
@@ -185,7 +187,7 @@
     "listed_club": "清华大学附属中学",
     "nationality": "中国",
     "is_overseas": null,
-    "has_appearance": false,
+    "has_appearance": true,
     "verification_status": "partially_confirmed",
     "relation_ids": [
       "rel-008",
@@ -196,9 +198,12 @@
       "sel-021",
       "sel-20260911-zhou-yunuo"
     ],
-    "appearance_ids": [],
+    "appearance_ids": [
+      "match-import-005",
+      "match-import-006"
+    ],
     "identity_key": "周雨诺|2009|中场|清华大学附属中学",
-    "notes": "历史出生年份、位置及小将关系待复核；单位为名单所列单位，不代表当前注册状态。"
+    "notes": "历史出生年份、位置及小将关系待复核；单位为名单所列单位，不代表当前注册状态。 已有官方比赛出场证据；小将关系仍待复核。 已有官方比赛出场证据；小将关系仍待复核。"
   },
   {
     "id": "player-005",
@@ -212,7 +217,7 @@
     "listed_club": "成都蓉城",
     "nationality": "中国",
     "is_overseas": null,
-    "has_appearance": false,
+    "has_appearance": true,
     "verification_status": "partially_confirmed",
     "relation_ids": [
       "rel-005"
@@ -221,9 +226,11 @@
       "sel-005",
       "sel-20260911-shuai-weihao"
     ],
-    "appearance_ids": [],
+    "appearance_ids": [
+      "match-import-003"
+    ],
     "identity_key": "帅惟浩|2009|前锋|成都蓉城",
-    "notes": "历史出生年份、位置及小将关系待复核；单位为名单所列单位，不代表当前注册状态。"
+    "notes": "历史出生年份、位置及小将关系待复核；单位为名单所列单位，不代表当前注册状态。 已有官方比赛出场证据；小将关系仍待复核。"
   },
   {
     "id": "player-015",
@@ -387,8 +394,8 @@
     "listed_club": "清华大学附属中学",
     "nationality": "中国",
     "is_overseas": null,
-    "has_appearance": false,
-    "verification_status": "pending",
+    "has_appearance": true,
+    "verification_status": "partially_confirmed",
     "relation_ids": [
       "rel-003",
       "rel-012",
@@ -399,9 +406,14 @@
       "sel-012",
       "sel-020"
     ],
-    "appearance_ids": [],
+    "appearance_ids": [
+      "match-import-002",
+      "match-import-004",
+      "match-import-007",
+      "match-import-008"
+    ],
     "identity_key": "赵松源|2009|前锋|清华大学附属中学",
-    "notes": "历史出生年份、位置及小将关系待复核；单位为名单所列单位，不代表当前注册状态。"
+    "notes": "历史出生年份、位置及小将关系待复核；单位为名单所列单位，不代表当前注册状态。 已有官方比赛出场证据；小将关系仍待复核。 已有官方比赛出场证据；小将关系仍待复核。 已有官方比赛出场证据；小将关系仍待复核。 已有官方比赛出场证据；小将关系仍待复核。"
   },
   {
     "id": "player-002",

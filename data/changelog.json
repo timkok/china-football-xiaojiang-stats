@@ -1,6 +1,24 @@
 [
   {
     "date": "2026-10-11",
+    "title": "新增国内外比赛记录",
+    "added_players": [],
+    "status_changes": [
+      "赵松源: pending → partially_confirmed（官方比赛出场已核验，小将关系待复核）"
+    ],
+    "added_sources": [
+      "cfa-final-20260523",
+      "cfa-shanghai-20260807"
+    ],
+    "stat_changes": {
+      "matches": 4,
+      "appearances": 8
+    },
+    "deleted_or_corrected": [],
+    "reason": "逐条录入官方战报支持的比赛表现；未披露技术统计保留 null，不将报名或球队参赛视为个人出场。"
+  },
+  {
+    "date": "2026-10-11",
     "title": "重新审计历史证据并补充足协第六期名单",
     "added_players": [],
     "status_changes": [

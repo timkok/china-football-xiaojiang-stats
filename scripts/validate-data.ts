@@ -48,6 +48,12 @@ type Source = {
 };
 
 type Appearance = {
+  match_id: string;
+  match_date: string;
+  starter: boolean | null;
+  minutes: number | null;
+  goals: number | null;
+  assists: number | null;
   id: string;
   player_id: string;
   source_id: string;
@@ -94,6 +100,14 @@ for (const selection of selections) {
   selectionsByPlayer.set(selection.player_id, [...(selectionsByPlayer.get(selection.player_id) || []), selection]);
 }
 for (const appearance of appearances) {
+  const matches = readJson<{id:string;match_date:string}[]>("matches.json");
+  const match = matches.find(m=>m.id===appearance.match_id);
+  if (!match || match.match_date!==appearance.match_date) fail("data/appearances.json", appearance.id, "match_id", "比赛关联或日期不一致", "关联对应比赛并统一日期口径");
+  if (!players.some(p=>p.id===appearance.player_id)) fail("data/appearances.json", appearance.id, "player_id", "球员不存在", "修正球员 ID");
+  for (const field of ["minutes","goals","assists"] as const) {
+    const value=appearance[field];
+    if (value!==null && (!Number.isInteger(value)||value<0)) fail("data/appearances.json",appearance.id,field,"应为非负整数或 null","未知值使用 null");
+  }
   appearancesByPlayer.set(appearance.player_id, [...(appearancesByPlayer.get(appearance.player_id) || []), appearance]);
 }
 
@@ -156,6 +170,8 @@ for (const player of players) {
       fail("data/players.json", player.id, "appearance_ids", `找不到出场记录 ${appearanceId}`, "修正 appearance_ids 或新增 appearances.json 记录");
     }
   }
+  const expected = appearances.filter(a=>a.player_id===player.id).map(a=>a.id).sort();
+  if (JSON.stringify(expected)!==JSON.stringify([...(player.appearance_ids||[])].sort())) fail("data/players.json",player.id,"appearance_ids","出场关联不一致","同步该球员的 appearance_ids");
 
   const strongRelation = (relationsByPlayer.get(player.id) || []).some(
     (relation) => relation.relation_status === "confirmed",

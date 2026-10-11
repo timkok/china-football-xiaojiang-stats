@@ -1,0 +1,62 @@
+[
+  {
+    "id": "20260523-japan",
+    "match_date": "2026-05-23",
+    "date_timezone": "Asia/Shanghai",
+    "competition": "U17亚洲杯",
+    "stage": "决赛",
+    "team": "中国U17",
+    "team_level": "U17",
+    "opponent": "日本U17",
+    "country": "沙特阿拉伯",
+    "location_scope": "境外",
+    "competition_type": "国家队正式赛",
+    "score": "2–3",
+    "source_id": "cfa-final-20260523"
+  },
+  {
+    "id": "20260803-arsenal",
+    "match_date": "2026-08-03",
+    "date_timezone": "Asia/Shanghai",
+    "competition": "上海明日之星冠军杯",
+    "stage": "小组赛",
+    "team": "中国U17",
+    "team_level": "U17",
+    "opponent": "阿森纳U17",
+    "country": "中国",
+    "location_scope": "境内",
+    "competition_type": "国际邀请赛",
+    "score": "3–2",
+    "source_id": "cfa-shanghai-20260807"
+  },
+  {
+    "id": "20260804-athletic",
+    "match_date": "2026-08-04",
+    "date_timezone": "Asia/Shanghai",
+    "competition": "上海明日之星冠军杯",
+    "stage": "小组赛",
+    "team": "中国U17",
+    "team_level": "U17",
+    "opponent": "毕尔巴鄂竞技U17",
+    "country": "中国",
+    "location_scope": "境内",
+    "competition_type": "国际邀请赛",
+    "score": "1–0",
+    "source_id": "cfa-shanghai-20260807"
+  },
+  {
+    "id": "20260806-leverkusen",
+    "match_date": "2026-08-06",
+    "date_timezone": "Asia/Shanghai",
+    "competition": "上海明日之星冠军杯",
+    "stage": "小组赛",
+    "team": "中国U17",
+    "team_level": "U17",
+    "opponent": "勒沃库森U17",
+    "country": "中国",
+    "location_scope": "境内",
+    "competition_type": "国际邀请赛",
+    "score": "2–1",
+    "source_id": "cfa-shanghai-20260807"
+  }
+]

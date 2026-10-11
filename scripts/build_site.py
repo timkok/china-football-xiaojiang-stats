@@ -16,6 +16,7 @@ PROCESSED_JSON_FILE = os.path.join(DATA_DIR, "processed", "players_clean.json")
 with open(os.path.join(DATA_DIR, "changelog.json"), encoding="utf-8") as changelog_file:
     TODAY = max(entry["date"] for entry in json.load(changelog_file))
 SITE_URL = "https://timkok.github.io/china-football-xiaojiang-stats/"
+RELEASE = '20261011-matches1'
 SEO_TITLE = "中国足球小将国字号入选数据库｜U14-U20 国少国青统计"
 SEO_DESCRIPTION = "基于中国足协官网、俱乐部公告、媒体公开报道整理中国足球小将相关球员入选 U14、U15、U16、U17、U19、U20 等各级国字号队伍的情况，包含出生年份、俱乐部、入选时间、来源证据和数据可信度。"
 
@@ -308,7 +309,7 @@ def clean_generated_dirs():
 
 
 def page_shell(title, description, body, root_path="", extra_head=""):
-    body = re.sub(r'(src="[^"]+\.js)(")', rf'\1?v={TODAY}\2', body)
+    body = re.sub(r'(src="[^"]+\.js)(")', rf'\1?v={RELEASE}\2', body)
     dataset_json = json.dumps({
         "@context": "https://schema.org",
         "@type": "Dataset",
@@ -332,16 +333,17 @@ def page_shell(title, description, body, root_path="", extra_head=""):
   <meta property="og:image" content="{SITE_URL}assets/og-cover.svg">
   <meta property="og:locale" content="zh_CN">
   <link rel="canonical" href="{SITE_URL}">
-  <link rel="stylesheet" href="{root_path}assets/styles.css?v={TODAY}">
+  <link rel="stylesheet" href="{root_path}assets/styles.css?v={RELEASE}">
   <script type="application/ld+json">{dataset_json}</script>
   {extra_head}
 </head>
-<body data-root="{root_path}" data-updated-at="{TODAY}">
+<body data-root="{root_path}" data-updated-at="{TODAY}" data-release="{RELEASE}">
   <nav class="topbar">
     <a class="brand" href="{root_path}">中国足球小将国字号入选数据库</a>
     <div class="navlinks">
       <a href="{root_path}">Dashboard</a>
       <a href="{root_path}sources/">来源库</a>
+      <a href="{root_path}matches/">国内外比赛</a>
       <a href="{root_path}changelog/">Changelog</a>
       <a href="{root_path}methodology/">统计口径</a>
     </div>
@@ -497,7 +499,9 @@ def build_player_pages(players):
       <p>该详情页从 data/*.json 读取基本信息、中国足球小将关系、国字号入选时间线、出场线索和来源列表。</p>
     </section>
     <section class="panel" id="playerDetail"></section>
+    <section class="panel" id="matchRecords"></section>
   </main>
+  <script src="../../assets/matches.js"></script>
   <script src="../../assets/player.js"></script>"""
         with open(os.path.join(page_dir, "index.html"), "w", encoding="utf-8") as f:
             f.write(page_shell(f"{player['name']}｜球员详情", f"{player['name']} 的证据链和国字号入选记录。", body, "../../"))
@@ -515,9 +519,10 @@ def build_assets():
     player_js = player_js.replace("p.is_overseas?'是':'否'", "p.is_overseas===null?'待核验':p.is_overseas?'是':'否'")
     styles += '.panel{border:0;border-radius:0;background:transparent;padding:20px 0}.hero h1{font-size:32px}.chart-card{border:0;border-radius:0}.bar-track{width:100%;padding:0}.bar-seg{display:inline-block}.evidence-card{overflow-wrap:anywhere}button:focus-visible,a:focus-visible{outline:3px solid #16794c} .detail-grid{display:block}.detail-grid .evidence-card{border:0;border-bottom:1px solid #d9dee8;border-radius:0}.hero{padding:20px 0}.pill{border-radius:4px}'
     files = {"styles.css": styles, "app.js": app_js, "sources.js": sources_js, "changelog.js": changelog_js, "player.js": player_js, "og-cover.svg": og_cover}
+    files['matches.js'] = open(os.path.join(BASE_DIR, 'scripts', 'matches.js'), encoding='utf-8').read()
     for name, content in files.items():
         if name.endswith('.js'):
-            content = content.replace('.json`', '.json?v=${document.body.dataset.updatedAt}`')
+            content = content.replace('.json`', '.json?v=${document.body.dataset.release}`')
         with open(os.path.join(ASSETS_DIR, name), "w", encoding="utf-8") as f:
             f.write(content.rstrip())
             f.write("\n")
@@ -535,6 +540,9 @@ def main():
     build_changelog_page(players, selections, sources, relations)
     build_methodology_page()
     build_player_pages(players)
+    os.makedirs(os.path.join(BASE_DIR, 'matches'), exist_ok=True)
+    with open(os.path.join(BASE_DIR, 'matches', 'index.html'), 'w', encoding='utf-8') as f:
+        f.write(page_shell('国内外比赛记录｜中国足球小将数据库', '按球员、比赛地点和赛事性质查阅可追溯的比赛表现。', '<main class="container"><section class="hero compact"><h1>球员比赛数据库</h1></section><section id="matchRecords" class="panel">正在加载比赛记录...</section></main><script src="../assets/matches.js"></script>', '../'))
     print(f"Built site with {len(players)} players, {len(selections)} selections, {len(sources)} sources, {len(relations)} relations, {len(appearances)} appearances.")
 
 

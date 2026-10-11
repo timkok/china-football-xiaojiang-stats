@@ -572,5 +572,56 @@
       "U17"
     ],
     "notes": "已核对正文参训运动员名单；仅关联现有库中的球员，不据此确认小将关系。"
+  },
+  {
+    "id": "cfa-final-20260523",
+    "title": "U17亚洲杯决赛战报",
+    "url": "https://www.thecfa.cn/xinwenu17/20260523/37719.html",
+    "publisher": "中国足球协会",
+    "source_type": "official",
+    "source_priority": "official_cfa",
+    "published_date": "2026-05-23",
+    "retrieved_at": "2026-10-11",
+    "archived_url": "",
+    "reliability_score": 95,
+    "access_status": "accessible",
+    "reviewed": true,
+    "used_for": [
+      "match_appearance"
+    ],
+    "involved_players": [
+      "万项",
+      "赵松源",
+      "帅惟浩"
+    ],
+    "involved_levels": [
+      "U17"
+    ],
+    "notes": "正文战报支持所列出场事实；非完整比赛技术统计。"
+  },
+  {
+    "id": "cfa-shanghai-20260807",
+    "title": "上海明日之星冠军杯小组赛战报",
+    "url": "https://www.thecfa.cn/shipinu17/20260807/38048.html",
+    "publisher": "中国足球协会",
+    "source_type": "official",
+    "source_priority": "official_cfa",
+    "published_date": "2026-08-07",
+    "retrieved_at": "2026-10-11",
+    "archived_url": "",
+    "reliability_score": 95,
+    "access_status": "accessible",
+    "reviewed": true,
+    "used_for": [
+      "match_appearance"
+    ],
+    "involved_players": [
+      "赵松源",
+      "周雨诺"
+    ],
+    "involved_levels": [
+      "U17"
+    ],
+    "notes": "正文战报支持所列出场事实；非完整比赛技术统计。"
   }
 ]
