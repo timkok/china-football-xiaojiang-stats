@@ -308,6 +308,7 @@ def clean_generated_dirs():
 
 
 def page_shell(title, description, body, root_path="", extra_head=""):
+    body = re.sub(r'(src="[^"]+\.js)(")', rf'\1?v={TODAY}\2', body)
     dataset_json = json.dumps({
         "@context": "https://schema.org",
         "@type": "Dataset",
@@ -331,7 +332,7 @@ def page_shell(title, description, body, root_path="", extra_head=""):
   <meta property="og:image" content="{SITE_URL}assets/og-cover.svg">
   <meta property="og:locale" content="zh_CN">
   <link rel="canonical" href="{SITE_URL}">
-  <link rel="stylesheet" href="{root_path}assets/styles.css">
+  <link rel="stylesheet" href="{root_path}assets/styles.css?v={TODAY}">
   <script type="application/ld+json">{dataset_json}</script>
   {extra_head}
 </head>
@@ -515,8 +516,10 @@ def build_assets():
     styles += '.panel{border:0;border-radius:0;background:transparent;padding:20px 0}.hero h1{font-size:32px}.chart-card{border:0;border-radius:0}.bar-track{width:100%;padding:0}.bar-seg{display:inline-block}.evidence-card{overflow-wrap:anywhere}button:focus-visible,a:focus-visible{outline:3px solid #16794c} .detail-grid{display:block}.detail-grid .evidence-card{border:0;border-bottom:1px solid #d9dee8;border-radius:0}.hero{padding:20px 0}.pill{border-radius:4px}'
     files = {"styles.css": styles, "app.js": app_js, "sources.js": sources_js, "changelog.js": changelog_js, "player.js": player_js, "og-cover.svg": og_cover}
     for name, content in files.items():
+        if name.endswith('.js'):
+            content = content.replace('.json`', '.json?v=${document.body.dataset.updatedAt}`')
         with open(os.path.join(ASSETS_DIR, name), "w", encoding="utf-8") as f:
-            f.write(content)
+            f.write(content.rstrip())
             f.write("\n")
 
 
