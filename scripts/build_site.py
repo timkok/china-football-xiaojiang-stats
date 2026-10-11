@@ -13,7 +13,8 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 DATA_DIR = os.path.join(BASE_DIR, "data")
 ASSETS_DIR = os.path.join(BASE_DIR, "assets")
 PROCESSED_JSON_FILE = os.path.join(DATA_DIR, "processed", "players_clean.json")
-TODAY = date.today().isoformat()
+with open(os.path.join(DATA_DIR, "changelog.json"), encoding="utf-8") as changelog_file:
+    TODAY = max(entry["date"] for entry in json.load(changelog_file))
 SITE_URL = "https://timkok.github.io/china-football-xiaojiang-stats/"
 SEO_TITLE = "中国足球小将国字号入选数据库｜U14-U20 国少国青统计"
 SEO_DESCRIPTION = "基于中国足协官网、俱乐部公告、媒体公开报道整理中国足球小将相关球员入选 U14、U15、U16、U17、U19、U20 等各级国字号队伍的情况，包含出生年份、俱乐部、入选时间、来源证据和数据可信度。"
@@ -454,7 +455,7 @@ def build_changelog_page(players, selections, sources, relations):
         "deleted_or_corrected": [],
         "reason": "将静态展示页重构为数据驱动的证据链数据库，并降低无法逐场核验的主力表述。",
     }]
-    write_json(os.path.join(DATA_DIR, "changelog.json"), changelog)
+    # The changelog is maintained alongside the data, never reset by a build.
     body = """<main class="container">
     <section class="hero compact"><p class="eyebrow">Changelog</p><h1>变更日志</h1><p>记录新增球员、来源、状态变化、统计变化、删除或修正原因。</p></section>
     <section class="panel" id="changelogList"></section>
@@ -508,6 +509,10 @@ def build_assets():
     changelog_js = r"""const BASE=document.body.dataset.root||'';fetch(`${BASE}data/changelog.json`).then(r=>r.json()).then(items=>{document.querySelector('#changelogList').innerHTML=items.map(item=>`<article class="evidence-card"><p class="eyebrow">${item.date}</p><h2>${item.title}</h2><p>${item.reason}</p><p><strong>统计变化：</strong>${Object.entries(item.stat_changes).map(([k,v])=>`${k}: ${v}`).join(' / ')}</p><p><strong>新增来源：</strong>${item.added_sources.length}</p><p><strong>删除或修正：</strong>${item.deleted_or_corrected.length?item.deleted_or_corrected.join('；'):'无'}</p></article>`).join('')});"""
     player_js = r"""const BASE=document.body.dataset.root||'';const slug=document.querySelector('[data-player-slug]').dataset.playerSlug;Promise.all(['players','selections','sources','relations','appearances'].map(n=>fetch(`${BASE}data/${n}.json`).then(r=>r.json()))).then(([players,selections,sources,relations,appearances])=>{const p=players.find(x=>x.slug===slug);const src=Object.fromEntries(sources.map(s=>[s.id,s]));const rels=relations.filter(r=>r.player_id===p.id);const sels=selections.filter(s=>s.player_id===p.id).sort((a,b)=>(a.selection_date||'').localeCompare(b.selection_date||''));const apps=appearances.filter(a=>a.player_id===p.id);const sourceIds=[...new Set([...rels.map(r=>r.source_id),...sels.map(s=>s.source_id),...apps.map(a=>a.source_id)].filter(Boolean))];document.querySelector('#playerDetail').innerHTML=`<div class="detail-grid"><div class="evidence-card"><h2>${p.name}</h2><p><strong>出生年份：</strong>${p.birth_year||'缺失'}</p><p><strong>年龄段：</strong>${p.age_group}</p><p><strong>位置：</strong>${p.position}</p><p><strong>俱乐部/单位：</strong>${p.current_club}</p><p><strong>是否留洋：</strong>${p.is_overseas?'是':'否'}</p><p><strong>验证状态：</strong><span class="badge ${p.verification_status}">${p.verification_status}</span></p><p><strong>同名/异名说明：</strong>${p.aliases?.length?p.aliases.join('、'):'暂无别名记录；identity_key 用于避免仅凭姓名合并。'}</p></div><div class="evidence-card"><h3>中国足球小将经历</h3>${rels.map(r=>`<p><span class="badge ${r.relation_status}">${r.relation_status}</span> ${r.relation_type}<br>${r.evidence_text}<br>${src[r.source_id]?`<a href="${src[r.source_id].url}" target="_blank" rel="noopener">${src[r.source_id].title}</a>`:'缺失来源'}</p>`).join('')||'<p class="muted">缺失</p>'}</div><div class="evidence-card"><h3>国字号入选时间线</h3>${sels.map(s=>`<p><strong>${s.selection_date}</strong> ${s.national_team_level} ${s.selection_type}<br>${s.event_name}<br>${src[s.source_id]?`<a href="${src[s.source_id].url}" target="_blank" rel="noopener">${src[s.source_id].title}</a>`:'缺失来源'}</p>`).join('')||'<p class="muted">缺失</p>'}</div><div class="evidence-card"><h3>比赛出场记录</h3>${apps.length?apps.map(a=>`<p>${a.match_date} ${a.competition}｜首发：${a.starter??'待补'}｜分钟：${a.minutes??'待补'}</p>`).join(''):'<p class="muted">暂无逐场首发、分钟、进球或助攻证据。涉及“出场”的原始记录仅作为线索。</p>'}</div><div class="evidence-card"><h3>相关来源列表</h3>${sourceIds.map(id=>src[id]?`<p><span class="badge">${src[id].source_priority}</span> <a href="${src[id].url}" target="_blank" rel="noopener">${src[id].title}</a></p>`:'').join('')}</div><div class="evidence-card"><h3>待核验信息</h3><p>${p.verification_status==='confirmed'?'暂无核心证据链缺口；仍建议补充逐场出场数据。':'至少一条核心证据链不足，需补充官方或可靠来源。'}</p></div></div>`});"""
     og_cover = """<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630"><rect width="1200" height="630" fill="#f7f8fb"/><text x="80" y="190" font-family="Arial,'Noto Sans SC',sans-serif" font-size="58" font-weight="700" fill="#172033">中国足球小将国字号入选数据库</text><text x="80" y="280" font-family="Arial,'Noto Sans SC',sans-serif" font-size="34" fill="#667085">U14-U20 国少国青统计 · 证据链 · 来源库</text><rect x="80" y="360" width="1040" height="110" rx="12" fill="#ffffff" stroke="#d9dee8"/><text x="120" y="430" font-family="Arial,'Noto Sans SC',sans-serif" font-size="34" fill="#1f5eff">Data-driven, auditable, updateable</text></svg>"""
+    app_js += open(os.path.join(BASE_DIR, "scripts", "dashboard-fixes.js"), encoding="utf-8").read()
+    changelog_js = changelog_js.replace('<p>${item.reason}</p>', '<p>${item.reason}</p><ul>${(item.status_changes||[]).map(x=>`<li>${x}</li>`).join(\'\')}</ul>')
+    player_js = player_js.replace("p.is_overseas?'是':'否'", "p.is_overseas===null?'待核验':p.is_overseas?'是':'否'")
+    styles += '.panel{border:0;border-radius:0;background:transparent;padding:20px 0}.hero h1{font-size:32px}.chart-card{border:0;border-radius:0}.bar-track{width:100%;padding:0}.bar-seg{display:inline-block}.evidence-card{overflow-wrap:anywhere}button:focus-visible,a:focus-visible{outline:3px solid #16794c} .detail-grid{display:block}.detail-grid .evidence-card{border:0;border-bottom:1px solid #d9dee8;border-radius:0}.hero{padding:20px 0}.pill{border-radius:4px}'
     files = {"styles.css": styles, "app.js": app_js, "sources.js": sources_js, "changelog.js": changelog_js, "player.js": player_js, "og-cover.svg": og_cover}
     for name, content in files.items():
         with open(os.path.join(ASSETS_DIR, name), "w", encoding="utf-8") as f:
@@ -516,14 +521,11 @@ def build_assets():
 
 
 def main():
-    records = read_json(PROCESSED_JSON_FILE)
-    players, selections, sources, relations, appearances, _ = build_data(records)
+    players, selections, sources, relations, appearances = [
+        read_json(os.path.join(DATA_DIR, name + ".json"))
+        for name in ["players", "selections", "sources", "relations", "appearances"]
+    ]
     clean_generated_dirs()
-    write_json(os.path.join(DATA_DIR, "players.json"), players)
-    write_json(os.path.join(DATA_DIR, "selections.json"), selections)
-    write_json(os.path.join(DATA_DIR, "sources.json"), sources)
-    write_json(os.path.join(DATA_DIR, "relations.json"), relations)
-    write_json(os.path.join(DATA_DIR, "appearances.json"), appearances)
     build_assets()
     build_index()
     build_sources_page()

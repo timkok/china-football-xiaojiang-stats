@@ -1,5 +1,13 @@
 # 中国足球小将国字号入选数据库
 
+## 2026-10-11 审计更新
+
+历史版本将 URL 存在误当作证据已确认，本次已撤销该自动判定。当前 34 名球员中 confirmed 为 0、partially_confirmed 为 7、pending 为 27；这不是对球员实际经历的否定。47 条记录包含 40 条待复核历史线索和 7 条已核对的 2026 年 U17 第六期集训入选记录。新来源为中国足协 2026-09-11 通知，核验日期 2026-10-11。本次不是所有年龄段的完整更新。
+
+维护入口为 `data/players.json`、`relations.json`、`selections.json`、`sources.json`、`appearances.json`。直接编辑这些文件并追加 `data/changelog.json`，然后校验、构建。构建只读取数据，不覆盖人工修改和历史日志。旧 `data/processed` 文件及旧 Python 采集脚本仅供历史参考，不应再作为发布入口。
+
+所有球员的小将关系正文证据仍待复核；7 名部分确认球员为万项、邝兆镭、帅惟浩、顾博宇、袁博涵、周雨诺、南子勋。来源的 `reviewed` 表示正文核验，不能仅凭域名设置为 true。留洋状态未知用 null，不能当作否。
+
 本项目把“中国足球小将国字号入选统计与可视化”从静态展示页升级为一个可审计、可筛选、可持续更新的静态数据产品。核心原则是：统计数字必须来自 `data/*.json` 自动汇总，任何核心结论都能追溯到球员、关系、入选记录和来源。
 
 线上地址：
@@ -54,7 +62,7 @@ https://timkok.github.io/china-football-xiaojiang-stats/
 
 ## 如何新增球员
 
-1. 在上游数据源或 `data/processed/players_clean.json` 添加球员基础信息。
+1. 在 `data/players.json` 添加具有唯一 ID 的球员，在 `relations.json`、`selections.json` 中补充关联记录。
 2. 同时补充小将关系来源和国字号入选来源。
 3. 运行 `npm run build` 重新生成结构化数据和静态页面。
 4. 运行 `npm run validate:data`。

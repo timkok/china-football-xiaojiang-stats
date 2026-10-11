@@ -4,135 +4,144 @@
     "player_id": "player-001",
     "national_team_level": "U17",
     "official_team_name": "中国U-17国家男子足球队",
-    "selection_type": "正式报名",
+    "selection_type": "名单线索",
     "selection_date": "2026-04-28",
     "event_name": "2026年沙特U17亚洲杯决赛阶段",
-    "camp_start_date": "2026-04-28",
+    "camp_start_date": "",
     "camp_end_date": "",
     "listed_club": "贝尔格莱德红星",
     "source_id": "src-002",
-    "confidence": "high",
-    "notes": ""
+    "confidence": "low",
+    "notes": "历史入选线索；原始名单、日期和球员身份需重新核对。",
+    "reviewed": false
   },
   {
     "id": "sel-002",
     "player_id": "player-002",
     "national_team_level": "U17",
     "official_team_name": "中国U-17国家男子足球队",
-    "selection_type": "正式报名",
+    "selection_type": "名单线索",
     "selection_date": "2026-04-28",
     "event_name": "2026年沙特U17亚洲杯决赛阶段",
-    "camp_start_date": "2026-04-28",
+    "camp_start_date": "",
     "camp_end_date": "",
     "listed_club": "青岛海牛",
     "source_id": "src-002",
-    "confidence": "high",
-    "notes": ""
+    "confidence": "low",
+    "notes": "历史入选线索；原始名单、日期和球员身份需重新核对。",
+    "reviewed": false
   },
   {
     "id": "sel-003",
     "player_id": "player-003",
     "national_team_level": "U17",
     "official_team_name": "中国U-17国家男子足球队",
-    "selection_type": "正式报名",
+    "selection_type": "名单线索",
     "selection_date": "2026-04-28",
     "event_name": "2026年沙特U17亚洲杯决赛阶段",
-    "camp_start_date": "2026-04-28",
+    "camp_start_date": "",
     "camp_end_date": "",
     "listed_club": "清华大学附属中学",
     "source_id": "src-002",
-    "confidence": "high",
-    "notes": ""
+    "confidence": "low",
+    "notes": "历史入选线索；原始名单、日期和球员身份需重新核对。",
+    "reviewed": false
   },
   {
     "id": "sel-004",
     "player_id": "player-004",
     "national_team_level": "U17",
     "official_team_name": "中国U-17国家男子足球队",
-    "selection_type": "正式报名",
+    "selection_type": "名单线索",
     "selection_date": "2026-04-28",
     "event_name": "2026年沙特U17亚洲杯决赛阶段",
-    "camp_start_date": "2026-04-28",
+    "camp_start_date": "",
     "camp_end_date": "",
     "listed_club": "皇家卡拉万切尔",
     "source_id": "src-002",
-    "confidence": "high",
-    "notes": ""
+    "confidence": "low",
+    "notes": "历史入选线索；原始名单、日期和球员身份需重新核对。",
+    "reviewed": false
   },
   {
     "id": "sel-005",
     "player_id": "player-005",
     "national_team_level": "U17",
     "official_team_name": "中国U-17国家男子足球队",
-    "selection_type": "正式报名",
+    "selection_type": "名单线索",
     "selection_date": "2026-04-28",
     "event_name": "2026年沙特U17亚洲杯决赛阶段",
-    "camp_start_date": "2026-04-28",
+    "camp_start_date": "",
     "camp_end_date": "",
     "listed_club": "成都蓉城",
     "source_id": "src-002",
-    "confidence": "high",
-    "notes": ""
+    "confidence": "low",
+    "notes": "历史入选线索；原始名单、日期和球员身份需重新核对。",
+    "reviewed": false
   },
   {
     "id": "sel-006",
     "player_id": "player-006",
     "national_team_level": "U17",
     "official_team_name": "中国U-17国家男子足球队",
-    "selection_type": "正式报名",
+    "selection_type": "名单线索",
     "selection_date": "2026-04-28",
     "event_name": "2026年沙特U17亚洲杯决赛阶段",
-    "camp_start_date": "2026-04-28",
+    "camp_start_date": "",
     "camp_end_date": "",
     "listed_club": "达姆",
     "source_id": "src-002",
-    "confidence": "high",
-    "notes": ""
+    "confidence": "low",
+    "notes": "历史入选线索；原始名单、日期和球员身份需重新核对。",
+    "reviewed": false
   },
   {
     "id": "sel-007",
     "player_id": "player-007",
     "national_team_level": "U17",
     "official_team_name": "中国U-17国家男子足球队",
-    "selection_type": "正式报名",
+    "selection_type": "名单线索",
     "selection_date": "2026-04-28",
     "event_name": "2026年沙特U17亚洲杯决赛阶段",
-    "camp_start_date": "2026-04-28",
+    "camp_start_date": "",
     "camp_end_date": "",
     "listed_club": "清华大学附属中学",
     "source_id": "src-002",
-    "confidence": "high",
-    "notes": ""
+    "confidence": "low",
+    "notes": "历史入选线索；原始名单、日期和球员身份需重新核对。",
+    "reviewed": false
   },
   {
     "id": "sel-008",
     "player_id": "player-008",
     "national_team_level": "U17",
     "official_team_name": "中国U-17国家男子足球队",
-    "selection_type": "正式报名",
+    "selection_type": "名单线索",
     "selection_date": "2026-04-28",
     "event_name": "2026年沙特U17亚洲杯决赛阶段",
-    "camp_start_date": "2026-04-28",
+    "camp_start_date": "",
     "camp_end_date": "",
     "listed_club": "清华大学附属中学",
     "source_id": "src-002",
-    "confidence": "high",
-    "notes": ""
+    "confidence": "low",
+    "notes": "历史入选线索；原始名单、日期和球员身份需重新核对。",
+    "reviewed": false
   },
   {
     "id": "sel-009",
     "player_id": "player-009",
     "national_team_level": "U17",
     "official_team_name": "中国U-17国家男子足球队",
-    "selection_type": "正式报名",
+    "selection_type": "名单线索",
     "selection_date": "2026-04-28",
     "event_name": "2026年沙特U17亚洲杯决赛阶段",
-    "camp_start_date": "2026-04-28",
+    "camp_start_date": "",
     "camp_end_date": "",
     "listed_club": "上海申花",
     "source_id": "src-002",
-    "confidence": "high",
-    "notes": ""
+    "confidence": "low",
+    "notes": "历史入选线索；原始名单、日期和球员身份需重新核对。",
+    "reviewed": false
   },
   {
     "id": "sel-010",
@@ -142,12 +151,13 @@
     "selection_type": "集训名单",
     "selection_date": "2024-06-18",
     "event_name": "2024年第一期2009年龄段国少集训",
-    "camp_start_date": "2024-06-18",
+    "camp_start_date": "",
     "camp_end_date": "",
     "listed_club": "上海海港",
     "source_id": "src-008",
-    "confidence": "high",
-    "notes": ""
+    "confidence": "low",
+    "notes": "历史入选线索；原始名单、日期和球员身份需重新核对。",
+    "reviewed": false
   },
   {
     "id": "sel-011",
@@ -157,12 +167,13 @@
     "selection_type": "集训名单",
     "selection_date": "2024-06-18",
     "event_name": "2024年第一期2009年龄段国少集训",
-    "camp_start_date": "2024-06-18",
+    "camp_start_date": "",
     "camp_end_date": "",
     "listed_club": "湖北星辉",
     "source_id": "src-008",
-    "confidence": "high",
-    "notes": ""
+    "confidence": "low",
+    "notes": "历史入选线索；原始名单、日期和球员身份需重新核对。",
+    "reviewed": false
   },
   {
     "id": "sel-012",
@@ -172,12 +183,13 @@
     "selection_type": "集训名单",
     "selection_date": "2024-06-18",
     "event_name": "2024年第一期2009年龄段国少集训",
-    "camp_start_date": "2024-06-18",
+    "camp_start_date": "",
     "camp_end_date": "",
     "listed_club": "清华附中",
     "source_id": "src-008",
-    "confidence": "high",
-    "notes": ""
+    "confidence": "low",
+    "notes": "历史入选线索；原始名单、日期和球员身份需重新核对。",
+    "reviewed": false
   },
   {
     "id": "sel-013",
@@ -187,12 +199,13 @@
     "selection_type": "集训名单",
     "selection_date": "2024-06-18",
     "event_name": "2024年第一期2009年龄段国少集训",
-    "camp_start_date": "2024-06-18",
+    "camp_start_date": "",
     "camp_end_date": "",
     "listed_club": "佛山超盈实验中学",
     "source_id": "src-008",
-    "confidence": "high",
-    "notes": ""
+    "confidence": "low",
+    "notes": "历史入选线索；原始名单、日期和球员身份需重新核对。",
+    "reviewed": false
   },
   {
     "id": "sel-014",
@@ -202,12 +215,13 @@
     "selection_type": "集训名单",
     "selection_date": "2024-06-18",
     "event_name": "2024年第一期2009年龄段国少集训",
-    "camp_start_date": "2024-06-18",
+    "camp_start_date": "",
     "camp_end_date": "",
     "listed_club": "广东广州",
     "source_id": "src-008",
-    "confidence": "high",
-    "notes": ""
+    "confidence": "low",
+    "notes": "历史入选线索；原始名单、日期和球员身份需重新核对。",
+    "reviewed": false
   },
   {
     "id": "sel-015",
@@ -217,12 +231,13 @@
     "selection_type": "集训名单",
     "selection_date": "2024-06-18",
     "event_name": "2024年第一期2009年龄段国少集训",
-    "camp_start_date": "2024-06-18",
+    "camp_start_date": "",
     "camp_end_date": "",
     "listed_club": "江苏南京",
     "source_id": "src-008",
-    "confidence": "high",
-    "notes": ""
+    "confidence": "low",
+    "notes": "历史入选线索；原始名单、日期和球员身份需重新核对。",
+    "reviewed": false
   },
   {
     "id": "sel-016",
@@ -232,12 +247,13 @@
     "selection_type": "集训名单",
     "selection_date": "2024-06-18",
     "event_name": "2024年第一期2009年龄段国少集训",
-    "camp_start_date": "2024-06-18",
+    "camp_start_date": "",
     "camp_end_date": "",
     "listed_club": "江苏徐州",
     "source_id": "src-008",
-    "confidence": "high",
-    "notes": ""
+    "confidence": "low",
+    "notes": "历史入选线索；原始名单、日期和球员身份需重新核对。",
+    "reviewed": false
   },
   {
     "id": "sel-017",
@@ -247,12 +263,13 @@
     "selection_type": "集训名单",
     "selection_date": "2024-06-18",
     "event_name": "2024年第一期2009年龄段国少集训",
-    "camp_start_date": "2024-06-18",
+    "camp_start_date": "",
     "camp_end_date": "",
     "listed_club": "北京",
     "source_id": "src-008",
-    "confidence": "high",
-    "notes": ""
+    "confidence": "low",
+    "notes": "历史入选线索；原始名单、日期和球员身份需重新核对。",
+    "reviewed": false
   },
   {
     "id": "sel-018",
@@ -262,12 +279,13 @@
     "selection_type": "集训名单",
     "selection_date": "2024-06-18",
     "event_name": "2024年第一期2009年龄段国少集训",
-    "camp_start_date": "2024-06-18",
+    "camp_start_date": "",
     "camp_end_date": "",
     "listed_club": "河南洛阳",
     "source_id": "src-008",
-    "confidence": "high",
-    "notes": ""
+    "confidence": "low",
+    "notes": "历史入选线索；原始名单、日期和球员身份需重新核对。",
+    "reviewed": false
   },
   {
     "id": "sel-019",
@@ -277,12 +295,13 @@
     "selection_type": "集训名单",
     "selection_date": "2023-11-22",
     "event_name": "2023年2009年龄段精英集训营",
-    "camp_start_date": "2023-11-22",
+    "camp_start_date": "",
     "camp_end_date": "",
     "listed_club": "北京",
     "source_id": "src-010",
-    "confidence": "high",
-    "notes": ""
+    "confidence": "low",
+    "notes": "历史入选线索；原始名单、日期和球员身份需重新核对。",
+    "reviewed": false
   },
   {
     "id": "sel-020",
@@ -292,12 +311,13 @@
     "selection_type": "集训名单",
     "selection_date": "2023-11-22",
     "event_name": "2023年2009年龄段精英集训营",
-    "camp_start_date": "2023-11-22",
+    "camp_start_date": "",
     "camp_end_date": "",
     "listed_club": "北京",
     "source_id": "src-010",
-    "confidence": "high",
-    "notes": ""
+    "confidence": "low",
+    "notes": "历史入选线索；原始名单、日期和球员身份需重新核对。",
+    "reviewed": false
   },
   {
     "id": "sel-021",
@@ -307,12 +327,13 @@
     "selection_type": "集训名单",
     "selection_date": "2023-11-22",
     "event_name": "2023年2009年龄段精英集训营",
-    "camp_start_date": "2023-11-22",
+    "camp_start_date": "",
     "camp_end_date": "",
     "listed_club": "北京",
     "source_id": "src-010",
-    "confidence": "high",
-    "notes": ""
+    "confidence": "low",
+    "notes": "历史入选线索；原始名单、日期和球员身份需重新核对。",
+    "reviewed": false
   },
   {
     "id": "sel-022",
@@ -322,12 +343,13 @@
     "selection_type": "集训名单",
     "selection_date": "2023-11-22",
     "event_name": "2023年2009年龄段精英集训营",
-    "camp_start_date": "2023-11-22",
+    "camp_start_date": "",
     "camp_end_date": "",
     "listed_club": "北京",
     "source_id": "src-010",
-    "confidence": "high",
-    "notes": ""
+    "confidence": "low",
+    "notes": "历史入选线索；原始名单、日期和球员身份需重新核对。",
+    "reviewed": false
   },
   {
     "id": "sel-023",
@@ -337,12 +359,13 @@
     "selection_type": "集训名单",
     "selection_date": "2023-11-22",
     "event_name": "2023年2009年龄段精英集训营",
-    "camp_start_date": "2023-11-22",
+    "camp_start_date": "",
     "camp_end_date": "",
     "listed_club": "江苏",
     "source_id": "src-010",
-    "confidence": "high",
-    "notes": ""
+    "confidence": "low",
+    "notes": "历史入选线索；原始名单、日期和球员身份需重新核对。",
+    "reviewed": false
   },
   {
     "id": "sel-024",
@@ -352,12 +375,13 @@
     "selection_type": "集训名单",
     "selection_date": "2023-11-22",
     "event_name": "2023年2009年龄段精英集训营",
-    "camp_start_date": "2023-11-22",
+    "camp_start_date": "",
     "camp_end_date": "",
     "listed_club": "江苏",
     "source_id": "src-010",
-    "confidence": "high",
-    "notes": ""
+    "confidence": "low",
+    "notes": "历史入选线索；原始名单、日期和球员身份需重新核对。",
+    "reviewed": false
   },
   {
     "id": "sel-025",
@@ -367,12 +391,13 @@
     "selection_type": "集训名单",
     "selection_date": "2023-11-22",
     "event_name": "2023年2009年龄段精英集训营",
-    "camp_start_date": "2023-11-22",
+    "camp_start_date": "",
     "camp_end_date": "",
     "listed_club": "江苏",
     "source_id": "src-010",
-    "confidence": "high",
-    "notes": ""
+    "confidence": "low",
+    "notes": "历史入选线索；原始名单、日期和球员身份需重新核对。",
+    "reviewed": false
   },
   {
     "id": "sel-026",
@@ -382,12 +407,13 @@
     "selection_type": "集训名单",
     "selection_date": "2023-11-22",
     "event_name": "2023年2009年龄段精英集训营",
-    "camp_start_date": "2023-11-22",
+    "camp_start_date": "",
     "camp_end_date": "",
     "listed_club": "浙江",
     "source_id": "src-010",
-    "confidence": "high",
-    "notes": ""
+    "confidence": "low",
+    "notes": "历史入选线索；原始名单、日期和球员身份需重新核对。",
+    "reviewed": false
   },
   {
     "id": "sel-027",
@@ -397,12 +423,13 @@
     "selection_type": "集训名单",
     "selection_date": "2023-11-22",
     "event_name": "2023年2009年龄段精英集训营",
-    "camp_start_date": "2023-11-22",
+    "camp_start_date": "",
     "camp_end_date": "",
     "listed_club": "广东",
     "source_id": "src-010",
-    "confidence": "high",
-    "notes": ""
+    "confidence": "low",
+    "notes": "历史入选线索；原始名单、日期和球员身份需重新核对。",
+    "reviewed": false
   },
   {
     "id": "sel-028",
@@ -412,12 +439,13 @@
     "selection_type": "集训名单",
     "selection_date": "2023-11-22",
     "event_name": "2023年2009年龄段精英集训营",
-    "camp_start_date": "2023-11-22",
+    "camp_start_date": "",
     "camp_end_date": "",
     "listed_club": "上海",
     "source_id": "src-010",
-    "confidence": "high",
-    "notes": ""
+    "confidence": "low",
+    "notes": "历史入选线索；原始名单、日期和球员身份需重新核对。",
+    "reviewed": false
   },
   {
     "id": "sel-029",
@@ -427,12 +455,13 @@
     "selection_type": "集训名单",
     "selection_date": "2023-11-22",
     "event_name": "2023年2009年龄段精英集训营",
-    "camp_start_date": "2023-11-22",
+    "camp_start_date": "",
     "camp_end_date": "",
     "listed_club": "河南",
     "source_id": "src-010",
-    "confidence": "high",
-    "notes": ""
+    "confidence": "low",
+    "notes": "历史入选线索；原始名单、日期和球员身份需重新核对。",
+    "reviewed": false
   },
   {
     "id": "sel-030",
@@ -442,12 +471,13 @@
     "selection_type": "集训名单",
     "selection_date": "2024-06-10",
     "event_name": "2024年2010年龄段集训拉练",
-    "camp_start_date": "2024-06-10",
+    "camp_start_date": "",
     "camp_end_date": "",
     "listed_club": "北京",
     "source_id": "src-012",
-    "confidence": "high",
-    "notes": ""
+    "confidence": "low",
+    "notes": "历史入选线索；原始名单、日期和球员身份需重新核对。",
+    "reviewed": false
   },
   {
     "id": "sel-031",
@@ -457,12 +487,13 @@
     "selection_type": "集训名单",
     "selection_date": "2024-06-10",
     "event_name": "2024年2010年龄段集训拉练",
-    "camp_start_date": "2024-06-10",
+    "camp_start_date": "",
     "camp_end_date": "",
     "listed_club": "福建",
     "source_id": "src-012",
-    "confidence": "high",
-    "notes": ""
+    "confidence": "low",
+    "notes": "历史入选线索；原始名单、日期和球员身份需重新核对。",
+    "reviewed": false
   },
   {
     "id": "sel-032",
@@ -472,12 +503,13 @@
     "selection_type": "集训名单",
     "selection_date": "2024-06-10",
     "event_name": "2024年2010年龄段集训拉练",
-    "camp_start_date": "2024-06-10",
+    "camp_start_date": "",
     "camp_end_date": "",
     "listed_club": "深圳",
     "source_id": "src-012",
-    "confidence": "high",
-    "notes": ""
+    "confidence": "low",
+    "notes": "历史入选线索；原始名单、日期和球员身份需重新核对。",
+    "reviewed": false
   },
   {
     "id": "sel-033",
@@ -487,12 +519,13 @@
     "selection_type": "集训名单",
     "selection_date": "2024-06-10",
     "event_name": "2024年2010年龄段集训拉练",
-    "camp_start_date": "2024-06-10",
+    "camp_start_date": "",
     "camp_end_date": "",
     "listed_club": "广东",
     "source_id": "src-012",
-    "confidence": "high",
-    "notes": ""
+    "confidence": "low",
+    "notes": "历史入选线索；原始名单、日期和球员身份需重新核对。",
+    "reviewed": false
   },
   {
     "id": "sel-034",
@@ -502,12 +535,13 @@
     "selection_type": "集训名单",
     "selection_date": "2024-06-10",
     "event_name": "2024年2010年龄段集训拉练",
-    "camp_start_date": "2024-06-10",
+    "camp_start_date": "",
     "camp_end_date": "",
     "listed_club": "大连龙卷风",
     "source_id": "src-012",
-    "confidence": "high",
-    "notes": ""
+    "confidence": "low",
+    "notes": "历史入选线索；原始名单、日期和球员身份需重新核对。",
+    "reviewed": false
   },
   {
     "id": "sel-035",
@@ -517,12 +551,13 @@
     "selection_type": "集训名单",
     "selection_date": "2024-06-10",
     "event_name": "2024年2010年龄段集训拉练",
-    "camp_start_date": "2024-06-10",
+    "camp_start_date": "",
     "camp_end_date": "",
     "listed_club": "深圳宝安",
     "source_id": "src-012",
-    "confidence": "high",
-    "notes": ""
+    "confidence": "low",
+    "notes": "历史入选线索；原始名单、日期和球员身份需重新核对。",
+    "reviewed": false
   },
   {
     "id": "sel-036",
@@ -532,27 +567,29 @@
     "selection_type": "集训名单",
     "selection_date": "2024-06-10",
     "event_name": "2024年2010年龄段集训拉练",
-    "camp_start_date": "2024-06-10",
+    "camp_start_date": "",
     "camp_end_date": "",
     "listed_club": "深圳罗湖",
     "source_id": "src-012",
-    "confidence": "high",
-    "notes": ""
+    "confidence": "low",
+    "notes": "历史入选线索；原始名单、日期和球员身份需重新核对。",
+    "reviewed": false
   },
   {
     "id": "sel-037",
     "player_id": "player-027",
     "national_team_level": "U15",
     "official_team_name": "中国U-15国家男子足球队",
-    "selection_type": "正式报名",
+    "selection_type": "名单线索",
     "selection_date": "2026-04-10",
     "event_name": "2026年意大利国家之杯12国赛",
-    "camp_start_date": "2026-04-10",
+    "camp_start_date": "",
     "camp_end_date": "",
     "listed_club": "清水心跳",
     "source_id": "src-015",
-    "confidence": "high",
-    "notes": ""
+    "confidence": "low",
+    "notes": "历史入选线索；原始名单、日期和球员身份需重新核对。",
+    "reviewed": false
   },
   {
     "id": "sel-038",
@@ -562,12 +599,13 @@
     "selection_type": "拉练名单",
     "selection_date": "2026-04-10",
     "event_name": "2026年意大利国家之杯12国赛",
-    "camp_start_date": "2026-04-10",
+    "camp_start_date": "",
     "camp_end_date": "",
     "listed_club": "中国足球小将",
     "source_id": "src-015",
-    "confidence": "high",
-    "notes": ""
+    "confidence": "low",
+    "notes": "历史入选线索；原始名单、日期和球员身份需重新核对。",
+    "reviewed": false
   },
   {
     "id": "sel-039",
@@ -577,12 +615,13 @@
     "selection_type": "拉练名单",
     "selection_date": "2026-04-10",
     "event_name": "2026年意大利国家之杯12国赛",
-    "camp_start_date": "2026-04-10",
+    "camp_start_date": "",
     "camp_end_date": "",
     "listed_club": "中国足球小将",
     "source_id": "src-015",
-    "confidence": "high",
-    "notes": ""
+    "confidence": "low",
+    "notes": "历史入选线索；原始名单、日期和球员身份需重新核对。",
+    "reviewed": false
   },
   {
     "id": "sel-040",
@@ -592,11 +631,124 @@
     "selection_type": "集训名单",
     "selection_date": "2024-03-15",
     "event_name": "2024年第一期2008年龄段集训",
-    "camp_start_date": "2024-03-15",
+    "camp_start_date": "",
     "camp_end_date": "",
     "listed_club": "青岛追风少年",
     "source_id": "src-017",
+    "confidence": "low",
+    "notes": "历史入选线索；原始名单、日期和球员身份需重新核对。",
+    "reviewed": false
+  },
+  {
+    "id": "sel-20260911-wan-xiang",
+    "player_id": "player-001",
+    "national_team_level": "U17",
+    "official_team_name": "中国U-17国家男子足球队",
+    "selection_type": "集训名单",
+    "selection_date": "2026-09-11",
+    "event_name": "2026年第六期集训",
+    "camp_start_date": "2026-09-16",
+    "camp_end_date": "2026-10-09",
+    "listed_club": "贝尔格拉德红星",
+    "source_id": "cfa-u17-20260911",
     "confidence": "high",
-    "notes": ""
+    "reviewed": true,
+    "notes": "通知名单确认入选，不证明实际报到或比赛出场。"
+  },
+  {
+    "id": "sel-20260911-nan-zixun",
+    "player_id": "player-007",
+    "national_team_level": "U17",
+    "official_team_name": "中国U-17国家男子足球队",
+    "selection_type": "集训名单",
+    "selection_date": "2026-09-11",
+    "event_name": "2026年第六期集训",
+    "camp_start_date": "2026-09-16",
+    "camp_end_date": "2026-10-09",
+    "listed_club": "清华大学附属中学",
+    "source_id": "cfa-u17-20260911",
+    "confidence": "high",
+    "reviewed": true,
+    "notes": "通知名单确认入选，不证明实际报到或比赛出场。"
+  },
+  {
+    "id": "sel-20260911-zhou-yunuo",
+    "player_id": "player-008",
+    "national_team_level": "U17",
+    "official_team_name": "中国U-17国家男子足球队",
+    "selection_type": "集训名单",
+    "selection_date": "2026-09-11",
+    "event_name": "2026年第六期集训",
+    "camp_start_date": "2026-09-16",
+    "camp_end_date": "2026-10-09",
+    "listed_club": "清华大学附属中学",
+    "source_id": "cfa-u17-20260911",
+    "confidence": "high",
+    "reviewed": true,
+    "notes": "通知名单确认入选，不证明实际报到或比赛出场。"
+  },
+  {
+    "id": "sel-20260911-shuai-weihao",
+    "player_id": "player-005",
+    "national_team_level": "U17",
+    "official_team_name": "中国U-17国家男子足球队",
+    "selection_type": "集训名单",
+    "selection_date": "2026-09-11",
+    "event_name": "2026年第六期集训",
+    "camp_start_date": "2026-09-16",
+    "camp_end_date": "2026-10-09",
+    "listed_club": "成都蓉城",
+    "source_id": "cfa-u17-20260911",
+    "confidence": "high",
+    "reviewed": true,
+    "notes": "通知名单确认入选，不证明实际报到或比赛出场。"
+  },
+  {
+    "id": "sel-20260911-kuang-zhaolei",
+    "player_id": "player-002",
+    "national_team_level": "U17",
+    "official_team_name": "中国U-17国家男子足球队",
+    "selection_type": "集训名单",
+    "selection_date": "2026-09-11",
+    "event_name": "2026年第六期集训",
+    "camp_start_date": "2026-09-16",
+    "camp_end_date": "2026-10-09",
+    "listed_club": "青岛海牛",
+    "source_id": "cfa-u17-20260911",
+    "confidence": "high",
+    "reviewed": true,
+    "notes": "通知名单确认入选，不证明实际报到或比赛出场。"
+  },
+  {
+    "id": "sel-20260911-gu-boyu",
+    "player_id": "player-009",
+    "national_team_level": "U17",
+    "official_team_name": "中国U-17国家男子足球队",
+    "selection_type": "集训名单",
+    "selection_date": "2026-09-11",
+    "event_name": "2026年第六期集训",
+    "camp_start_date": "2026-09-16",
+    "camp_end_date": "2026-10-09",
+    "listed_club": "上海申花",
+    "source_id": "cfa-u17-20260911",
+    "confidence": "high",
+    "reviewed": true,
+    "notes": "通知名单确认入选，不证明实际报到或比赛出场。"
+  },
+  {
+    "id": "sel-20260911-yuan-bohan",
+    "player_id": "player-025",
+    "national_team_level": "U17",
+    "official_team_name": "中国U-17国家男子足球队",
+    "selection_type": "集训名单",
+    "selection_date": "2026-09-11",
+    "event_name": "2026年第六期集训",
+    "camp_start_date": "2026-09-16",
+    "camp_end_date": "2026-10-09",
+    "listed_club": "深圳青年人",
+    "source_id": "cfa-u17-20260911",
+    "confidence": "high",
+    "reviewed": true,
+    "notes": "通知名单确认入选，不证明实际报到或比赛出场。"
   }
 ]

@@ -7,9 +7,9 @@
     "source_type": "mainstream_media",
     "source_priority": "mainstream_media",
     "published_date": "",
-    "retrieved_at": "2026-05-21",
+    "retrieved_at": null,
     "archived_url": "",
-    "reliability_score": 72,
+    "reliability_score": null,
     "access_status": "unchecked",
     "used_for": [
       "xiaojiang_relation"
@@ -18,7 +18,8 @@
       "万项"
     ],
     "involved_levels": [],
-    "notes": ""
+    "notes": "历史导入来源，标题、发布日期及内容尚待核验。",
+    "reviewed": false
   },
   {
     "id": "src-002",
@@ -28,9 +29,9 @@
     "source_type": "official",
     "source_priority": "official_cfa",
     "published_date": "2026-04-28",
-    "retrieved_at": "2026-05-21",
+    "retrieved_at": null,
     "archived_url": "",
-    "reliability_score": 95,
+    "reliability_score": null,
     "access_status": "unchecked",
     "used_for": [
       "national_team_selection"
@@ -49,7 +50,8 @@
     "involved_levels": [
       "U17"
     ],
-    "notes": ""
+    "notes": "历史导入来源，标题、发布日期及内容尚待核验。",
+    "reviewed": false
   },
   {
     "id": "src-003",
@@ -59,9 +61,9 @@
     "source_type": "mainstream_media",
     "source_priority": "mainstream_media",
     "published_date": "",
-    "retrieved_at": "2026-05-21",
+    "retrieved_at": null,
     "archived_url": "",
-    "reliability_score": 72,
+    "reliability_score": null,
     "access_status": "unchecked",
     "used_for": [
       "xiaojiang_relation"
@@ -70,7 +72,8 @@
       "邝兆镭"
     ],
     "involved_levels": [],
-    "notes": ""
+    "notes": "历史导入来源，标题、发布日期及内容尚待核验。",
+    "reviewed": false
   },
   {
     "id": "src-004",
@@ -80,9 +83,9 @@
     "source_type": "mainstream_media",
     "source_priority": "mainstream_media",
     "published_date": "",
-    "retrieved_at": "2026-05-21",
+    "retrieved_at": null,
     "archived_url": "",
-    "reliability_score": 68,
+    "reliability_score": null,
     "access_status": "unchecked",
     "used_for": [
       "xiaojiang_relation"
@@ -102,7 +105,8 @@
       "黄子杰"
     ],
     "involved_levels": [],
-    "notes": ""
+    "notes": "历史导入来源，标题、发布日期及内容尚待核验。",
+    "reviewed": false
   },
   {
     "id": "src-005",
@@ -112,9 +116,9 @@
     "source_type": "mainstream_media",
     "source_priority": "mainstream_media",
     "published_date": "",
-    "retrieved_at": "2026-05-21",
+    "retrieved_at": null,
     "archived_url": "",
-    "reliability_score": 70,
+    "reliability_score": null,
     "access_status": "unchecked",
     "used_for": [
       "xiaojiang_relation"
@@ -123,7 +127,8 @@
       "谢晋"
     ],
     "involved_levels": [],
-    "notes": ""
+    "notes": "历史导入来源，标题、发布日期及内容尚待核验。",
+    "reviewed": false
   },
   {
     "id": "src-006",
@@ -133,9 +138,9 @@
     "source_type": "mainstream_media",
     "source_priority": "mainstream_media",
     "published_date": "",
-    "retrieved_at": "2026-05-21",
+    "retrieved_at": null,
     "archived_url": "",
-    "reliability_score": 65,
+    "reliability_score": null,
     "access_status": "unchecked",
     "used_for": [
       "xiaojiang_relation"
@@ -144,7 +149,8 @@
       "帅惟浩"
     ],
     "involved_levels": [],
-    "notes": ""
+    "notes": "历史导入来源，标题、发布日期及内容尚待核验。",
+    "reviewed": false
   },
   {
     "id": "src-007",
@@ -154,9 +160,9 @@
     "source_type": "mainstream_media",
     "source_priority": "mainstream_media",
     "published_date": "",
-    "retrieved_at": "2026-05-21",
+    "retrieved_at": null,
     "archived_url": "",
-    "reliability_score": 65,
+    "reliability_score": null,
     "access_status": "unchecked",
     "used_for": [
       "xiaojiang_relation"
@@ -166,7 +172,8 @@
       "顾博宇"
     ],
     "involved_levels": [],
-    "notes": ""
+    "notes": "历史导入来源，标题、发布日期及内容尚待核验。",
+    "reviewed": false
   },
   {
     "id": "src-008",
@@ -176,9 +183,9 @@
     "source_type": "official",
     "source_priority": "official_cfa",
     "published_date": "2024-06-18",
-    "retrieved_at": "2026-05-21",
+    "retrieved_at": null,
     "archived_url": "",
-    "reliability_score": 95,
+    "reliability_score": null,
     "access_status": "unchecked",
     "used_for": [
       "national_team_selection"
@@ -197,7 +204,8 @@
     "involved_levels": [
       "U15"
     ],
-    "notes": ""
+    "notes": "历史导入来源，标题、发布日期及内容尚待核验。",
+    "reviewed": false
   },
   {
     "id": "src-009",
@@ -207,9 +215,9 @@
     "source_type": "mainstream_media",
     "source_priority": "mainstream_media",
     "published_date": "",
-    "retrieved_at": "2026-05-21",
+    "retrieved_at": null,
     "archived_url": "",
-    "reliability_score": 72,
+    "reliability_score": null,
     "access_status": "unchecked",
     "used_for": [
       "xiaojiang_relation"
@@ -218,7 +226,8 @@
       "李东宸"
     ],
     "involved_levels": [],
-    "notes": ""
+    "notes": "历史导入来源，标题、发布日期及内容尚待核验。",
+    "reviewed": false
   },
   {
     "id": "src-010",
@@ -228,9 +237,9 @@
     "source_type": "official",
     "source_priority": "official_cfa",
     "published_date": "2023-11-22",
-    "retrieved_at": "2026-05-21",
+    "retrieved_at": null,
     "archived_url": "",
-    "reliability_score": 95,
+    "reliability_score": null,
     "access_status": "unchecked",
     "used_for": [
       "national_team_selection"
@@ -251,7 +260,8 @@
     "involved_levels": [
       "U15"
     ],
-    "notes": ""
+    "notes": "历史导入来源，标题、发布日期及内容尚待核验。",
+    "reviewed": false
   },
   {
     "id": "src-011",
@@ -261,9 +271,9 @@
     "source_type": "mainstream_media",
     "source_priority": "mainstream_media",
     "published_date": "",
-    "retrieved_at": "2026-05-21",
+    "retrieved_at": null,
     "archived_url": "",
-    "reliability_score": 65,
+    "reliability_score": null,
     "access_status": "unchecked",
     "used_for": [
       "xiaojiang_relation"
@@ -277,7 +287,8 @@
       "詹景源"
     ],
     "involved_levels": [],
-    "notes": ""
+    "notes": "历史导入来源，标题、发布日期及内容尚待核验。",
+    "reviewed": false
   },
   {
     "id": "src-012",
@@ -287,9 +298,9 @@
     "source_type": "official",
     "source_priority": "official_cfa",
     "published_date": "2024-06-10",
-    "retrieved_at": "2026-05-21",
+    "retrieved_at": null,
     "archived_url": "",
-    "reliability_score": 95,
+    "reliability_score": null,
     "access_status": "unchecked",
     "used_for": [
       "national_team_selection"
@@ -306,7 +317,8 @@
     "involved_levels": [
       "U14"
     ],
-    "notes": ""
+    "notes": "历史导入来源，标题、发布日期及内容尚待核验。",
+    "reviewed": false
   },
   {
     "id": "src-013",
@@ -316,9 +328,9 @@
     "source_type": "mainstream_media",
     "source_priority": "mainstream_media",
     "published_date": "",
-    "retrieved_at": "2026-05-21",
+    "retrieved_at": null,
     "archived_url": "",
-    "reliability_score": 65,
+    "reliability_score": null,
     "access_status": "unchecked",
     "used_for": [
       "xiaojiang_relation"
@@ -327,7 +339,8 @@
       "刘凯源"
     ],
     "involved_levels": [],
-    "notes": ""
+    "notes": "历史导入来源，标题、发布日期及内容尚待核验。",
+    "reviewed": false
   },
   {
     "id": "src-014",
@@ -337,9 +350,9 @@
     "source_type": "mainstream_media",
     "source_priority": "mainstream_media",
     "published_date": "",
-    "retrieved_at": "2026-05-21",
+    "retrieved_at": null,
     "archived_url": "",
-    "reliability_score": 68,
+    "reliability_score": null,
     "access_status": "unchecked",
     "used_for": [
       "xiaojiang_relation"
@@ -350,7 +363,8 @@
       "沙明"
     ],
     "involved_levels": [],
-    "notes": ""
+    "notes": "历史导入来源，标题、发布日期及内容尚待核验。",
+    "reviewed": false
   },
   {
     "id": "src-015",
@@ -360,9 +374,9 @@
     "source_type": "official",
     "source_priority": "official_cfa",
     "published_date": "2026-04-10",
-    "retrieved_at": "2026-05-21",
+    "retrieved_at": null,
     "archived_url": "",
-    "reliability_score": 95,
+    "reliability_score": null,
     "access_status": "unchecked",
     "used_for": [
       "national_team_selection"
@@ -375,7 +389,8 @@
     "involved_levels": [
       "U15"
     ],
-    "notes": ""
+    "notes": "历史导入来源，标题、发布日期及内容尚待核验。",
+    "reviewed": false
   },
   {
     "id": "src-016",
@@ -385,9 +400,9 @@
     "source_type": "mainstream_media",
     "source_priority": "mainstream_media",
     "published_date": "",
-    "retrieved_at": "2026-05-21",
+    "retrieved_at": null,
     "archived_url": "",
-    "reliability_score": 70,
+    "reliability_score": null,
     "access_status": "unchecked",
     "used_for": [
       "xiaojiang_relation"
@@ -396,7 +411,8 @@
       "姜胤宇"
     ],
     "involved_levels": [],
-    "notes": ""
+    "notes": "历史导入来源，标题、发布日期及内容尚待核验。",
+    "reviewed": false
   },
   {
     "id": "src-017",
@@ -406,9 +422,9 @@
     "source_type": "official",
     "source_priority": "official_cfa",
     "published_date": "2024-03-15",
-    "retrieved_at": "2026-05-21",
+    "retrieved_at": null,
     "archived_url": "",
-    "reliability_score": 95,
+    "reliability_score": null,
     "access_status": "unchecked",
     "used_for": [
       "national_team_selection"
@@ -419,7 +435,8 @@
     "involved_levels": [
       "U16"
     ],
-    "notes": ""
+    "notes": "历史导入来源，标题、发布日期及内容尚待核验。",
+    "reviewed": false
   },
   {
     "id": "src-018",
@@ -429,9 +446,9 @@
     "source_type": "mainstream_media",
     "source_priority": "mainstream_media",
     "published_date": "",
-    "retrieved_at": "2026-05-21",
+    "retrieved_at": null,
     "archived_url": "",
-    "reliability_score": 70,
+    "reliability_score": null,
     "access_status": "unchecked",
     "used_for": [
       "xiaojiang_relation"
@@ -443,7 +460,8 @@
       "魏子烜"
     ],
     "involved_levels": [],
-    "notes": ""
+    "notes": "历史导入来源，标题、发布日期及内容尚待核验。",
+    "reviewed": false
   },
   {
     "id": "src-019",
@@ -453,16 +471,17 @@
     "source_type": "official",
     "source_priority": "official_cfa",
     "published_date": "2025-11-04",
-    "retrieved_at": "2026-05-21",
+    "retrieved_at": null,
     "archived_url": "",
-    "reliability_score": 95,
+    "reliability_score": null,
     "access_status": "unchecked",
     "used_for": [
       "priority_reference"
     ],
     "involved_players": [],
     "involved_levels": [],
-    "notes": "优先跟踪的中国足协国字号集训通知；是否逐名并入以 selections.json 为准。"
+    "notes": "历史导入来源，标题、发布日期及内容尚待核验。",
+    "reviewed": false
   },
   {
     "id": "src-020",
@@ -472,16 +491,17 @@
     "source_type": "official",
     "source_priority": "official_cfa",
     "published_date": "2026-01-18",
-    "retrieved_at": "2026-05-21",
+    "retrieved_at": null,
     "archived_url": "",
-    "reliability_score": 95,
+    "reliability_score": null,
     "access_status": "unchecked",
     "used_for": [
       "priority_reference"
     ],
     "involved_players": [],
     "involved_levels": [],
-    "notes": "优先跟踪的中国足协国字号集训通知；是否逐名并入以 selections.json 为准。"
+    "notes": "历史导入来源，标题、发布日期及内容尚待核验。",
+    "reviewed": false
   },
   {
     "id": "src-021",
@@ -491,16 +511,17 @@
     "source_type": "official",
     "source_priority": "official_cfa",
     "published_date": "2025-09-25",
-    "retrieved_at": "2026-05-21",
+    "retrieved_at": null,
     "archived_url": "",
-    "reliability_score": 95,
+    "reliability_score": null,
     "access_status": "unchecked",
     "used_for": [
       "priority_reference"
     ],
     "involved_players": [],
     "involved_levels": [],
-    "notes": "优先跟踪的中国足协国字号集训通知；是否逐名并入以 selections.json 为准。"
+    "notes": "历史导入来源，标题、发布日期及内容尚待核验。",
+    "reviewed": false
   },
   {
     "id": "src-022",
@@ -510,15 +531,46 @@
     "source_type": "official",
     "source_priority": "official_cfa",
     "published_date": "2026-03-11",
-    "retrieved_at": "2026-05-21",
+    "retrieved_at": null,
     "archived_url": "",
-    "reliability_score": 95,
+    "reliability_score": null,
     "access_status": "unchecked",
     "used_for": [
       "priority_reference"
     ],
     "involved_players": [],
     "involved_levels": [],
-    "notes": "优先跟踪的中国足协国字号集训通知；是否逐名并入以 selections.json 为准。"
+    "notes": "历史导入来源，标题、发布日期及内容尚待核验。",
+    "reviewed": false
+  },
+  {
+    "id": "cfa-u17-20260911",
+    "title": "中国足球协会关于组织中国U-17国家男子足球队2026年第六期集训的通知",
+    "url": "https://www.thecfa.cn/jxtz/20260911/38141.html",
+    "publisher": "中国足球协会",
+    "source_type": "official",
+    "source_priority": "official_cfa",
+    "published_date": "2026-09-11",
+    "retrieved_at": "2026-10-11",
+    "archived_url": "",
+    "reliability_score": 95,
+    "access_status": "accessible",
+    "reviewed": true,
+    "used_for": [
+      "national_team_selection"
+    ],
+    "involved_players": [
+      "顾博宇",
+      "帅惟浩",
+      "邝兆镭",
+      "袁博涵",
+      "周雨诺",
+      "南子勋",
+      "万项"
+    ],
+    "involved_levels": [
+      "U17"
+    ],
+    "notes": "已核对正文参训运动员名单；仅关联现有库中的球员，不据此确认小将关系。"
   }
 ]

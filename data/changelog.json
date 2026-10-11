@@ -1,5 +1,61 @@
 [
   {
+    "date": "2026-10-11",
+    "title": "重新审计历史证据并补充足协第六期名单",
+    "added_players": [],
+    "status_changes": [
+      "姜胤宇: confirmed → pending",
+      "万项: confirmed → partially_confirmed",
+      "何浩源: confirmed → pending",
+      "南子勋: confirmed → partially_confirmed",
+      "吕孟洋: confirmed → pending",
+      "吕孟洲: confirmed → pending",
+      "吴王允祥: confirmed → pending",
+      "周雨诺: confirmed → partially_confirmed",
+      "帅惟浩: confirmed → partially_confirmed",
+      "廖梓成: confirmed → pending",
+      "戴宥哲: confirmed → pending",
+      "毛永彬: confirmed → pending",
+      "汪修昊: confirmed → pending",
+      "谢晋: confirmed → pending",
+      "赵峰屹: confirmed → pending",
+      "赵松源: confirmed → pending",
+      "邝兆镭: confirmed → partially_confirmed",
+      "顾博宇: confirmed → partially_confirmed",
+      "黄子杰: confirmed → pending",
+      "刘凯源: confirmed → pending",
+      "刘礼豪: confirmed → pending",
+      "张林峒: confirmed → pending",
+      "朴智轩: confirmed → pending",
+      "李东宸: confirmed → pending",
+      "李佑安: confirmed → pending",
+      "李贺哲: pending → pending",
+      "杜双杰: pending → pending",
+      "杨皓砼: pending → pending",
+      "袁博涵: confirmed → partially_confirmed",
+      "詹景源: confirmed → pending",
+      "魏子烜: pending → pending",
+      "宋泓渝: confirmed → pending",
+      "曾晨: confirmed → pending",
+      "沙明: confirmed → pending"
+    ],
+    "added_sources": [
+      "cfa-u17-20260911"
+    ],
+    "stat_changes": {
+      "confirmed": 0,
+      "partially_confirmed": 7,
+      "pending": 27,
+      "selections": 47
+    },
+    "deleted_or_corrected": [
+      "撤销仅凭 URL 存在的 confirmed 判定",
+      "移除无法核实的留洋推断",
+      "构建不再覆盖数据和变更日志"
+    ],
+    "reason": "区分历史线索与正文核验结果，避免将结构校验通过误认为事实已确认。"
+  },
+  {
     "date": "2026-05-21",
     "title": "升级为可审计、可筛选、可持续更新的数据产品",
     "added_players": [

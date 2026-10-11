@@ -40,6 +40,7 @@ type Selection = {
 };
 
 type Source = {
+  reviewed?: boolean;
   id: string;
   title: string;
   url: string;
@@ -97,6 +98,13 @@ for (const appearance of appearances) {
 }
 
 for (const source of sources) {
+  try {
+    const url = new URL(source.url);
+    if (!["http:", "https:"].includes(url.protocol)) throw new Error("protocol");
+    if (source.source_priority === "official_cfa" && url.hostname !== "thecfa.cn" && !url.hostname.endsWith(".thecfa.cn")) throw new Error("CFA host");
+  } catch {
+    fail("data/sources.json", source.id, "url", "URL 或官方域名无效", "使用正确的 HTTP(S) 来源地址");
+  }
   if (!source.url?.trim()) {
     fail("data/sources.json", source.id, "url", "所有 URL 必须非空", "补充原始 URL；无法确认时不要生成 source 记录");
   }
@@ -164,6 +172,11 @@ for (const player of players) {
       "confirmed 球员必须至少有一条 confirmed 小将关系记录和一条 high/medium confidence 国字号入选记录",
       "补充强证据，或将状态降为 partially_confirmed/pending",
     );
+  }
+  if (player.verification_status === "confirmed") {
+    const auditedRelation = (relationsByPlayer.get(player.id) || []).some(r => r.relation_status === "confirmed" && sourceById.get(r.source_id)?.reviewed);
+    const auditedSelection = (selectionsByPlayer.get(player.id) || []).some(s => ["high", "medium"].includes(s.confidence) && sourceById.get(s.source_id)?.reviewed);
+    if (!auditedRelation || !auditedSelection) fail("data/players.json", player.id, "verification_status", "confirmed 缺少已核验来源", "逐条复核来源正文或降低状态");
   }
 
   if ((player.birth_year === null || player.birth_year === undefined) && player.verification_status === "confirmed") {
