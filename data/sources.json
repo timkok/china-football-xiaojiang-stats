@@ -623,5 +623,49 @@
       "U17"
     ],
     "notes": "正文战报支持所列出场事实；非完整比赛技术统计。"
+  },
+  {
+    "id": "media-wan-club-20260302",
+    "title": "足球报：万项将提前归队备战亚少赛 邝兆镭中超出场情况有待观察",
+    "url": "https://m.zhibo8.cc/news/web/zuqiu/2026-03-02/69a545aa3a506native.htm",
+    "publisher": "足球报（直播吧转载）",
+    "published_date": "2026-03-02",
+    "involved_players": [
+      "万项"
+    ],
+    "involved_levels": [],
+    "source_type": "media",
+    "source_priority": "mainstream_media",
+    "retrieved_at": "2026-10-11",
+    "archived_url": "",
+    "reliability_score": 75,
+    "access_status": "accessible",
+    "reviewed": true,
+    "used_for": [
+      "club_match_appearance"
+    ],
+    "notes": "已核对报道正文；属于媒体证据，不是官方技术统计，也不是国字号入选证据。"
+  },
+  {
+    "id": "media-kuang-club-20260307",
+    "title": "玉昆3-1海牛开门红 侯永永、克莱伯破门 16岁邝兆镭中超首秀",
+    "url": "https://news.sina.cn/gn/2026-03-07/detail-inhqeria1498903.d.html",
+    "publisher": "直播吧（新浪转载）",
+    "published_date": "2026-03-07",
+    "involved_players": [
+      "邝兆镭"
+    ],
+    "involved_levels": [],
+    "source_type": "media",
+    "source_priority": "mainstream_media",
+    "retrieved_at": "2026-10-11",
+    "archived_url": "",
+    "reliability_score": 75,
+    "access_status": "accessible",
+    "reviewed": true,
+    "used_for": [
+      "club_match_appearance"
+    ],
+    "notes": "已核对报道正文；属于媒体证据，不是官方技术统计，也不是国字号入选证据。"
   }
 ]

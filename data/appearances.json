@@ -142,5 +142,43 @@
     "confidence": "high",
     "reviewed": true,
     "notes": "战报记载进球与进球前头球摆渡；助攻统计未明确。"
+  },
+  {
+    "id": "club-appearance-20260221-redstar-backa",
+    "player_id": "player-001",
+    "match_id": "20260221-redstar-backa",
+    "match_date": "2026-02-21",
+    "competition": "塞尔维亚U17联赛",
+    "team_level": "U17",
+    "opponent": "巴奇卡托波拉U17",
+    "participation_status": "出场",
+    "starter": false,
+    "entry_minute": 38,
+    "minutes": null,
+    "goals": null,
+    "assists": null,
+    "source_id": "media-wan-club-20260302",
+    "confidence": "medium",
+    "reviewed": true,
+    "notes": "媒体明确记载第38分钟替补出场；不据换人时间推算实际出场分钟。俱乐部出场不用于提高国字号验证状态。"
+  },
+  {
+    "id": "club-appearance-20260307-hainiu-yukun",
+    "player_id": "player-002",
+    "match_id": "20260307-hainiu-yukun",
+    "match_date": "2026-03-07",
+    "competition": "中国足球超级联赛",
+    "team_level": "senior",
+    "opponent": "云南玉昆",
+    "participation_status": "出场",
+    "starter": false,
+    "entry_minute": 87,
+    "minutes": null,
+    "goals": null,
+    "assists": null,
+    "source_id": "media-kuang-club-20260307",
+    "confidence": "medium",
+    "reviewed": true,
+    "notes": "媒体明确记载第87分钟替补出场；不据换人时间推算实际出场分钟。俱乐部出场不用于提高国字号验证状态。"
   }
 ]

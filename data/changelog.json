@@ -1,6 +1,22 @@
 [
   {
     "date": "2026-10-11",
+    "title": "新增国内及海外俱乐部比赛",
+    "added_players": [],
+    "status_changes": [],
+    "added_sources": [
+      "media-wan-club-20260302",
+      "media-kuang-club-20260307"
+    ],
+    "stat_changes": {
+      "added_matches": 2,
+      "added_appearances": 2
+    },
+    "deleted_or_corrected": [],
+    "reason": "补充邝兆镭中超首秀和万项塞尔维亚青年联赛出场。媒体证据标为 medium；未知技术统计留空，不改变国字号确认人数。"
+  },
+  {
+    "date": "2026-10-11",
     "title": "新增国内外比赛记录",
     "added_players": [],
     "status_changes": [

@@ -16,7 +16,7 @@ PROCESSED_JSON_FILE = os.path.join(DATA_DIR, "processed", "players_clean.json")
 with open(os.path.join(DATA_DIR, "changelog.json"), encoding="utf-8") as changelog_file:
     TODAY = max(entry["date"] for entry in json.load(changelog_file))
 SITE_URL = "https://timkok.github.io/china-football-xiaojiang-stats/"
-RELEASE = '20261011-matches1'
+RELEASE = '20261011-clubs1'
 SEO_TITLE = "中国足球小将国字号入选数据库｜U14-U20 国少国青统计"
 SEO_DESCRIPTION = "基于中国足协官网、俱乐部公告、媒体公开报道整理中国足球小将相关球员入选 U14、U15、U16、U17、U19、U20 等各级国字号队伍的情况，包含出生年份、俱乐部、入选时间、来源证据和数据可信度。"
 

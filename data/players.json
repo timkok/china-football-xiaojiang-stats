@@ -47,7 +47,8 @@
       "sel-20260911-wan-xiang"
     ],
     "appearance_ids": [
-      "match-import-001"
+      "match-import-001",
+      "club-appearance-20260221-redstar-backa"
     ],
     "identity_key": "万项|2009|中场|贝尔格莱德红星",
     "notes": "历史出生年份、位置及小将关系待复核；单位为名单所列单位，不代表当前注册状态。 已有官方比赛出场证据；小将关系仍待复核。"
@@ -427,7 +428,7 @@
     "listed_club": "青岛海牛",
     "nationality": "中国",
     "is_overseas": null,
-    "has_appearance": false,
+    "has_appearance": true,
     "verification_status": "partially_confirmed",
     "relation_ids": [
       "rel-002",
@@ -438,7 +439,9 @@
       "sel-014",
       "sel-20260911-kuang-zhaolei"
     ],
-    "appearance_ids": [],
+    "appearance_ids": [
+      "club-appearance-20260307-hainiu-yukun"
+    ],
     "identity_key": "邝兆镭|2009|中场|青岛海牛",
     "notes": "历史出生年份、位置及小将关系待复核；单位为名单所列单位，不代表当前注册状态。"
   },

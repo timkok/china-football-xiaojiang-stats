@@ -99,8 +99,20 @@ for (const relation of relations) {
 for (const selection of selections) {
   selectionsByPlayer.set(selection.player_id, [...(selectionsByPlayer.get(selection.player_id) || []), selection]);
 }
+const matches = readJson<{id:string;match_date:string;team_type:string;source_id:string}[]>("matches.json");
+const matchIds = new Set<string>();
+for (const match of matches) {
+  if (matchIds.has(match.id)) fail("data/matches.json",match.id,"id","重复比赛 ID","合并重复记录");
+  matchIds.add(match.id);
+  if (!['club','national'].includes(match.team_type)) fail("data/matches.json",match.id,"team_type","代表队类型无效","使用 club 或 national");
+  if (!/^\d{4}-\d{2}-\d{2}$/.test(match.match_date)) fail("data/matches.json",match.id,"match_date","缺少比赛日期","核验日期后使用 YYYY-MM-DD");
+  if (!sourceById.has(match.source_id)) fail("data/matches.json",match.id,"source_id","比赛来源不存在","补充 sources.json 中的来源");
+}
+const appearanceKeys = new Set<string>();
 for (const appearance of appearances) {
-  const matches = readJson<{id:string;match_date:string}[]>("matches.json");
+  const key = `${appearance.player_id}:${appearance.match_id}`;
+  if (appearanceKeys.has(key)) fail("data/appearances.json",appearance.id,"match_id","同一球员同场重复","合并个人比赛记录");
+  appearanceKeys.add(key);
   const match = matches.find(m=>m.id===appearance.match_id);
   if (!match || match.match_date!==appearance.match_date) fail("data/appearances.json", appearance.id, "match_id", "比赛关联或日期不一致", "关联对应比赛并统一日期口径");
   if (!players.some(p=>p.id===appearance.player_id)) fail("data/appearances.json", appearance.id, "player_id", "球员不存在", "修正球员 ID");
